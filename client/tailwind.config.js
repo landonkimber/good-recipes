@@ -4,6 +4,7 @@ module.exports = {
     content: ['./src/**/*.js', './src/**/*.jsx', './public/index.html'],
     theme: {
         fontFamily: {
+            savate: ['Savate', 'sans-serif'],
             lobster: ['Lobster Two', 'sans-serif'],
             roboto: ['Roboto Slab', 'sans-serif'],
             sans: ['Graphik', 'sans-serif'],

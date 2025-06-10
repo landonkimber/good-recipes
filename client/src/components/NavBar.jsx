@@ -52,19 +52,28 @@ const NavBar = () => {
   return (
     <>
       <div className="fixed w-full flex justify-center z-50">
-        <h3
+        {/* <h3
           style={{
             textShadow: "2px 2px 6px rgba(85, 7, 7, 0.32)",
             WebkitTextStroke: "1px white", // <-- White text outline
           }}
-          className={`fixed underline decoration-yellow-300 flex p-2 h-[12vh] w-fit min-w-250 font-lobster text-amber-500 font-bold items-center justify-center pb-8 mt-8 bg-slate-200 z-10 border-teal-700 border-x-4 border-t-4 rounded-t-2xl shadow-inset-md after:shadow-b-lg before:content-[''] before:absolute before:bottom-0 before:left-[-1rem] before:right-[-1rem] before:h-3 before:bg-teal-800 
+          className={`fixed underline decoration-yellow-300 flex p-2 h-[12vh] w-fit min-w-250 font-lobster text-amber-500 font-bold items-center justify-center pb-8 mt-8 bg-slate-200 z-10 border-teal-700 border-4 rounded-t-2xl shadow-inset-md after:shadow-b-lg  
   ${titleSize}`}
         >
           <div className="w-[2rem]"></div>
           &nbsp;*&nbsp;Good Recipes&nbsp;*&nbsp;
           <div className="w-[2rem]"></div>
-        </h3>
-
+        </h3> */}
+        <h1
+          style={{
+            textShadow: "2px 2px 6px rgba(85, 7, 7, 0.32)",
+            WebkitTextStroke: "1px white", // <-- White text outline
+          }}
+          className="fixed flex underline decoration-yellow-300 text-8xl p-2 h-[14vh] bg-sky-600 rounded-b-lg items-center w-fit min-w-250 font-lobster text-amber-500 font-bold items-center justify-center z-10 px-[3vw]"
+        >
+          {" "}
+          &nbsp;*&nbsp;Good Recipes&nbsp;*&nbsp;
+        </h1>
         <div className="fixed w-full grid-rows-2">
           <div
             id="top-awning"
