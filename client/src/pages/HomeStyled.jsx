@@ -171,7 +171,7 @@ const HomeStyled = () => {
 
         {/* Ingredients */}
         <section className="mt-14">
-          <h2 className="text-5xl text-sky-900 font-roboto font-bold text-white mb-4">
+          <h2 className="text-5xl text-sky-900 font-roboto font-bold mb-4">
             Ingredients
           </h2>
           <div className="h-1 w-full bg-sky-900 mx-auto mt-1 mb-4"></div>
@@ -184,7 +184,9 @@ const HomeStyled = () => {
 
         {/* Instructions */}
         <section className="mt-14">
-          <h2 className="text-5xl font-bold text-sky-900 mb-2">Instructions</h2>
+          <h2 className="text-5xl font-bold  font-roboto text-sky-900 mb-2">
+            Instructions
+          </h2>
           <div className="h-1 w-full bg-sky-900 mx-auto mt-1 mb-4"></div>
           <div className="mb-6 text-slate-800 text-lg">
             <strong className="block mb-2 text-3xl text-sky-900">

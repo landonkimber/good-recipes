@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import "./index.css";
 import { Route, Routes } from "react-router-dom";
@@ -8,10 +8,38 @@ import HomeStyle from "./pages/HomeStyled";
 import NavBar from "./components/NavBar";
 
 function App() {
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        // Scrolling down
+        setShowNavbar(false);
+      } else {
+        // Scrolling up
+        setShowNavbar(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
   return (
     <>
-      <NavBar />
-      {/* TODO v - Fix the className on main so that it ALWAYS lines up with the navbar. Its being weird rn, I can't just switch the height and the padding top. */}
+      <header
+        className={`fixed top-0 left-0 w-full transition-transform duration-300 z-50 ${
+          showNavbar ? "translate-y-0" : "-translate-y-[14vh]"
+        }`}
+      >
+        <NavBar />
+      </header>
+
       <main className={`bg-white pt-[13vh] border border-red-500`}>
         <Routes>
           <Route path="/" element={<HomeStyle />} />
