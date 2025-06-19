@@ -4,8 +4,8 @@ import "./index.css";
 import { Route, Routes } from "react-router-dom";
 
 import Home from "./pages/Home";
-import HomeStyle from "./pages/HomeStyled";
 import NavBar from "./components/NavBar";
+import RecipePage from "./pages/RecipePage";
 
 function App() {
   const [showNavbar, setShowNavbar] = useState(true);
@@ -40,9 +40,10 @@ function App() {
         <NavBar />
       </header>
 
-      <main className={`bg-white pt-[13vh] border border-red-500`}>
+      <main className={`bg-slate-50 pt-[13vh] border border-red-500`}>
         <Routes>
-          <Route path="/" element={<HomeStyle />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/recipe-page" element={<RecipePage />} />
         </Routes>
       </main>
     </>
