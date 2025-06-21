@@ -1,7 +1,11 @@
 import ChefLogo from "/chef-white-circle.svg";
 import HeroImage from "/pexels-hero-image.jpg";
 
+import { useState } from "react";
+
 const Home = () => {
+  const [showExploreOptions, setShowExploreOptions] = useState(false);
+
   return (
     <main className="bg-sky-50 min-h-screen">
       <div className="relative w-full h-[66vh] overflow-hidden">
@@ -38,6 +42,16 @@ const Home = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="max-w-6xl mx-auto px-4 py-8">
+        <div id="explore-guide" className="flex flex-row bg-gray-50">
+          <h2 className="font-lobster text-sky-900 text-5xl">Explore </h2>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        {/* Where Recipe Posts will go! */}
+        <div id="explore-page"></div>
       </div>
     </main>
   );

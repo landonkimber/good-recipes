@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import ChefIcon from "/chef-white-circle.svg";
 
@@ -65,21 +66,25 @@ const NavBar = () => {
           &nbsp;*&nbsp;Good Recipes&nbsp;*&nbsp;
           <div className="w-[2rem]"></div>
         </h3> */}
-      <img
-        src={ChefIcon}
-        alt="Chef-Logo"
-        className="fixed left-[15vw] top-[1vh] h-40 w-40 z-10"
-      />
-      <h1
-        style={{
-          textShadow: "2px 2px 6px rgba(85, 7, 7, 0.32)",
-          WebkitTextStroke: "1px white", // <-- White text outline
-        }}
-        className="fixed flex underline decoration-yellow-300 text-8xl p-2 h-[14vh] bg-sky-600 rounded-b-lg items-center w-fit min-w-250 font-lobster text-amber-500 font-bold items-center justify-center z-10 px-[3vw]"
-      >
-        {" "}
-        &nbsp;*&nbsp;Good Recipes&nbsp;*&nbsp;
-      </h1>
+      <Link to="/">
+        <img
+          src={ChefIcon}
+          alt="Chef-Logo"
+          className="fixed left-[15vw] top-[1vh] h-40 w-40 z-10"
+        />
+      </Link>
+      <Link to="/" className="">
+        <h1
+          style={{
+            textShadow: "2px 2px 6px rgba(85, 7, 7, 0.32)",
+            WebkitTextStroke: "1px white", // <-- White text outline
+          }}
+          className="fixed flex underline decoration-yellow-300 text-8xl p-2 h-[14vh] bg-sky-600 rounded-b-lg w-fit min-w-250 font-lobster text-amber-500 font-bold items-center justify-center z-10 px-[3vw]"
+        >
+          {" "}
+          &nbsp;*&nbsp;Good Recipes&nbsp;*&nbsp;
+        </h1>
+      </Link>
       <div className="fixed w-full grid-rows-2">
         <div
           id="top-awning"
