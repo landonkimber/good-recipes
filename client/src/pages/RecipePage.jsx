@@ -73,8 +73,8 @@ const RecipePage = () => {
   };
 
   return (
-    <div className="pt-[12vh] max-w-7xl mx-auto min-h-screen">
-      <h1 className="ml-[5vh] text-left text-6xl text-sky-900 mb-4 font-roboto font-weight-100 tracking-tight ">
+    <div className="relative pt-[12vh] bg-gray-600 bg-cover bg-opacity-30 backdrop-blur-lg p-12 bg-cover w-[60vw] mx-auto min-h-screen z-10">
+      <h1 className="ml-[5vh] text-left text-6xl text-slate-100 mb-4 font-roboto font-weight-100 tracking-tight ">
         {recipe.title}
       </h1>
       <div className="h-1 w-full bg-amber-300 mx-auto mt-2 mb-8"></div>
@@ -82,7 +82,7 @@ const RecipePage = () => {
       <div className="bg-sky-200 text-slate-900 rounded-lg shadow-lg p-8">
         {/* Top Specs Section */}
         <div className="flex flex-row bg-yellow-500 rounded-md gap-12 mb-10">
-          <div className="flex flex-col font-roboto items-center justify-center w-[60%]  text-sky-900 bg-sky-400 space-y-6 p-4 rounded-lg scale-[1.05]">
+          <div className="flex flex-col font-roboto items-center justify-center w-[60%]  text-slate-900 bg-sky-400 space-y-6 p-4 rounded-lg scale-[1.05]">
             <div className="text-center">
               <h2 className="text-3xl font-semibold mb-2">
                 {recipe.tasteDesc}
@@ -118,7 +118,7 @@ const RecipePage = () => {
               />
             </div>
           </div>
-          <div className="flex flex-col font-roboto text-sky-900 w-[40%] justify-center items-center space-y-8">
+          <div className="flex flex-col font-roboto text-slate-100 w-[40%] justify-center items-center space-y-8">
             <div className="flex flex-col w-[80%] items-left gap-3">
               <div className="flex flex-row items-center gap-3">
                 <FaClock className="text-4xl" />
@@ -152,7 +152,7 @@ const RecipePage = () => {
         {/* Image + Description */}
         <div className="flex flex-col bg-emerald-500 rounded-md lg:flex-row gap-10 items-center">
           <div className="flex-1 h-full rounded-md flex justify-start items-start p-4">
-            <p className="text-xl font-roboto text-sky-900 text-left">
+            <p className="text-xl font-roboto text-slate-100 text-left">
               {recipe.description}
             </p>
           </div>
@@ -168,11 +168,11 @@ const RecipePage = () => {
 
       {/* Ingredients */}
       <section className="mt-14">
-        <h2 className="text-5xl text-sky-900 font-roboto font-bold mb-4">
+        <h2 className="text-5xl text-slate-100 font-roboto font-bold mb-4">
           Ingredients
         </h2>
         <div className="h-1 w-full bg-sky-900 mx-auto mt-1 mb-4"></div>
-        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-2 text-slate-800 text-lg list-disc list-inside">
+        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-2 text-slate-200 text-lg list-disc list-inside">
           {recipe.ingredients.map((ing, i) => (
             <li key={i}>{ing}</li>
           ))}
@@ -181,12 +181,12 @@ const RecipePage = () => {
 
       {/* Instructions */}
       <section className="mt-14">
-        <h2 className="text-5xl font-bold  font-roboto text-sky-900 mb-2">
+        <h2 className="text-5xl font-bold  font-roboto text-slate-100 mb-2">
           Instructions
         </h2>
         <div className="h-1 w-full bg-sky-900 mx-auto mt-1 mb-4"></div>
-        <div className="mb-6 text-slate-800 text-lg">
-          <strong className="block mb-2 text-3xl text-sky-900">
+        <div className="mb-6 text-slate-200 text-lg">
+          <strong className="block mb-2 text-3xl text-slate-100">
             Mise En Place:
           </strong>
           <ul className="list-disc text-lg list-inside ml-4 mb-1">
@@ -195,7 +195,7 @@ const RecipePage = () => {
             ))}
           </ul>
         </div>
-        <p className="whitespace-pre-line text-slate-800 text-lg">
+        <p className="whitespace-pre-line text-slate-200 text-lg">
           {recipe.instructions}
         </p>
       </section>
@@ -203,15 +203,15 @@ const RecipePage = () => {
       {/* Tips & Notes */}
       <section className="mt-8">
         <div className="bg-sky-200 rounded-lg p-6 shadow-inner">
-          <h2 className="text-3xl font-bold text-sky-900">Tips And Tricks</h2>
+          <h2 className="text-3xl font-bold text-slate-100">Tips And Tricks</h2>
           <div className="h-1 w-full bg-sky-900 mx-auto mt-1 mb-4"></div>
-          <p className="text-slate-800 whitespace-pre-line text-lg mb-6">
+          <p className="text-slate-200 whitespace-pre-line text-lg mb-6">
             {recipe.tipsAndTricks}
           </p>
 
-          <h2 className="text-3xl font-bold text-sky-900">Chef's Note</h2>
+          <h2 className="text-3xl font-bold text-slate-100">Chef's Note</h2>
           <div className="h-1 w-full bg-sky-900 mx-auto mt-1 mb-4"></div>
-          <p className="text-slate-800 whitespace-pre-line text-lg">
+          <p className="text-slate-200 whitespace-pre-line text-lg">
             {recipe.moreInfo}
           </p>
         </div>
