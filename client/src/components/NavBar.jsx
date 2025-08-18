@@ -23,7 +23,7 @@ const NavBar = () => {
 
   // TAILWIND CSS STYLES
   const AwningBottomStyle =
-    "h-full w-full rounded-b-full shadow-inset-sides relative z-1 after:absolute after:inset-0 after:box-border after:border-b-2 after:border-l-2 after:border-r-2 after:rounded-b-full after:border-dashed after:pointer-events-none after:-translate-y-[2px] after:z-1";
+    "h-full w-full rounded-b-full shadow-inset-sides relative z-[41] after:absolute after:inset-0 after:box-border after:border-b-2 after:border-l-2 after:border-r-2 after:rounded-b-full after:border-dashed after:pointer-events-none after:-translate-y-[2px] after:z-[41]";
   const AwningTopStyle =
     "h-full w-full relative shadow-inset-sides after:absolute after:inset-0 after:box-border after:border-l-2 after:border-r-2 after:border-dashed after:pointer-events-none after:-translate-y-[2px]";
 
@@ -53,7 +53,7 @@ const NavBar = () => {
   });
 
   return (
-    <div className="fixed w-full flex justify-center z-50">
+    <div className="relative top-0 left-0 w-full h-[22vh] z-40">
       {/* <h3
           style={{
             textShadow: "2px 2px 6px rgba(85, 7, 7, 0.32)",
@@ -70,7 +70,7 @@ const NavBar = () => {
         <img
           src={ChefIcon}
           alt="Chef-Logo"
-          className="fixed left-[15vw] top-[1vh] h-40 w-40 z-10"
+          className="absolute left-[15vw] top-[1vh] h-40 w-40 z-40"
         />
       </Link>
       <Link to="/" className="">
@@ -79,13 +79,15 @@ const NavBar = () => {
             textShadow: "2px 2px 6px rgba(85, 7, 7, 0.32)",
             WebkitTextStroke: "1px white", // <-- White text outline
           }}
-          className="fixed flex underline decoration-yellow-300 text-8xl p-2 h-[14vh] bg-sky-600 rounded-b-lg w-fit min-w-250 font-lobster text-amber-500 font-bold items-center justify-center z-10 px-[3vw]"
+          className="absolute top-0 left-1/2 -translate-x-1/2 flex underline decoration-yellow-300 text-8xl p-2 h-[14vh] bg-sky-600 rounded-b-lg w-fit min-w-250 font-lobster text-amber-500 font-bold items-center justify-center z-40 px-[3vw]"
         >
           {" "}
           &nbsp;*&nbsp;Good Recipes&nbsp;*&nbsp;
         </h1>
       </Link>
-      <div className="fixed w-full grid-rows-2">
+
+      {/* AWNING */}
+      <div className="absolute w-full grid-rows-2">
         <div
           id="top-awning"
           className="relative w-full h-[17.5vh]  flex items-center"

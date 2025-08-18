@@ -33,7 +33,7 @@ function App() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full transition-transform duration-300 z-50 ${
+        className={`fixed top-0 left-0 w-full transition-transform duration-300 z-40 ${
           showNavbar ? "translate-y-0" : "-translate-y-[14vh]"
         }`}
       >
