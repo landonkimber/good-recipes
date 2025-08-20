@@ -23,6 +23,9 @@ module.exports = {
                 outline: '0 0 4px white, 0 0 4px white', // create a white outline
             },
         },
+        aspectRatio: {
+            '3/4': '3 / 4',
+        }
     }, plugins: [
     ]
 };
