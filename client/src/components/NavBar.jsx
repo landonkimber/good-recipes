@@ -2,17 +2,28 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import ChefIcon from "/chef-white-circle.svg";
+import { FaBars } from "react-icons/fa";
 
 const NavBar = () => {
   const screenWith = window.innerWidth;
 
-  const titleSize = screenWith < 768 ? "text-5xl" : "text-7xl"; //
+  const titleStyle =
+    screenWith < 768 ? "text-3xl h-[12vh]" : "text-7xl h-[14vh]";
+
+  // const NavHeight = screenWith < 768 ? "h-[17vh]" : "h-[22vh]"; KEEPING THIS CAUSE IT SHOWS THE TOTAL HEIGHTS
+  const AwningHeight = screenWith < 768 ? "h-[13.6vh]" : "h-[17.5vh]";
   const [stripeCount, setStripeCount] = useState(4); // Default for desktop
 
   // Update stripe count based on screen width
   useEffect(() => {
     const handleResize = () => {
-      setStripeCount(window.innerWidth < 768 ? 8 : 16); // Fewer on mobile
+      if (window.innerWidth < 768) {
+        setStripeCount(6);
+      } else if (window.innerWidth < 1024) {
+        setStripeCount(10);
+      } else {
+        setStripeCount(16);
+      }
     };
 
     handleResize(); // Set initial
@@ -53,44 +64,12 @@ const NavBar = () => {
   });
 
   return (
-    <div className="relative top-0 left-0 w-full h-[22vh] z-40">
-      {/* <h3
-          style={{
-            textShadow: "2px 2px 6px rgba(85, 7, 7, 0.32)",
-            WebkitTextStroke: "1px white", // <-- White text outline
-          }}
-          className={`fixed underline decoration-yellow-300 flex p-2 h-[12vh] w-fit min-w-250 font-lobster text-amber-500 font-bold items-center justify-center pb-8 mt-8 bg-slate-200 z-10 border-teal-700 border-4 rounded-t-2xl shadow-inset-md after:shadow-b-lg  
-  ${titleSize}`}
-        >
-          <div className="w-[2rem]"></div>
-          &nbsp;*&nbsp;Good Recipes&nbsp;*&nbsp;
-          <div className="w-[2rem]"></div>
-        </h3> */}
-      <Link to="/">
-        <img
-          src={ChefIcon}
-          alt="Chef-Logo"
-          className="absolute left-[15vw] top-[1vh] h-40 w-40 z-40"
-        />
-      </Link>
-      <Link to="/" className="">
-        <h1
-          style={{
-            textShadow: "2px 2px 6px rgba(85, 7, 7, 0.32)",
-            WebkitTextStroke: "1px white", // <-- White text outline
-          }}
-          className="absolute top-0 left-1/2 -translate-x-1/2 flex underline decoration-yellow-300 text-8xl p-2 h-[14vh] bg-sky-600 rounded-b-lg w-fit min-w-250 font-lobster text-amber-500 font-bold items-center justify-center z-40 px-[3vw]"
-        >
-          {" "}
-          &nbsp;*&nbsp;Good Recipes&nbsp;*&nbsp;
-        </h1>
-      </Link>
-
+    <div className={`relative top-0 left-0 w-full z-40 ${AwningHeight}`}>
       {/* AWNING */}
       <div className="absolute w-full grid-rows-2">
         <div
           id="top-awning"
-          className="relative w-full h-[17.5vh]  flex items-center"
+          className="relative w-full h-[17.5vh] flex items-center"
         >
           {stripeArray}
         </div>
@@ -100,6 +79,33 @@ const NavBar = () => {
         >
           {bottomStripeArray}
         </div>
+      </div>
+
+      {/* CONTENT */}
+      <div
+        id="navbar-content"
+        className="relative h-full flex items-center justify-evenly"
+      >
+        <Link to="/">
+          <img
+            src={ChefIcon}
+            alt="Chef-Logo"
+            className="h-[9vh] z-40 hover:scale-110 transition"
+          />
+        </Link>
+        <Link to="/">
+          <h1
+            className={`flex whitespace-nowrap underline decoration-yellow-300 p-2 bg-sky-900 rounded-lg font-lobster text-amber-500 font-bold items-center justify-center z-40 px-[2vw] ${titleStyle} transition hover:scale-[105%]`}
+          >
+            &nbsp;*&nbsp;Good Recipes&nbsp;*&nbsp;
+          </h1>
+        </Link>
+        <button
+          type="button"
+          className="flex items-center justify-center bg-amber-500 text-sky-900 h-[9vh] w-[9vh] rounded-full hover:scale-110 transition"
+        >
+          <FaBars className="h-1/2 w-1/2" />
+        </button>
       </div>
     </div>
   );
