@@ -179,7 +179,7 @@ const NavBar = () => {
                 aria-label="Home"
               >
                 <FaHome className="h-12 w-12 p-2" />
-                <span>Home</span>
+                <span>&nbsp;Home&nbsp;</span>
               </Link>
             </li>
 
@@ -191,7 +191,7 @@ const NavBar = () => {
                 aria-label="About"
               >
                 <FaInfoCircle className="h-12 w-12 p-2" />
-                <span>About</span>
+                <span>&nbsp;About&nbsp;</span>
               </Link>
             </li>
 
@@ -203,7 +203,7 @@ const NavBar = () => {
                 aria-label="Contact"
               >
                 <FaEnvelope className="h-12 w-12 p-2" />
-                <span>Contact</span>
+                <span>&nbsp;Contact&nbsp;</span>
               </Link>
             </li>
 
@@ -215,7 +215,7 @@ const NavBar = () => {
                 aria-label="Settings"
               >
                 <FaCog className="h-12 w-12 p-2" />
-                <span>Settings</span>
+                <span>&nbsp;Settings&nbsp;</span>
               </Link>
             </li>
           </ul>

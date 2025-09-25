@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import recipes from "../data/recipes.json";
 import GlobeIcon from "/globe.svg";
@@ -13,6 +14,7 @@ import {
 } from "react-icons/fa";
 
 import ReactDOM from "react-dom";
+import slugify from "slugify";
 
 const ModalPortal = ({ children }) => {
   return ReactDOM.createPortal(children, document.body);
@@ -177,9 +179,13 @@ const RecipeModal = ({ recipe, onClose }) => {
                   <button className="p-3 text-slate-800 rounded-full hover:bg-slate-700 hover:text-white">
                     <FaDownload size={44} />
                   </button>
-                  <button className="p-3 text-white bg-emerald-500 rounded-full  hover:bg-white hover:text-emerald-500">
+                  <Link
+                    className="p-3 text-white bg-emerald-500 rounded-full  hover:bg-white hover:text-emerald-500"
+                    to={`/${slugify(recipe.title, { lower: true })}`}
+                    aria-label="Go to recipe"
+                  >
                     <FaArrowRight size={44} />
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

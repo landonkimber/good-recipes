@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import "./index.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useParams } from "react-router-dom";
 
 import Home from "./pages/Home";
 import MainBG from "./components/MainBG";
@@ -17,7 +17,7 @@ function App() {
         <MainBG />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/recipe-page" element={<RecipePage />} />
+          <Route path="/:slug" element={<RecipePage />} />
         </Routes>
       </main>
     </>
