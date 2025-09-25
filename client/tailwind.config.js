@@ -4,6 +4,8 @@ module.exports = {
     content: ['./src/**/*.js', './src/**/*.jsx', './public/index.html'],
     theme: {
         fontFamily: {
+            sriracha: ['Sriracha', 'sans-serif'],
+            redhat: ['Red Hat Text', 'sans-serif'],
             lobster: ['Lobster Two', 'sans-serif'],
             roboto: ['Roboto Slab', 'sans-serif'],
             sans: ['Graphik', 'sans-serif'],
@@ -22,6 +24,9 @@ module.exports = {
                 outline: '0 0 4px white, 0 0 4px white', // create a white outline
             },
         },
+        aspectRatio: {
+            '3/4': '3 / 4',
+        }
     }, plugins: [
     ]
 };

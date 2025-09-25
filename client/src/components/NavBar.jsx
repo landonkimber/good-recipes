@@ -1,15 +1,35 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
+import ChefIcon from "/chef-white-circle.svg";
+import {
+  FaBars,
+  FaHome,
+  FaInfoCircle,
+  FaEnvelope,
+  FaCog,
+  FaTimes,
+} from "react-icons/fa";
 const NavBar = () => {
-  const screenWith = window.innerWidth;
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  // const NavHeight = screenWith < 768 ? "h-[17vh]" : "h-[22vh]"; KEEPING THIS CAUSE IT SHOWS THE TOTAL HEIGHTS
+  // const AwningHeight = screenWith < 768 ? "h-[13.6vh]" : "h-[17.5vh]";
+  const isMobile = window.innerWidth < 768 ? true : false;
 
-  const titleSize = screenWith < 768 ? "text-5xl" : "text-7xl"; //
   const [stripeCount, setStripeCount] = useState(4); // Default for desktop
 
   // Update stripe count based on screen width
   useEffect(() => {
     const handleResize = () => {
-      setStripeCount(window.innerWidth < 768 ? 8 : 16); // Fewer on mobile
+      if (window.innerWidth < 768) {
+        setStripeCount(6);
+      } else if (window.innerWidth < 1024) {
+        setStripeCount(10);
+      } else {
+        setStripeCount(16);
+      }
     };
 
     handleResize(); // Set initial
@@ -18,9 +38,33 @@ const NavBar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        // Scrolling down
+        setShowNavbar(false);
+      } else {
+        // Scrolling up
+        setShowNavbar(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
   // TAILWIND CSS STYLES
   const AwningBottomStyle =
-    "h-full w-full rounded-b-full shadow-inset-sides relative z-1 after:absolute after:inset-0 after:box-border after:border-b-2 after:border-l-2 after:border-r-2 after:rounded-b-full after:border-dashed after:pointer-events-none after:-translate-y-[2px] after:z-1";
+    "h-full w-full rounded-b-full shadow-inset-sides relative z-[51] after:absolute after:inset-0 after:box-border after:border-b-2 after:border-l-2 after:border-r-2 after:rounded-b-full after:border-dashed after:pointer-events-none after:-translate-y-[2px] after:z-[51]";
   const AwningTopStyle =
     "h-full w-full relative shadow-inset-sides after:absolute after:inset-0 after:box-border after:border-l-2 after:border-r-2 after:border-dashed after:pointer-events-none after:-translate-y-[2px]";
 
@@ -50,25 +94,27 @@ const NavBar = () => {
   });
 
   return (
-    <>
-      <div className="fixed w-full flex justify-center z-50">
-        <h3
-          style={{
-            textShadow: "2px 2px 6px rgba(85, 7, 7, 0.32)",
-            WebkitTextStroke: "1px white", // <-- White text outline
-          }}
-          className={`fixed underline decoration-yellow-300 flex p-2 h-[12vh] w-fit min-w-250 font-lobster text-amber-500 font-bold items-center justify-center pb-8 mt-8 bg-slate-200 z-10 border-teal-700 border-x-4 border-t-4 rounded-t-2xl shadow-inset-md after:shadow-b-lg before:content-[''] before:absolute before:bottom-0 before:left-[-1rem] before:right-[-1rem] before:h-3 before:bg-teal-800 
-  ${titleSize}`}
-        >
-          <div className="w-[2rem]"></div>
-          &nbsp;*&nbsp;Good Recipes&nbsp;*&nbsp;
-          <div className="w-[2rem]"></div>
-        </h3>
-
-        <div className="fixed w-full grid-rows-2">
+    <header
+      className={`fixed top-0 left-0 w-full transition-transform duration-300 z-40 ${
+        showNavbar
+          ? "translate-y-0"
+          : isMobile
+          ? "-translate-y-[13.6vh]"
+          : "-translate-y-[17.5vh]"
+      }`}
+    >
+      <div
+        className={`relative top-0 left-0 w-full z-50 ${
+          isMobile ? "h-[13.6vh]" : "h-[17.5vh]"
+        }`}
+      >
+        {/* AWNING */}
+        <div className="absolute w-full grid-rows-2">
           <div
             id="top-awning"
-            className="relative w-full h-[17.5vh]  flex items-center"
+            className={`relative w-full ${
+              isMobile ? "h-[13.6vh]" : "h-[17.5vh]"
+            } flex items-center`}
           >
             {stripeArray}
           </div>
@@ -79,17 +125,126 @@ const NavBar = () => {
             {bottomStripeArray}
           </div>
         </div>
-      </div>
 
-      {/* <div className="z-2"> */}
-      {/* Left streetlight glow */}
-      {/* <div className="absolute left-1/4 transform -translate-x-1/2 -translate-y-[vh13] w-[15vw] h-[15vw] bg-yellow-400 rounded-full blur-3xl opacity-40" /> */}
-      {/* <div className="absolute right-1/2 transform translate-x-1/2 -translate-y-[vh11] w-[15vw] h-[15vw] bg-yellow-400 rounded-full blur-3xl opacity-60" /> */}
-      {/* Right streetlight glow */}
-      {/* <div className="absolute right-1/4 transform translate-x-1/2 -translate-y-[vh13] w-[15vw] h-[15vw] bg-yellow-400 rounded-full blur-3xl opacity-50" /> */}
-      {/* </div> */}
-    </>
+        {/* CONTENT */}
+        <div
+          id="navbar-content"
+          className="relative h-full flex items-center justify-evenly"
+        >
+          <Link to="/">
+            <img
+              src={ChefIcon}
+              alt="Chef-Logo"
+              className="h-[9vh] z-40 hover:scale-110 transition"
+            />
+          </Link>
+          <Link to="/">
+            <h1
+              className={`flex whitespace-nowrap underline decoration-yellow-300 p-2 bg-sky-900 rounded-lg font-lobster text-amber-500 font-bold items-center justify-center z-40 px-[2vw] ${
+                isMobile ? "text-3xl h-[12vh]" : "text-7xl h-[14vh]"
+              } transition hover:scale-[105%]`}
+            >
+              &nbsp;*&nbsp;Good Recipes&nbsp;*&nbsp;
+            </h1>
+          </Link>
+          <button
+            onClick={toggleMenu}
+            type="button"
+            className="flex items-center justify-center bg-amber-500 text-sky-900 h-[7.5vh] w-[7.5vh] rounded-full hover:scale-110 transition"
+          >
+            {menuOpen ? (
+              <FaTimes className="h-1/2 w-1/2" />
+            ) : (
+              <FaBars className="h-1/2 w-1/2" />
+            )}
+          </button>
+        </div>
+        <div
+          className={`
+    fixed right-0 z-50 transform transition-transform duration-300 ease-out
+    ${menuOpen ? "translate-x-0" : "translate-x-full"}
+    ${isMobile ? "w-full h-[60vh]" : "w-[50vw] h-[40vh] max-w-[720px]"}
+    rounded-md shadow-lg bg-slate-50 p-4
+  `}
+          role="dialog"
+          aria-modal="true"
+          aria-hidden={!menuOpen}
+        >
+          <ul className="relative flex flex-col pt-[5vh] h-full text-3xl text-center text-slate-800 font-semibold font-sriracha">
+            <li className="relative h-1/4 w-full">
+              <Link
+                to="/"
+                onClick={() => setMenuOpen(false)}
+                className="flex items-center justify-center gap-3 w-full h-full underline transition hover:bg-slate-700 hover:text-slate-50 hover:scale-[1.05]"
+                aria-label="Home"
+              >
+                <FaHome className="h-12 w-12 p-2" />
+                <span>&nbsp;Home&nbsp;</span>
+              </Link>
+            </li>
+
+            <li className="relative h-1/4 w-full">
+              <Link
+                to="/about"
+                onClick={() => setMenuOpen(false)}
+                className="flex items-center justify-center gap-3 w-full h-full underline transition hover:bg-slate-700 hover:text-slate-50 hover:scale-[1.05]"
+                aria-label="About"
+              >
+                <FaInfoCircle className="h-12 w-12 p-2" />
+                <span>&nbsp;About&nbsp;</span>
+              </Link>
+            </li>
+
+            <li className="relative h-1/4 w-full">
+              <Link
+                to="/contact"
+                onClick={() => setMenuOpen(false)}
+                className="flex items-center justify-center gap-3 w-full h-full underline transition hover:bg-slate-700 hover:text-slate-50 hover:scale-[1.05]"
+                aria-label="Contact"
+              >
+                <FaEnvelope className="h-12 w-12 p-2" />
+                <span>&nbsp;Contact&nbsp;</span>
+              </Link>
+            </li>
+
+            <li className="relative h-1/4 w-full">
+              <Link
+                to="/settings"
+                onClick={() => setMenuOpen(false)}
+                className="flex items-center justify-center gap-3 w-full h-full underline transition hover:bg-slate-700 hover:text-slate-50 hover:scale-[1.05]"
+                aria-label="Settings"
+              >
+                <FaCog className="h-12 w-12 p-2" />
+                <span>&nbsp;Settings&nbsp;</span>
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
   );
 };
 
 export default NavBar;
+
+{
+  /* <div className="z-2"> */
+}
+{
+  /* Left streetlight glow */
+}
+{
+  /* <div className="absolute left-1/4 transform -translate-x-1/2 -translate-y-[vh13] w-[15vw] h-[15vw] bg-yellow-400 rounded-full blur-3xl opacity-40" /> */
+}
+{
+  /* <div className="absolute right-1/2 transform translate-x-1/2 -translate-y-[vh11] w-[15vw] h-[15vw] bg-yellow-400 rounded-full blur-3xl opacity-60" /> */
+}
+{
+  /* Right streetlight glow */
+}
+{
+  /* <div className="absolute right-1/4 transform translate-x-1/2 -translate-y-[vh13] w-[15vw] h-[15vw] bg-yellow-400 rounded-full blur-3xl opacity-50" /> */
+}
+{
+  /* </div> */
+}
