@@ -11,13 +11,12 @@
 **Good Recipes** is a recipe website created and maintained by **Landon Kimber**.  
 The project features a stylistic Tailwind CSS design and showcases a curated selection of Landon’s favorite recipes.
 
+With dynamic routing, modern UI components, and responsive layouts, this site provides a fun and engaging way to explore cooking ideas.
+
 ## 🗂️ Table of Contents
 
 - [Features](#-features)
 - [Tech Stack](#-tech-stack)
-- [Installation](#-installation)
-- [Usage](#-usage)
-- [Contributing](#-contributing)
 - [License](#-license)
 - [Contact](#-contact)
 - [Photo Credits](#-photo-credits)
@@ -41,12 +40,29 @@ This project was built using:
 - [🔤 Slugify](https://www.npmjs.com/package/slugify) – Clean URL generation
 - [🎭 React Icons](https://react-icons.github.io/react-icons/) – Icon library
 
-## ⚙️ Installation
+## 📜 License
 
-Clone the repository and install dependencies:
+This project is licensed under the **ISC License**. See the [LICENSE](LICENSE) file for details.
 
-```bash
-git clone https://github.com/landonkimber/good-recipes.git
-cd good-recipes
-npm install
-```
+## 📞 Contact
+
+Created with ❤️ by **Landon Kimber**
+
+- 📧 Email: [landonkimber33@gmail.com](mailto:landonkimber33@gmail.com)
+- 💼 GitHub: [landonkimber](https://github.com/landonkimber)
+- 🌐 Portfolio: [landonkimber.com](https://landonkimber.com)
+
+---
+
+## 📸 Photo Credits
+
+This project uses images and icons from the following sources:
+
+- [Pexels – Black frying pan with spaghetti sauce](https://www.pexels.com/photo/black-frying-pan-with-spaghetti-sauce-near-brown-wooden-ladle-and-ripe-tomatoes-691114/)
+- [Unsplash – Brown brick wall](https://unsplash.com/photos/brown-brick-wall-xMfp5hVmJVw)
+- [SVG Repo – Icons & assets](https://www.svgrepo.com/)
+- [SVG Repo – Globe Stand Icon](https://www.svgrepo.com/svg/473214/globe-stand)
+
+---
+
+⭐ If you like this project, please consider giving it a star on GitHub!
