@@ -1,7 +1,7 @@
 {
   "name": "landon-recipes",
   "version": "1.0.0",
-  "description": "This is a website made for Landon's Recipes. This website was built with react by Landon Kimber",
+  "description": "Landon's Recipes is a website made by and updated by Landon Kimber. The website features a stylistic Tailwind design showcasing unsurprisingly, Landon's favorite recipes.",
   "main": "server/server.js",
   "scripts": {
     "start": "cd client && npm run start",
