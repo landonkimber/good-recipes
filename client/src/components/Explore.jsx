@@ -25,7 +25,9 @@ const IconRating = ({ count, total = 5, Icon, color, emptyColor }) => (
     {[...Array(total)].map((_, i) => (
       <Icon
         key={i}
-        className={`text-5xl mx-1 ${i < count ? color : emptyColor}`}
+        className={`text-xl md:text-5xl mx-0 md:mx-1 ${
+          i < count ? color : emptyColor
+        }`}
       />
     ))}
   </div>
@@ -43,7 +45,7 @@ const RecipeModal = ({ recipe, onClose }) => {
         onClick={onClose}
       >
         <div
-          className="relative bg-slate-800 rounded-md min-w-[72rem] h-[80vh] shadow-md shadow-indigo-400/50 overflow-y-auto"
+          className="relative bg-slate-800 rounded-md w-[72rem] w-[80vw] h-[80vh] shadow-md shadow-indigo-400/50 overflow-y-auto"
           onClick={(e) => e.stopPropagation()}
         >
           <button
@@ -54,7 +56,7 @@ const RecipeModal = ({ recipe, onClose }) => {
             ✕
           </button>
           <div className="relative rounded-sm bg-slate-300 left-16 p-4 mt-6 w-fit z-30">
-            <h2 className="text-4xl text-slate-900 font-redhat font-bold">
+            <h2 className="text-2xl md:text-4xl text-slate-900 font-redhat font-bold">
               {recipe.title}
             </h2>
           </div>
@@ -80,7 +82,7 @@ const RecipeModal = ({ recipe, onClose }) => {
           >
             <div className="flex flex-col justify-center items-center w-1/3 bg-gradient-to-tl rounded-tl-xl from-sky-950 to-slate-800">
               <div className="text-center">
-                <h2 className="text-3xl text-slate-300 font-redhat font-semibold mb-2">
+                <h2 className="text-lg md:text-3xl text-slate-300 font-redhat font-semibold mb-2">
                   {recipe.tasteDesc}
                 </h2>
 
@@ -93,7 +95,7 @@ const RecipeModal = ({ recipe, onClose }) => {
               </div>
 
               <div className="text-center">
-                <h2 className="text-3xl text-slate-300 font-redhat font-semibold mb-2">
+                <h2 className="text-lg md:text-3xl text-slate-300 font-redhat font-semibold mb-2">
                   {recipe.costDesc}
                 </h2>
                 <IconRating
@@ -105,7 +107,7 @@ const RecipeModal = ({ recipe, onClose }) => {
               </div>
 
               <div className="text-center">
-                <h2 className="text-3xl text-slate-300 font-redhat font-semibold mb-2">
+                <h2 className="text-lg md:text-3xl text-slate-300 font-redhat font-semibold mb-2">
                   {recipe.difficultyDesc}
                 </h2>
                 <IconRating
@@ -120,45 +122,45 @@ const RecipeModal = ({ recipe, onClose }) => {
               <div className="flex flex-col justify-between h-full w-[80%]">
                 <div className="relative h-[80%] w-full p-2 grid-rows-2 overflow-scroll">
                   <div className="w-full h-[20%] flex justify-between pr-12">
-                    <h2 className="text-4xl text-slate-900 font-redhat font-bold underline">
+                    <h2 className="text-xl md:text-4xl text-slate-900 font-redhat font-bold underline">
                       {recipe.title}
                     </h2>
                     <div className="flex">
                       <img
                         src="/headshot.jpg"
                         alt="image of a headshot"
-                        className="h-12 w-12 rounded-full mx-4"
+                        className="h-8 w-8 md:h-12 md:w-12 rounded-full md:mx-4 mx-1"
                       />
-                      <div className="text-sm font-redhat text-sky-900">
+                      <div className="text-xs md:text-sm font-redhat text-sky-900">
                         <p>Jane Doe</p>
                         <p className="ml-2 text-navy-700">08/19/2025</p>
                       </div>
                     </div>
                   </div>
-                  <p className="w-full my-4 p-2 text-xl font-redhat text-slate-900">
+                  <p className="w-full text-xs md:text-xl my-4 p-0 md:p-2 font-redhat text-slate-900">
                     {recipe.description}
                   </p>
-                  <p className="underline font-redhat text-xl text-sky-700">
+                  <p className="underline text-xs md:text-xl font-redhat  text-sky-700">
                     What you'll need!
                   </p>
-                  <p className="w-full my-4 p-2 text-wrap text-xl font-redhat text-slate-900 overflow-scroll">
+                  <p className="w-full text-xs md:text-xl my-4 p-2 text-wrap  font-redhat text-slate-900 overflow-scroll">
                     {recipe.ingredients}
                   </p>
-                  <p className="underline font-redhat text-xl text-sky-700">
+                  <p className="underline text-xs md:text-xl font-redhat  text-sky-700">
                     Before you cook
                   </p>
-                  <p className="w-full my-4 p-2 text-wrap text-xl font-redhat text-slate-900 overflow-scroll">
+                  <p className="w-full my-4 p-2 text-xs md:text-xl text-wrap font-redhat text-slate-900 overflow-scroll">
                     {recipe.miceEnPlace}
                   </p>
-                  <p className="underline font-redhat text-xl text-sky-700">
+                  <p className="underline text-xs md:text-xl font-redhat text-sky-700">
                     Instructions
                   </p>
-                  <p className="w-full my-4 text-wrap text-xl font-redhat text-slate-900 overflow-scroll">
+                  <p className="w-full my-4 text-wrap text-xs md:text-xl font-redhat text-slate-900 overflow-scroll">
                     {recipe.instructions}
                   </p>
                   <div className="absolute w-[95%] h-4 bg-gradient-to-t from-slate-300 to-transparent z-[60]"></div>
                 </div>
-                <div className="w-full flex justify-start gap-2 text-sky-900 text-lg mb-3">
+                <div className="w-full flex justify-start gap-2 text-sky-900 text-xs md:text-lg mb-3">
                   <p className="px-2 py-1 font-redhat rounded bg-sky-300">
                     {recipe.totalTime}
                   </p>
@@ -172,19 +174,19 @@ const RecipeModal = ({ recipe, onClose }) => {
               </div>
               <div className="w-[15%] flex items-end  justify-center bg-slate-400 pb-4 rounded-tr-lg">
                 <div className="flex flex-col items-center gap-4">
-                  <button className="p-3 text-amber-200 text-xl rounded-full hover:bg-amber-200 hover:text-white">
-                    <FaBookmark size={44} />
+                  <button className="p-3 text-amber-200 rounded-full hover:bg-amber-200 hover:text-white">
+                    <FaBookmark size={window.innerWidth > 640 ? 44 : 24} />
                   </button>
 
                   <button className="p-3 text-slate-800 rounded-full hover:bg-slate-700 hover:text-white">
-                    <FaDownload size={44} />
+                    <FaDownload size={window.innerWidth > 640 ? 44 : 24} />
                   </button>
                   <Link
                     className="p-3 text-white bg-emerald-500 rounded-full  hover:bg-white hover:text-emerald-500"
                     to={`/${slugify(recipe.title, { lower: true })}`}
                     aria-label="Go to recipe"
                   >
-                    <FaArrowRight size={44} />
+                    <FaArrowRight size={window.innerWidth > 640 ? 44 : 24} />
                   </Link>
                 </div>
               </div>
