@@ -6,6 +6,7 @@ import { useState } from "react";
 import Explore from "../components/Explore.jsx";
 
 const Home = () => {
+  window.scrollTo(0, 0);
   return (
     <main className="bg-sky-50 min-h-screen">
       <div className="relative w-full h-[66vh] overflow-hidden">
