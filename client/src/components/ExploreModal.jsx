@@ -174,14 +174,14 @@ const ExploreModal = ({ recipe, onClose }) => {
                   </p>
                   <div className="absolute w-[95%] h-4 bg-gradient-to-t from-slate-300 to-transparent z-[60]"></div>
                 </div>
-                <div className="w-full h-[20%] bg-slate-200 flex justify-start items-center gap-2 pl-1 text-sky-900 text-xs md:text-lg lg:pb-3 md:pb-1">
-                  <p className="h-fit px-2 py-1 font-redhat rounded bg-sky-300">
+                <div className="max-w-full h-[20%] bg-slate-200 flex justify-start items-center gap-2 pl-1 text-sky-900 text-xs md:text-lg lg:pb-3 md:pb-1 overflow-x-auto">
+                  <p className="h-fit px-2 py-1 font-redhat rounded text-nowrap bg-sky-300">
                     {recipe.totalTime}
                   </p>
-                  <p className="h-fit px-2 py-1 font-redhat rounded bg-emerald-300">
+                  <p className="h-fit px-2 py-1 font-redhat rounded text-nowrap bg-emerald-300">
                     {recipe.servings} servings
                   </p>
-                  <p className="h-fit  px-2 py-1 font-redhat rounded bg-amber-300">
+                  <p className="h-fit  px-2 py-1 font-redhat rounded text-nowrap bg-amber-300">
                     {recipe.difficultyDesc}
                   </p>
                 </div>

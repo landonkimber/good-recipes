@@ -17,25 +17,25 @@ const Explore = () => {
         alt={r.title}
         className="h-[70%] w-full object-cover transition-transform duration-300 group-hover:scale-105"
       />
-      <div className="px-4 pb-2">
-        <div className="bg-slate-700 p-2 -translate-y-1/2 rounded-sm transition-transform duration-300 group-hover:scale-105 group-hover:bg-sky-400">
-          <h3 className="text-2xl font-semibold font-redhat text-sky-50 ">
+      <div className="h-[30%] px-2 lg:px-4 pb-2">
+        <div className="relative h-3/4">
+          <h3 className="absolute bottom-full left-0 translate-y-8 text-2xl bg-slate-700 rounded-sm transition-transform duration-30 p-2 font-semibold font-redhat text-sky-50 group-hover:scale-105 group-hover:bg-sky-400">
             {r.title}
           </h3>
+          <div className="absolute top-8 left-0 right-0 bottom-0 overflow-y-auto overflow-x-hidden">
+            <p className="text-slate-600 text-base font-redhat transition-transform duration-300 group-hover:text-slate-700">
+              {r.description}
+            </p>
+          </div>
         </div>
-
-        <div className="-mt-2 h-[2px] w-1/2 bg-sky-600 transition-transform duration-300 group-hover:scale-105 group-hover:bg-sky-400" />
-        <p className="text-slate-600 text-md font-redhat line-clamp-3 mt-1 transition-transform duration-300 group-hover:scale-105">
-          {r.description}
-        </p>
-        <div className="flex gap-2 text-sky-900 text-md mt-3">
-          <p className="px-2 py-1 font-redhat rounded bg-sky-300">
+        <div className="absolute bottom-1 flex gap-2 text-sky-900 text-md lg:mt-3 overflow-x-auto whitespace-nowrap max-w-full">
+          <p className="px-2 py-1 font-redhat rounded bg-sky-300 text-nowrap w-fit">
             {r.totalTime}
           </p>
-          <p className="px-2 py-1 font-redhat rounded bg-emerald-300">
+          <p className="px-2 py-1 font-redhat rounded bg-emerald-300 text-nowrap w-fit">
             {r.servings} servings
           </p>
-          <p className="px-2 py-1 font-redhat rounded bg-amber-300">
+          <p className="px-2 py-1 font-redhat rounded bg-amber-300 text-nowrap w-fit">
             {r.difficultyDesc}
           </p>
         </div>
