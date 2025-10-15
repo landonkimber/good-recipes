@@ -46,17 +46,29 @@ const ExploreModal = ({ recipe, onClose }) => {
           className={`relative bg-slate-800 rounded-md ${modalSize} h-[80vh] shadow-md shadow-indigo-400/50 overflow-y-auto`}
           onClick={(e) => e.stopPropagation()}
         >
-          <button
-            onClick={onClose}
-            className="absolute h-12 w-12 top-2 right-2 px-3 py-1 bg-red-700 font-bold text-md text-white rounded-full border-2 border-red-700 hover:bg-white hover:text-red-700"
-            aria-label="Close"
-          >
-            ✕
-          </button>
-          <div className="relative rounded-sm bg-slate-300 left-16 p-4 mt-6 w-fit z-30">
-            <h2 className="text-2xl md:text-4xl text-slate-900 font-redhat font-bold">
-              {recipe.title}
-            </h2>
+          {screenWidth > 768 ? (
+            <button
+              onClick={onClose}
+              className="absolute h-12 w-12 top-2 right-2 px-3 py-1 bg-red-700 font-bold text-md text-white rounded-full border-2 border-red-700 hover:bg-white hover:text-red-700"
+              aria-label="Close"
+            >
+              ✕
+            </button>
+          ) : (
+            <button
+              onClick={onClose}
+              className="fixed h-12 w-12 top-[10vh] -translate-y-6 right-2 px-3 py-1 bg-red-700 font-bold text-2xl text-white rounded-full border-2 border-red-700 hover:bg-white hover:text-red-700"
+              aria-label="Close"
+            >
+              ✕
+            </button>
+          )}
+          <div className="flex justify-center lg:justify-start">
+            <div className="relative rounded-sm bg-slate-300 lg:left-16 p-4 mt-6 w-fit z-30">
+              <h2 className="text-2xl md:text-4xl text-slate-900 font-redhat font-bold">
+                {recipe.title}
+              </h2>
+            </div>
           </div>
           <div className="absolute left-0 top-16 w-full h-1/2">
             {/* Image */}
@@ -116,56 +128,60 @@ const ExploreModal = ({ recipe, onClose }) => {
                 />
               </div>
             </div>
-            <div className="border border-green-400 flex flex-row justify-between w-2/3 bg-slate-300 bg-cover">
+            <div className="flex flex-row justify-between w-2/3 bg-slate-300 bg-cover">
               <div className="flex flex-col justify-between h-full w-[80%]">
-                <div className="relative h-[80%] w-full p-0 md:p-0 lg:p-2 grid-rows-2 overflow-scroll">
-                  <div className="border border-red-500 md:flex md:flex-col w-full h-[20%] flex justify-between pr-12">
-                    <h2 className="text-xl md:text-4xl text-slate-900 font-redhat font-bold underline">
+                <div className="relative h-[80%] w-full p-1 md:p-1 lg:p-2 grid-rows-2 overflow-x-hidden overflow-y-scroll">
+                  <div className="flex flex-row w-full h-auto justify-between">
+                    <h2 className="text-xl md:text-4xl text-slate-900 flex items-center font-redhat font-bold underline">
                       {recipe.title}
                     </h2>
-                    <div className="flex">
+                    <div className="flex w-auto flex-col md:flex-col lg:flex-row items-center justify-center md:pr-1 lg:pr-4">
                       <img
                         src="/headshot.jpg"
                         alt="image of a headshot"
                         className="h-8 w-8 md:h-12 md:w-12 rounded-full md:mx-4 mx-1"
                       />
-                      <div className="text-xs md:text-sm font-redhat text-sky-900">
-                        <p>Jane Doe</p>
-                        <p className="ml-2 text-navy-700">08/19/2025</p>
+                      <div className="font-redhat text-sky-900">
+                        <p className="text-center md:text-center text-sm lg:text-left">
+                          Jane Doe
+                        </p>
+                        <p className="text-center md:ml-0 md:text-center lg:text-left text-xs ml-1 text-navy-700">
+                          08/19/2025
+                        </p>
                       </div>
                     </div>
                   </div>
-                  <p className="w-full text-xs md:text-xl my-4 p-0 md:p-2 font-redhat text-slate-900">
+                  <p className="w-full text-xs p-1 md:text-xl my-4 p-0 md:p-2 font-redhat text-slate-900 overflow-hidden">
                     {recipe.description}
                   </p>
                   <p className="underline text-xs md:text-xl font-redhat  text-sky-700">
                     What you'll need!
                   </p>
-                  <p className="w-full text-xs md:text-xl my-4 p-2 text-wrap  font-redhat text-slate-900 overflow-scroll">
+                  <p className="w-full p-1 text-xs md:text-xl my-4 p-2 text-wrap  font-redhat text-slate-900 overflow-hidden">
                     {recipe.ingredients}
                   </p>
                   <p className="underline text-xs md:text-xl font-redhat  text-sky-700">
                     Before you cook
                   </p>
-                  <p className="w-full my-4 p-2 text-xs md:text-xl text-wrap font-redhat text-slate-900 overflow-scroll">
+                  <p className="w-full my-2 p-1 text-xs md:text-xl text-wrap font-redhat text-slate-900 overflow-hiddenl">
                     {recipe.miceEnPlace}
                   </p>
                   <p className="underline text-xs md:text-xl font-redhat text-sky-700">
                     Instructions
                   </p>
-                  <p className="w-full my-4 text-wrap text-xs md:text-xl font-redhat text-slate-900 overflow-scroll">
+                  <p className="w-full my-2 p-1 text-wrap text-xs md:text-xl font-redhat text-slate-900 overflow-hidden">
                     {recipe.instructions}
                   </p>
                   <div className="absolute w-[95%] h-4 bg-gradient-to-t from-slate-300 to-transparent z-[60]"></div>
                 </div>
-                <div className="w-full flex justify-start gap-2 text-sky-900 text-xs md:text-lg mb-3">
-                  <p className="px-2 py-1 font-redhat rounded bg-sky-300">
+                <div className="w-full h-[20%] bg-slate-200 flex justify-start items-center gap-2 pl-1 text-sky-900 text-xs md:text-lg lg:pb-3 md:pb-1">
+                  <p className="h-fit px-2 py-1 font-redhat rounded bg-sky-300">
                     {recipe.totalTime}
                   </p>
-                  <p className="px-2 py-1 font-redhat rounded bg-emerald-300">
+                  <p className="h-fit px-2 py-1 font-redhat rounded bg-emerald-300">
                     {recipe.servings} servings
                   </p>
-                  <p className="px-2 py-1 font-redhat rounded bg-amber-300">
+                  <p className="h-fit  px-2 py-1 font-redhat rounded bg-amber-300">
                     {recipe.difficultyDesc}
                   </p>
                 </div>
