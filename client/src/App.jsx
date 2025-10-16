@@ -13,7 +13,7 @@ function App() {
     <>
       <NavBar />
 
-      <main className={`pt-[13vh] border border-red-500`}>
+      <main className={`pt-[13vh]`}>
         <MainBG />
         <Routes>
           <Route path="/" element={<Home />} />
