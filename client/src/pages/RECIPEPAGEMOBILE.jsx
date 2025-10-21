@@ -72,7 +72,7 @@ const RecipePage = () => {
           {screenWidth > 768 ? (
             <div
               id="recipe-page"
-              className="w-1/2 h-[80%] bg-slate-500 z-10 rounded-l-lg"
+              className="w-1/2 h-[80%] bg-slate-500 z-10 rounded-l-lg pr-[12%]"
             >
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci
               dignissimos itaque ratione ab hic, eaque veniam eveniet nostrum
