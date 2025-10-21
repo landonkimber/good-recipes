@@ -6,14 +6,15 @@ import { Route, Routes, useParams } from "react-router-dom";
 import Home from "./pages/Home";
 import MainBG from "./components/MainBG";
 import NavBar from "./components/NavBar";
-import RecipePage from "./pages/RecipePage";
+// import RecipePage from "./pages/RecipePage";
+import RecipePage from "./pages/RECIPEPAGEMOBILE";
 
 function App() {
   return (
     <>
       <NavBar />
 
-      <main className={`pt-[13vh] border border-red-500`}>
+      <main className={`pt-[13vh]`}>
         <MainBG />
         <Routes>
           <Route path="/" element={<Home />} />
