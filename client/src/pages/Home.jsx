@@ -8,8 +8,8 @@ import Explore from "../components/Explore.jsx";
 const Home = () => {
   window.scrollTo(0, 0);
   return (
-    <main className="bg-sky-50 min-h-screen">
-      <div className="relative w-full h-[66vh] overflow-hidden">
+    <main className="bg-sky-50 min-h-screen overflow-x-hidden">
+      <div className="relative w-full h-[66vh] overflow-x-hidden">
         {/* Background Image */}
         {/* <img
           src={HeroImage}
@@ -40,9 +40,9 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="relative w-[100vw] h-6 bg-gradient-to-t from-stone-700 to-slate-300 drop-shadow-lg z-20"></div>
+      <div className="relative w-full h-6 bg-gradient-to-t from-stone-700 to-slate-300 drop-shadow-lg z-20"></div>
       <div className="relative flex justify-center items-center  bg-[length:100%]  bg-repeat-y bg-[url(/bricks.jpg)] bg-top w-full ">
-        <div className="absolute h-full w-[100vw] bg-stone-900 bg-opacity-70 bg-cover backdrop-blur-[2px]"></div>
+        <div className="absolute h-full w-full bg-stone-900 bg-opacity-70 bg-cover backdrop-blur-[2px]"></div>
         <Explore />
       </div>
     </main>

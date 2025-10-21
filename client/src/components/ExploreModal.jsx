@@ -20,7 +20,7 @@ const IconRating = ({ count, total = 5, Icon, color, emptyColor }) => (
     {[...Array(total)].map((_, i) => (
       <Icon
         key={i}
-        className={`text-xl md:text-5xl mx-0 md:mx-1 ${
+        className={`text-2xl md:text-2xl lg:text-3xl mx-0 md:mx-1 ${
           i < count ? color : emptyColor
         }`}
       />
@@ -32,7 +32,7 @@ const ExploreModal = ({ recipe, onClose }) => {
   if (!recipe) return null;
   const screenWidth = window.innerWidth;
 
-  const modalSize = screenWidth < 768 ? "w-[100vw]" : "min-w-72rem w-[75vw]";
+  const modalSize = screenWidth < 768 ? "w-full" : "min-w-72rem w-[75vw]";
 
   return (
     <ModalPortal>
@@ -43,9 +43,10 @@ const ExploreModal = ({ recipe, onClose }) => {
         onClick={onClose}
       >
         <div
-          className={`relative bg-slate-800 rounded-md ${modalSize} h-[80vh] shadow-md shadow-indigo-400/50 overflow-y-auto`}
+          className={`relative bg-slate-800 rounded-md ${modalSize} h-[80vh] shadow-md shadow-indigo-400/50`}
           onClick={(e) => e.stopPropagation()}
         >
+          <div id="top-half" className="h-[65%]">
           {screenWidth > 768 ? (
             <button
               onClick={onClose}
@@ -86,13 +87,14 @@ const ExploreModal = ({ recipe, onClose }) => {
             alt={recipe.title}
             className="absolute left-1/2 -translate-x-1/2 top-16 h-1/2 w-auto z-20 transform scale-[110%] rounded-md"
           />
+          </div>
           <div
             id="bottom-half"
             className="flex absolute w-full h-[35%] top-[65%] border border-4 border-slate-300 rounded-t-xl"
           >
             <div className="flex flex-col justify-center items-center w-1/3 bg-gradient-to-tl rounded-tl-xl from-sky-950 to-slate-800">
               <div className="text-center">
-                <h2 className="text-lg md:text-3xl text-slate-300 font-redhat font-semibold mb-2">
+                <h2 className="text-lg text-2xl md:text-2xl lg:text-xl text-slate-300 font-redhat font-semibold mb-1">
                   {recipe.tasteDesc}
                 </h2>
 
@@ -105,7 +107,7 @@ const ExploreModal = ({ recipe, onClose }) => {
               </div>
 
               <div className="text-center">
-                <h2 className="text-lg md:text-3xl text-slate-300 font-redhat font-semibold mb-2">
+                <h2 className="text-lg text-2xl md:text-2xl lg:text-xl text-slate-300 font-redhat font-semibold mb-1">
                   {recipe.costDesc}
                 </h2>
                 <IconRating
@@ -117,7 +119,7 @@ const ExploreModal = ({ recipe, onClose }) => {
               </div>
 
               <div className="text-center">
-                <h2 className="text-lg md:text-3xl text-slate-300 font-redhat font-semibold mb-2">
+                <h2 className="text-lg text-2xl md:text-2xl lg:text-xl text-slate-300 font-redhat font-semibold mb-1">
                   {recipe.difficultyDesc}
                 </h2>
                 <IconRating
@@ -174,7 +176,7 @@ const ExploreModal = ({ recipe, onClose }) => {
                   </p>
                   <div className="absolute w-[95%] h-4 bg-gradient-to-t from-slate-300 to-transparent z-[60]"></div>
                 </div>
-                <div className="max-w-full h-[20%] bg-slate-200 flex justify-start items-center gap-2 pl-1 text-sky-900 text-xs md:text-lg lg:pb-3 md:pb-1 overflow-x-auto">
+                <div className="max-w-full h-[20%] p-1 bg-slate-200 flex justify-start align-center gap-2 pl-1 text-sky-900 text-xs md:text-lg lg:pb-3 md:pb-1 overflow-y-hidden overflow-x-auto">
                   <p className="h-fit px-2 py-1 font-redhat rounded text-nowrap bg-sky-300">
                     {recipe.totalTime}
                   </p>
@@ -186,21 +188,21 @@ const ExploreModal = ({ recipe, onClose }) => {
                   </p>
                 </div>
               </div>
-              <div className="w-[20%] flex items-end  justify-center bg-slate-400 pb-4 rounded-tr-lg">
-                <div className="flex flex-col items-center gap-4">
-                  <button className="p-3 text-amber-200 rounded-full hover:bg-amber-200 hover:text-white">
-                    <FaBookmark size={window.innerWidth > 640 ? 44 : 24} />
+              <div className="w-[20%] flex items-end  justify-center bg-slate-400 pb-2 rounded-tr-lg">
+                <div className="flex flex-col items-center gap-2">
+                  <button className="p-2 text-amber-200 rounded-full hover:bg-amber-200 hover:text-white">
+                    <FaBookmark size={window.innerWidth > 768 ? 32 : 24} />
                   </button>
 
-                  <button className="p-3 text-slate-800 rounded-full hover:bg-slate-700 hover:text-white">
-                    <FaDownload size={window.innerWidth > 640 ? 44 : 24} />
+                  <button className="p-2 text-slate-800 rounded-full hover:bg-slate-700 hover:text-white">
+                    <FaDownload size={window.innerWidth > 768 ? 32 : 24} />
                   </button>
                   <Link
-                    className="p-3 text-white bg-emerald-500 rounded-full  hover:bg-white hover:text-emerald-500"
+                    className="p-2 text-white bg-emerald-500 rounded-full  hover:bg-white hover:text-emerald-500"
                     to={`/${slugify(recipe.title, { lower: true })}`}
                     aria-label="Go to recipe"
                   >
-                    <FaArrowRight size={window.innerWidth > 640 ? 44 : 24} />
+                    <FaArrowRight size={window.innerWidth > 768 ? 32 : 24} />
                   </Link>
                 </div>
               </div>
