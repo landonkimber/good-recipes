@@ -12,12 +12,17 @@ import {
 import recipeData from "../data/recipes.json";
 import slugify from "slugify";
 
+window.scrollTo(0, 0);
+const screenWidth = window.innerWidth;
+const statsIconSize =
+  window.innerWidth > 1000 ? (window.innerWidth > 768 ? 44 : 32) : 24;
+
 const IconRating = ({ count, total = 5, Icon, color, emptyColor }) => (
   <div className="flex gap-1">
     {[...Array(total)].map((_, i) => (
       <Icon
         key={i}
-        className={`text-xl md:text-5xl mx-0 md:mx-1 ${
+        className={`text-3xl md:text-3xl lg:text-5xl xl:text-6xl mx-0 md:mx-1 ${
           i < count ? color : emptyColor
         }`}
       />
@@ -25,9 +30,43 @@ const IconRating = ({ count, total = 5, Icon, color, emptyColor }) => (
   </div>
 );
 
+const RecipeStats = ({ recipeData }) => (
+  <div
+    id="recipe-stats"
+    className="flex flex-col gap-2 lg:gap-4 h-full w-full items-start justify-center text-slate-50 font-redhat text-md md:text-lg lg:text-xl p-2"
+  >
+    <div className="flex items-center ">
+      <FaClock size={statsIconSize} className=" mx-2" />
+      <span className="font-bold">{recipeData.totalTime}</span> &nbsp;
+      <span className="underline">total</span>
+    </div>
+    <div id="cooktimes" className="flex flex-col items-start pl-4">
+      <div className="flex justify-center items-center text-sm md:text-md md:text-lg lg:text-xl xl:text-2xl">
+        <FaUtensils size={screenWidth > 768 ? 20 : 12} className=" mx-2" />
+        <span className="font-bold">{recipeData.prepTime}</span>&nbsp;prep
+      </div>
+      <div className="flex justify-center items-center text-sm md:text-md md:text-lg lg:text-xl xl:text-2xl">
+        <FaFireAlt size={screenWidth > 768 ? 20 : 12} className=" mx-2" />
+        <span className="font-bold">{recipeData.prepTime}</span>&nbsp; cooktime
+      </div>
+      <div className="flex justify-center items-center text-sm md:text-md md:text-lg lg:text-xl xl:text-2xl">
+        <FaSoap size={screenWidth > 768 ? 20 : 12} className=" mx-2" />
+        <span className="font-bold">{recipeData.prepTime}</span>&nbsp; cleanup
+      </div>
+    </div>
+    <div className="flex items-center ">
+      <FaUserAlt size={statsIconSize} className=" mx-2" />
+      Serves &nbsp;<span className="font-bold">{recipeData.servings}</span>
+    </div>
+    <div className="flex items-center ">
+      <FaDollarSign size={statsIconSize} className=" mx-2" />
+      {/* IMPORTANT AFTER UPDATED DATA. This will need to be a dollar amount instaed of the 1-5 cost property since thats for the stars */}
+      Costs &nbsp;~<span className="font-bold">{recipeData.cost}</span>
+    </div>
+  </div>
+);
+
 const RecipePage = () => {
-  window.scrollTo(0, 0);
-  const screenWidth = window.innerWidth;
   const { slug } = useParams();
 
   const recipe = recipeData.find(
@@ -43,15 +82,15 @@ const RecipePage = () => {
   return (
     <div className="relative w-full flex flex-col">
       {/* ---HEADER--- */}
-      <div id="recipe-page-header" className="w-full h-[80vh] flex flex-col">
+      <div id="recipe-page-header" className="w-full h-auto flex flex-col">
         {/* Header title */}
         <div
           id="recipe-page-title"
-          className="bg-slate-800 w-full h-[15%] sm:h-[15%] md:h-[20%] flex flex-col"
+          className="bg-slate-800 w-full h-[15vh] sm:h-[15vh] md:h-[17vh] flex flex-col"
         >
           <h1 className="h-1/2 w-full"></h1>
           <div className="h-1/2 w-full flex justify-center items-center lg:justify-start">
-            <h2 className="relative translate-y-4 lg:translate-y-8 rounded-sm bg-slate-300 lg:left-[14%] p-2 w-fit text-2xl md:text-4xl text-slate-900 font-redhat font-bold  z-20">
+            <h2 className="relative translate-y-4 lg:translate-y-8 rounded-sm bg-slate-300 border-4 border-sky-800 lg:left-[14%] p-2 w-fit text-2xl md:text-4xl text-slate-900 font-redhat font-bold  z-20">
               {recipe.title}
             </h2>
           </div>
@@ -59,7 +98,7 @@ const RecipePage = () => {
         {/* Header Hero */}
         <div
           id="recipe-page-hero"
-          className="relative flex w-full lg:flex-row items-center justify-center lg:justify-between h-[50%]"
+          className="relative flex w-full lg:flex-row items-center justify-center lg:justify-center h-[50vh]"
         >
           {/* Overlay */}
           <div className="absolute h-[100%] w-full bg-slate-800/80 backdrop-blur-md pointer-events-none" />
@@ -67,17 +106,54 @@ const RecipePage = () => {
           <img
             src={recipe.image}
             alt={recipe.title}
-            className="h-[105%] pl-0 lg:pl-[12%] w-fit z-10 rounded-md"
+            className="h-[105%] pl-0 w-fit z-10 rounded-md"
           />
           {screenWidth > 768 ? (
             <div
               id="recipe-page"
-              className="w-1/2 h-[80%] bg-slate-500 z-10 rounded-l-lg pr-[12%]"
+              className="w-1/2 h-[80%] flex justify-center bg-slate-500 z-10 rounded-r-lg"
             >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci
-              dignissimos itaque ratione ab hic, eaque veniam eveniet nostrum
-              officia corrupti, molestias similique vitae placeat mollitia ex!
-              Iusto, magni esse. Iure?
+              <div className="flex flex-col justify-center items-center w-1/2 overflow-hidden">
+                <div className="text-center">
+                  <h2 className="text-lg text-2xl md:text-2xl lg:text-2xl text-slate-300 font-redhat font-semibold mb-1">
+                    {recipe.tasteDesc}
+                  </h2>
+
+                  <IconRating
+                    count={recipe.taste}
+                    Icon={FaHeart}
+                    color="text-rose-400 drop-shadow-md drop-shadow-rose-300"
+                    emptyColor="text-slate-600"
+                  />
+                </div>
+
+                <div className="text-center">
+                  <h2 className="text-lg text-2xl md:text-2xl lg:text-2xl text-slate-300 font-redhat font-semibold mb-1">
+                    {recipe.costDesc}
+                  </h2>
+                  <IconRating
+                    count={recipe.cost}
+                    Icon={FaDollarSign}
+                    color="text-emerald-600 drop-shadow-md drop-shadow-emerald-200"
+                    emptyColor="text-slate-600 "
+                  />
+                </div>
+
+                <div className="text-center">
+                  <h2 className="text-lg text-2xl md:text-2xl lg:text-2xl text-slate-300 font-redhat font-semibold mb-1">
+                    {recipe.difficultyDesc}
+                  </h2>
+                  <IconRating
+                    count={recipe.difficulty}
+                    Icon={FaStar}
+                    color="text-amber-300 drop-shadow-md drop-shadow-amber-100"
+                    emptyColor="text-slate-600 drop-shadow-inner"
+                  />
+                </div>
+              </div>
+              <div className="w-1/2 h-full">
+                <RecipeStats recipeData={recipe} />
+              </div>
             </div>
           ) : (
             <></>
@@ -87,15 +163,54 @@ const RecipePage = () => {
         <div className="bg-slate-800 w-full h-[1.5rem] lg:h-[2.3rem]"></div>
         {/* Header Stats */}
         {screenWidth < 768 ? (
-          <div
-            id="recipe-page-stats"
-            className="w-full bg-slate-500 h-[30%] pr-0 lg:pr-[12%]"
-          >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci
-            dignissimos itaque ratione ab hic, eaque veniam eveniet nostrum
-            officia corrupti, molestias similique vitae placeat mollitia ex!
-            Iusto, magni esse. Iure?
-          </div>
+          <>
+            <div
+              id="recipe-page-stats"
+              className="w-full flex bg-slate-500 h-auto py-4 pr-0 lg:pr-[12%]"
+            >
+              <div className="flex flex-col justify-center items-center w-1/2 overflow-hidden">
+                <div className="text-center">
+                  <h2 className="text-lg text-2xl md:text-2xl lg:text-2xl text-slate-300 font-redhat font-semibold mb-1">
+                    {recipe.tasteDesc}
+                  </h2>
+
+                  <IconRating
+                    count={recipe.taste}
+                    Icon={FaHeart}
+                    color="text-rose-400 drop-shadow-md drop-shadow-rose-300"
+                    emptyColor="text-slate-600"
+                  />
+                </div>
+
+                <div className="text-center">
+                  <h2 className="text-lg text-2xl md:text-2xl lg:text-2xl text-slate-300 font-redhat font-semibold mb-1">
+                    {recipe.costDesc}
+                  </h2>
+                  <IconRating
+                    count={recipe.cost}
+                    Icon={FaDollarSign}
+                    color="text-emerald-600 drop-shadow-md drop-shadow-emerald-200"
+                    emptyColor="text-slate-600 "
+                  />
+                </div>
+
+                <div className="text-center">
+                  <h2 className="text-lg text-2xl md:text-2xl lg:text-2xl text-slate-300 font-redhat font-semibold mb-1">
+                    {recipe.difficultyDesc}
+                  </h2>
+                  <IconRating
+                    count={recipe.difficulty}
+                    Icon={FaStar}
+                    color="text-amber-300 drop-shadow-md drop-shadow-amber-100"
+                    emptyColor="text-slate-600 drop-shadow-inner"
+                  />
+                </div>
+              </div>
+              <div className="w-1/2 h-full">
+                <RecipeStats recipeData={recipe} />
+              </div>
+            </div>
+          </>
         ) : (
           <></>
         )}
