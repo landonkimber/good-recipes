@@ -8,9 +8,12 @@ import {
   FaDollarSign,
   FaHeart,
   FaStar,
+  FaRegCircle,
+  FaCheckCircle,
 } from "react-icons/fa";
 import recipeData from "../data/recipes.json";
 import slugify from "slugify";
+import { useState } from "react";
 
 window.scrollTo(0, 0);
 const screenWidth = window.innerWidth;
@@ -61,7 +64,19 @@ const RecipeStats = ({ recipeData }) => (
     <div className="flex items-center ">
       <FaDollarSign size={statsIconSize} className=" mx-2" />
       {/* IMPORTANT AFTER UPDATED DATA. This will need to be a dollar amount instaed of the 1-5 cost property since thats for the stars */}
-      Costs &nbsp;~<span className="font-bold">{recipeData.cost}</span>
+      Costs &nbsp;<span className="font-bold">~ &nbsp;{recipeData.cost}</span>
+    </div>
+    <div className="flex items-center ">
+      <FaDollarSign size={statsIconSize - 4} className=" ml-2" />
+      <span className="font-bold md:text-xl md:text-2xl lg:text-3xl xl:text-4xl">
+        /
+      </span>
+      <FaUserAlt size={statsIconSize - 4} className=" mr-2" />
+      {/* IMPORTANT AFTER UPDATED DATA. This will need to be a dollar amount instaed of the 1-5 cost property since thats for the stars */}
+      Costs &nbsp;
+      <span className="font-bold">
+        ~ &nbsp;{(recipeData.cost / recipeData.servings).toFixed(2)} per person
+      </span>
     </div>
   </div>
 );
@@ -77,10 +92,18 @@ const RecipePage = () => {
     return <div className="text-center text-red-600">Recipe not found.</div>;
   }
 
+  const [checkedItems, setCheckedItems] = useState(
+    Array(recipe.ingredients.length).fill(false)
+  );
+
+  const toggleCheck = (index) => {
+    setCheckedItems((prev) => prev.map((val, i) => (i === index ? !val : val)));
+  };
+
   console.log(`Recipe : ${recipe}`);
 
   return (
-    <div className="relative w-full flex flex-col">
+    <div className="relative w-full h-auto flex flex-col">
       {/* ---HEADER--- */}
       <div id="recipe-page-header" className="w-full h-auto flex flex-col">
         {/* Header title */}
@@ -219,88 +242,84 @@ const RecipePage = () => {
         id="recipe-page-content"
         className="w-full h-auto w-max-7xl bg-gray-800/50"
       >
-        <div id="content-container">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam
-          eveniet labore assumenda libero rerum! Alias deserunt repellat beatae
-          assumenda fuga laboriosam cupiditate perferendis reiciendis deleniti
-          nemo officiis autem iure dignissimos, vitae minus est. Minus labore
-          esse vitae consequatur reiciendis, molestias, quae culpa modi possimus
-          sapiente ullam quia doloremque commodi temporibus recusandae corporis
-          magnam quam magni numquam? Facere cupiditate iure inventore animi
-          porro enim perspiciatis! Molestias iusto, commodi laudantium, officiis
-          pariatur, error itaque maiores delectus provident quae facere rerum
-          dolor corrupti autem ipsum voluptatum consectetur eaque debitis ab
-          porro ipsa repellat officia illo? Voluptatum ut in vitae ex dicta
-          possimus adipisci quam a, ratione sunt beatae tenetur aspernatur
-          cupiditate quas saepe suscipit soluta magnam placeat impedit nemo.
-          Consequuntur, et. Nam, laborum sit eum necessitatibus repudiandae
-          eaque cupiditate eligendi quas atque aperiam, sapiente tenetur porro
-          dicta laboriosam officia. Perferendis, officiis expedita molestiae,
-          libero quaerat alias, impedit fugit quisquam facilis adipisci quae
-          provident. Sapiente at laborum nobis nulla quas qui fugit maiores
-          saepe delectus eos quo deleniti hic, assumenda esse, tempora labore
-          mollitia vel itaque reprehenderit facilis suscipit recusandae non!
-          Dolorum sed distinctio ipsum hic rerum? Nostrum placeat at debitis,
-          architecto sit culpa. Cumque quo dolorem veniam optio nisi quisquam
-          accusantium sequi vitae ipsum minus nemo architecto, quam doloremque
-          asperiores magnam ad? Velit recusandae alias quas fugiat assumenda
-          dicta facilis autem hic tempora, quo cum explicabo sapiente vero odio,
-          quos fuga consequatur! Labore aliquam recusandae praesentium aperiam
-          beatae saepe ab blanditiis eveniet aliquid totam maxime temporibus
-          itaque vero, pariatur expedita mollitia eligendi facilis rerum
-          consequatur distinctio minus, eum alias assumenda fugiat? Sunt,
-          explicabo animi. Magni a odit cum assumenda doloribus odio ea
-          perferendis dolore consectetur reiciendis tenetur natus, quidem amet
-          dolorem optio distinctio, esse ducimus sequi rem aliquid neque quae!
-          Aperiam facere voluptate, consectetur repellendus esse, debitis
-          exercitationem ea quisquam maiores suscipit reprehenderit minima
-          placeat excepturi dignissimos provident temporibus voluptatem nisi rem
-          sed quasi laudantium doloribus. Saepe enim fuga similique. Tenetur
-          velit enim vel natus rerum reprehenderit nulla laborum, sunt
-          reiciendis ducimus facere est et, dignissimos earum aliquid! Ipsum
-          dicta fugit at quibusdam eius reprehenderit, amet sunt officiis
-          cupiditate aliquam perferendis iste architecto corrupti minus soluta
-          ratione fuga! Aliquid ea commodi corrupti dignissimos praesentium sint
-          sed, temporibus est quisquam accusamus, earum, facere nobis? Ullam
-          dolor perspiciatis cum repudiandae dignissimos porro, dolorum
-          blanditiis mollitia quasi modi! Porro at eos temporibus nemo illo
-          omnis est quae maiores repudiandae, dolore ea assumenda deserunt
-          molestiae ipsum, quas eligendi hic similique repellendus. Dignissimos
-          non maiores itaque sequi numquam consequatur culpa, voluptatem
-          eligendi alias, sunt quod delectus eum saepe reiciendis doloremque
-          perferendis officia, totam voluptate incidunt reprehenderit possimus
-          sint vel? Quam recusandae sit possimus totam sunt magni labore ad
-          quisquam harum sed! Maiores nisi optio impedit debitis assumenda iste
-          corporis. Temporibus quia similique quo placeat vel cumque, amet
-          labore ut quas reiciendis asperiores quidem eius. Iure iste assumenda
-          quae, quibusdam enim cupiditate reiciendis minima quia blanditiis,
-          perferendis quos. Rem ipsam obcaecati excepturi ut quis incidunt
-          consectetur dolorum. Explicabo iure soluta facilis autem minima
-          praesentium necessitatibus dolor, dignissimos temporibus architecto
-          est ut molestiae nulla ea quaerat! Illum deleniti aliquam eum corrupti
-          dolorum soluta culpa vitae quo accusantium voluptates temporibus
-          exercitationem, hic nam consequatur minima omnis nostrum facilis
-          laborum! Nostrum fugiat, assumenda optio sapiente ab voluptate dolore
-          nihil error ratione qui nulla. Repellendus ipsam delectus quo hic
-          placeat voluptatibus sequi iste impedit quam sint neque incidunt ipsum
-          officia omnis atque soluta veritatis nihil, non culpa doloremque
-          perspiciatis praesentium quibusdam iusto? Ducimus molestiae blanditiis
-          sequi vel reprehenderit veniam animi! Facere perspiciatis, officiis,
-          consectetur deserunt aliquid delectus iusto unde dignissimos suscipit
-          molestiae dolorum labore, possimus totam quaerat aperiam veritatis
-          corporis praesentium vitae fugit illum. Tempore natus veritatis beatae
-          optio asperiores dolores labore expedita aliquid distinctio itaque
-          voluptatibus ipsum non repudiandae voluptatem cupiditate omnis,
-          voluptates recusandae facere adipisci consequatur porro quas officia!
-          Labore alias, deleniti eum modi impedit eos. Consequatur aspernatur
-          dignissimos molestias vero? Sequi repudiandae soluta voluptatem
-          molestias doloribus, harum error a, ex eum vitae cupiditate repellat
-          tempore consequatur est tempora reiciendis natus eaque fugit quia
-          repellendus quidem rem. Explicabo repellendus, porro dignissimos
-          aliquam quo quam nesciunt dicta, quaerat, minus mollitia suscipit
-          ipsum eos. Quos, laudantium voluptates earum suscipit animi vel maxime
-          corporis numquam in nihil quisquam neque beatae rerum fugit!
-          Perferendis, officiis?
+        <div id="content-container" className="w-full h-auto bg-slate-800">
+          <div className="w-full h-auto mx-auto p-4 lg:p-6 max-w-7xl">
+            <h1 className="text-2xl lg:text-4xl mb-4 font-bold font-redhat text-slate-300">
+              {recipe.title}
+            </h1>
+            <div className="h-1 w-full bg-slate-300 my-2"></div>
+            <p className="text-lg md:text-xl lg:text-2xl mx-4 my-1 font-redhat text-slate-200">
+              {recipe.description}
+            </p>
+            <h2 className="text-2xl text-center lg:text-3xl my-4 font-bold font-redhat text-slate-300">
+              What you'll need
+            </h2>
+            <div id="recipe-requirements" className="flex">
+              <div
+                id="recipe-ingredients"
+                className="w-1/2 h-auto bg-slate-300 text-sky-900 rounded-md p-2 lg:p-4"
+              >
+                <h3 className="text-sky-800 font-redhat font-bold text-lg lg:text-xl">
+                  Ingredients
+                </h3>
+                <div className="h-1 w-full bg-sky-800 mx-1 my-1"></div>
+                <ul>
+                  {recipe.ingredients.map((ingredient, index) => (
+                    <li
+                      key={index}
+                      className="flex items-center gap-3 cursor-pointer"
+                      onClick={() => toggleCheck(index)}
+                    >
+                      {checkedItems[index] ? (
+                        <FaCheckCircle className="text-emerald-500 text-xl" />
+                      ) : (
+                        <FaRegCircle className="text-sky-800 text-xl" />
+                      )}
+                      <span
+                        className={`transition-colors ${
+                          checkedItems[index] ? "line-through" : ""
+                        }`}
+                      >
+                        {ingredient}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div
+                id="recipe-equipment"
+                className=" w-1/2 h-auto p-2 lg:p-4 text-slate-300"
+              >
+                <h3 className="text-slate-300 font-redhat font-bold text-lg lg:text-xl">
+                  Equipment Needed
+                </h3>
+                <div className="h-1 w-full bg-slate-300 mx-1 my-1"></div>
+                <ul>
+                  {/* THIS WILL NEED TO BE UPDATED TO USE THE EQUIPMENT ARRAY ONCE DATA IS UPDATED */}
+                  {recipe.ingredients.map((ingredient, index) => (
+                    <li
+                      key={index}
+                      className="flex items-center gap-3 cursor-pointer"
+                      onClick={() => toggleCheck(index)}
+                    >
+                      {checkedItems[index] ? (
+                        <FaCheckCircle className="text-emerald-500 text-xl" />
+                      ) : (
+                        <FaRegCircle className="text-slate-300 text-xl" />
+                      )}
+                      <span
+                        className={`transition-colors ${
+                          checkedItems[index] ? "line-through" : ""
+                        }`}
+                      >
+                        {ingredient}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
