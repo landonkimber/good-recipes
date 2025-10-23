@@ -248,16 +248,16 @@ const RecipePage = () => {
               {recipe.title}
             </h1>
             <div className="h-1 w-full bg-slate-300 my-2"></div>
-            <p className="text-lg md:text-xl lg:text-2xl mx-4 my-1 font-redhat text-slate-200">
+            <p className="text-lg md:text-xl lg:text-2xl mx-4 mt-1 mb-8 font-redhat text-slate-200">
               {recipe.description}
             </p>
-            <h2 className="text-2xl text-center lg:text-3xl my-4 font-bold font-redhat text-slate-300">
-              What you'll need
+            <h2 className="text-2xl text-center underline md:text-3xl lg:text-4xl  my-4 font-bold font-redhat text-slate-300">
+              &nbsp;&nbsp;&nbsp;&nbsp;What you'll need&nbsp;&nbsp;&nbsp;&nbsp;
             </h2>
             <div id="recipe-requirements" className="flex">
               <div
                 id="recipe-ingredients"
-                className="w-1/2 h-auto bg-slate-300 text-sky-900 rounded-md p-2 lg:p-4"
+                className="w-1/2 h-auto bg-slate-300 text-sky-900 rounded-md p-2 lg:p-4 text-lg lg:text-xl"
               >
                 <h3 className="text-sky-800 font-redhat font-bold text-lg lg:text-xl">
                   Ingredients
@@ -267,13 +267,13 @@ const RecipePage = () => {
                   {recipe.ingredients.map((ingredient, index) => (
                     <li
                       key={index}
-                      className="flex items-center gap-3 cursor-pointer"
+                      className="flex items-center cursor-pointer"
                       onClick={() => toggleCheck(index)}
                     >
                       {checkedItems[index] ? (
-                        <FaCheckCircle className="text-emerald-500 text-xl" />
+                        <FaCheckCircle className="text-emerald-500 text-lg md:text-xl" />
                       ) : (
-                        <FaRegCircle className="text-sky-800 text-xl" />
+                        <FaRegCircle className="text-sky-800 text-lg md:text-xl" />
                       )}
                       <span
                         className={`transition-colors ${
@@ -288,7 +288,7 @@ const RecipePage = () => {
               </div>
               <div
                 id="recipe-equipment"
-                className=" w-1/2 h-auto p-2 lg:p-4 text-slate-300"
+                className=" w-1/2 h-auto p-2 lg:p-4 text-slate-300 text-lg lg:text-xl"
               >
                 <h3 className="text-slate-300 font-redhat font-bold text-lg lg:text-xl">
                   Equipment Needed
@@ -299,13 +299,13 @@ const RecipePage = () => {
                   {recipe.ingredients.map((ingredient, index) => (
                     <li
                       key={index}
-                      className="flex items-center gap-3 cursor-pointer"
+                      className="flex items-center cursor-pointer"
                       onClick={() => toggleCheck(index)}
                     >
                       {checkedItems[index] ? (
-                        <FaCheckCircle className="text-emerald-500 text-xl" />
+                        <FaCheckCircle className="text-emerald-500 text-lg md:text-xl" />
                       ) : (
-                        <FaRegCircle className="text-slate-300 text-xl" />
+                        <FaRegCircle className="text-slate-300 text-lg md:text-xl" />
                       )}
                       <span
                         className={`transition-colors ${
@@ -317,6 +317,32 @@ const RecipePage = () => {
                     </li>
                   ))}
                 </ul>
+              </div>
+            </div>
+            <div id="mice-en-place" className="">
+              <h2 className="text-2xl text-center md:text-3xl lg:text-4xl underline font-bold font-redhat text-slate-300 m-4">
+                &nbsp;&nbsp;&nbsp;&nbsp;Mice En Place&nbsp;&nbsp;&nbsp;&nbsp;
+              </h2>
+              <div id="recipe-prep" className="flex">
+                <ol className="w-1/2 p-2 lg:p-4">
+                  {/* THIS WILL NEED TO BE UPDATED TO USE THE EQUIPMENT ARRAY ONCE DATA IS UPDATED */}
+                  {recipe.miceEnPlace.map((step, index) => (
+                    <li className="text-slate-300 text-lg md:text-xl lg:text-2xl m-1">
+                      {index + 1}.&nbsp;{step}
+                    </li>
+                  ))}
+                </ol>
+                <div
+                  id="tips"
+                  className="w-1/2 bg-slate-300 p-2 lg:p-4 font-redhat"
+                >
+                  <h3 className="text-lg text-center md:text-xl lg:text-2xl text-sky-800 mb-2">
+                    Tips And Tricks!
+                  </h3>
+                  <p className="text-md lg:text-lg text-sky-800">
+                    {recipe.tipsAndTricks}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
