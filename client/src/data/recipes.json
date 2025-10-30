@@ -1,7 +1,7 @@
 [
   {
     "title": "Lemon Garlic Salmon",
-    "description": "Flaky salmon baked with lemon, garlic, and herbs for a bright weeknight dinner. I NEED A LOGNER TEXT TO TEST OUT THE FUNCTION OF THE RECIPE CARDS. LOREM20",
+    "description": "Flaky salmon baked with lemon, garlic, and herbs for a bright weeknight dinner. I NEED A LONGER TEXT TO TEST OUT THE FUNCTION OF THE RECIPE CARDS. LOREM20",
     "totalTime": "30 minutes",
     "prepTime": "10 min",
     "cookTime": "15 min",
@@ -14,14 +14,49 @@
     "difficultyDesc": "Easy",
     "difficulty": 2,
     "ingredients": [
-      "4 Salmon Fillets",
-      "2 tbsp Olive Oil",
-      "3 cloves Garlic",
-      "1 Lemon (zest & juice)",
-      "1 tsp Dried Oregano",
-      "Salt",
-      "Black Pepper",
-      "Fresh Parsley (optional)"
+      {
+        "ingredient": "Salmon Fillets",
+        "amount": 4,
+        "unit": "pieces",
+        "optional": false
+      },
+      {
+        "ingredient": "Olive Oil",
+        "amount": 2,
+        "unit": "tbsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Garlic",
+        "amount": 3,
+        "unit": "cloves",
+        "optional": false
+      },
+      {
+        "ingredient": "Lemon (Zest & Juice)",
+        "amount": 1,
+        "unit": "whole",
+        "optional": false
+      },
+      {
+        "ingredient": "Dried Oregano",
+        "amount": 1,
+        "unit": "tsp",
+        "optional": false
+      },
+      { "ingredient": "Salt", "amount": 1, "unit": "tsp", "optional": false },
+      {
+        "ingredient": "Black Pepper",
+        "amount": 0.5,
+        "unit": "tsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Fresh Parsley",
+        "amount": 2,
+        "unit": "tbsp",
+        "optional": true
+      }
     ],
     "miceEnPlace": [
       "Preheat oven to 400°F (205°C).",
@@ -29,8 +64,27 @@
       "Zest and juice the lemon.",
       "Pat salmon fillets dry."
     ],
-    "instructions": "1. Line a baking sheet and place salmon skin-side down.\n2. Mix olive oil, garlic, lemon zest, lemon juice, oregano, salt, and pepper.\n3. Brush mixture over salmon.\n4. Bake 12–15 minutes until flaky.\n5. Garnish with parsley and serve.",
-    "tipsAndTricks": "Don’t overbake—pull salmon at 125–130°F internal temp.\nBroil 1–2 minutes at the end for light browning.",
+    "instructions": [
+      "Line a baking sheet and place salmon skin-side down.",
+      "Mix olive oil, garlic, lemon zest, lemon juice, oregano, salt, and pepper.",
+      "Brush mixture over salmon.",
+      "Bake 12–15 minutes until flaky.",
+      "Garnish with parsley and serve."
+    ],
+    "tipsAndTricks": [
+      "Don’t overbake—pull salmon at 125–130°F internal temperature.",
+      "Broil 1–2 minutes at the end for light browning."
+    ],
+    "equipment": [
+      { "equipment": "Oven", "optional": false },
+      { "equipment": "Baking Sheet", "optional": false },
+      { "equipment": "Parchment Paper", "optional": true },
+      { "equipment": "Mixing Bowl", "optional": false },
+      { "equipment": "Wooden Spoon", "optional": false },
+      { "equipment": "Kitchen Knife", "optional": false },
+      { "equipment": "Cutting Board", "optional": false },
+      { "equipment": "Citrus Zester", "optional": true, "alt": ["Grater"] }
+    ],
     "moreInfo": "Serve with roasted veggies or rice. Great for meal prep.",
     "image": "/greek.jpg"
   },
@@ -49,29 +103,112 @@
     "difficultyDesc": "Easy",
     "difficulty": 1,
     "ingredients": [
-      "2 c Broccoli Florets",
-      "1 Red Bell Pepper",
-      "1 Carrot",
-      "1 small Yellow Onion",
-      "2 cloves Garlic",
-      "1 tbsp Ginger",
-      "2 tbsp Soy Sauce",
-      "1 tbsp Honey or Brown Sugar",
-      "1 tbsp Rice Vinegar",
-      "1 tbsp Cornstarch",
-      "2 tbsp Water",
-      "2 tbsp Neutral Oil",
-      "Salt",
-      "Pepper",
-      "Sesame Seeds (optional)"
+      {
+        "ingredient": "Broccoli Florets",
+        "amount": 2,
+        "unit": "cups",
+        "optional": false
+      },
+      {
+        "ingredient": "Red Bell Pepper",
+        "amount": 1,
+        "unit": "whole",
+        "optional": false
+      },
+      {
+        "ingredient": "Carrot",
+        "amount": 1,
+        "unit": "whole",
+        "optional": false
+      },
+      {
+        "ingredient": "Yellow Onion",
+        "amount": 1,
+        "unit": "small",
+        "optional": false
+      },
+      {
+        "ingredient": "Garlic",
+        "amount": 2,
+        "unit": "cloves",
+        "optional": false
+      },
+      {
+        "ingredient": "Ginger",
+        "amount": 1,
+        "unit": "tbsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Soy Sauce",
+        "amount": 2,
+        "unit": "tbsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Honey or Brown Sugar",
+        "amount": 1,
+        "unit": "tbsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Rice Vinegar",
+        "amount": 1,
+        "unit": "tbsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Cornstarch",
+        "amount": 1,
+        "unit": "tbsp",
+        "optional": false
+      },
+      { "ingredient": "Water", "amount": 2, "unit": "tbsp", "optional": false },
+      {
+        "ingredient": "Neutral Oil",
+        "amount": 2,
+        "unit": "tbsp",
+        "optional": false
+      },
+      { "ingredient": "Salt", "amount": 0.5, "unit": "tsp", "optional": false },
+      {
+        "ingredient": "Black Pepper",
+        "amount": 0.25,
+        "unit": "tsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Sesame Seeds",
+        "amount": 1,
+        "unit": "tbsp",
+        "optional": true
+      }
     ],
     "miceEnPlace": [
       "Slice bell pepper, onion, and carrot.",
       "Mince garlic and ginger.",
       "Whisk soy sauce, honey, vinegar, cornstarch, and water."
     ],
-    "instructions": "1. Heat oil in a large skillet or wok on high.\n2. Stir-fry broccoli, carrot, onion, and pepper 4–6 minutes.\n3. Add garlic and ginger; cook 30 seconds.\n4. Pour in sauce; toss until glossy and thickened.\n5. Season to taste and serve over rice.",
-    "tipsAndTricks": "Cook in batches to avoid steaming.\nAdd tofu or chicken for extra protein.",
+    "instructions": [
+      "Heat oil in a wok or skillet on high heat.",
+      "Stir-fry broccoli, carrot, onion, and pepper for 4–6 minutes.",
+      "Add garlic and ginger; cook for 30 seconds.",
+      "Pour in sauce; toss until glossy and thickened.",
+      "Season to taste and serve over rice."
+    ],
+    "tipsAndTricks": [
+      "Cook in batches to avoid steaming the vegetables.",
+      "Add tofu or chicken for extra protein."
+    ],
+    "equipment": [
+      { "equipment": "Wok", "optional": false, "alt": ["Large Skillet"] },
+      { "equipment": "Mixing Bowl", "optional": false },
+      { "equipment": "Wooden Spoon", "optional": false },
+      { "equipment": "Kitchen Knife", "optional": false },
+      { "equipment": "Cutting Board", "optional": false },
+      { "equipment": "Stove Top", "optional": false },
+      { "equipment": "Measuring Spoons", "optional": false }
+    ],
     "moreInfo": "Swap any veggies you like—snow peas, mushrooms, or zucchini are great.",
     "image": "/margherita.jpg"
   },
@@ -90,21 +227,72 @@
     "difficultyDesc": "Moderate",
     "difficulty": 3,
     "ingredients": [
-      "1 Pizza Dough (12–14\")",
-      "1/2 c Crushed Tomatoes",
-      "1 tsp Olive Oil",
-      "6 oz Fresh Mozzarella",
-      "Fresh Basil Leaves",
-      "Salt",
-      "Black Pepper"
+      {
+        "ingredient": "Pizza Dough (12–14\")",
+        "amount": 1,
+        "unit": "whole",
+        "optional": false
+      },
+      {
+        "ingredient": "Crushed Tomatoes",
+        "amount": 0.5,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Olive Oil",
+        "amount": 1,
+        "unit": "tsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Fresh Mozzarella",
+        "amount": 6,
+        "unit": "oz",
+        "optional": false
+      },
+      {
+        "ingredient": "Fresh Basil Leaves",
+        "amount": 0.5,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Salt",
+        "amount": 0.25,
+        "unit": "tsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Black Pepper",
+        "amount": 0.25,
+        "unit": "tsp",
+        "optional": false
+      }
     ],
     "miceEnPlace": [
       "Preheat oven to 500°F (260°C) with stone or steel.",
       "Slice mozzarella.",
       "Tear basil leaves."
     ],
-    "instructions": "1. Stretch dough on floured surface.\n2. Spread tomatoes thinly; drizzle olive oil.\n3. Add mozzarella; season lightly.\n4. Bake 8–12 minutes until crust is blistered.\n5. Top with basil and serve immediately.",
-    "tipsAndTricks": "Less sauce prevents sogginess.\nBake on a preheated stone for best crispness.",
+    "instructions": [
+      "Stretch dough on floured surface.",
+      "Spread tomatoes thinly and drizzle olive oil.",
+      "Add mozzarella; season lightly.",
+      "Bake 8–12 minutes until crust is blistered.",
+      "Top with basil and serve immediately."
+    ],
+    "tipsAndTricks": [
+      "Less sauce prevents sogginess.",
+      "Bake on a preheated stone for best crispness."
+    ],
+    "equipment": [
+      { "equipment": "Oven", "optional": false },
+      { "equipment": "Pizza Stone", "optional": true, "alt": ["Baking Sheet"] },
+      { "equipment": "Rolling Pin", "optional": true, "alt": ["Hands"] },
+      { "equipment": "Kitchen Knife", "optional": false },
+      { "equipment": "Cutting Board", "optional": false }
+    ],
     "moreInfo": "Finish with a drizzle of good olive oil.",
     "image": "/tuscana.jpg"
   },
@@ -123,30 +311,118 @@
     "difficultyDesc": "Moderate",
     "difficulty": 3,
     "ingredients": [
-      "2 lb Chicken Thighs",
-      "1 c Yogurt",
-      "2 tbsp Lemon Juice",
-      "2 tsp Garam Masala",
-      "1 tsp Ground Cumin",
-      "1 tsp Ground Coriander",
-      "1 tsp Paprika",
-      "1 Onion",
-      "3 cloves Garlic",
-      "1 tbsp Ginger",
-      "1 (15 oz) can Tomato Sauce",
-      "1 c Heavy Cream",
-      "2 tbsp Butter",
-      "Salt",
-      "Pepper",
-      "Cilantro (optional)"
+      {
+        "ingredient": "Chicken Thighs",
+        "amount": 2,
+        "unit": "lb",
+        "optional": false
+      },
+      { "ingredient": "Yogurt", "amount": 1, "unit": "c", "optional": false },
+      {
+        "ingredient": "Lemon Juice",
+        "amount": 2,
+        "unit": "tbsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Garam Masala",
+        "amount": 2,
+        "unit": "tsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Ground Cumin",
+        "amount": 1,
+        "unit": "tsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Ground Coriander",
+        "amount": 1,
+        "unit": "tsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Paprika",
+        "amount": 1,
+        "unit": "tsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Onion",
+        "amount": 1,
+        "unit": "whole",
+        "optional": false
+      },
+      {
+        "ingredient": "Garlic",
+        "amount": 3,
+        "unit": "cloves",
+        "optional": false
+      },
+      {
+        "ingredient": "Ginger",
+        "amount": 1,
+        "unit": "tbsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Tomato Sauce (15 oz)",
+        "amount": 1,
+        "unit": "can",
+        "optional": false
+      },
+      {
+        "ingredient": "Heavy Cream",
+        "amount": 1,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Butter",
+        "amount": 2,
+        "unit": "tbsp",
+        "optional": false
+      },
+      { "ingredient": "Salt", "amount": 1, "unit": "tsp", "optional": false },
+      {
+        "ingredient": "Black Pepper",
+        "amount": 0.5,
+        "unit": "tsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Cilantro",
+        "amount": 0.25,
+        "unit": "c",
+        "optional": true
+      }
     ],
     "miceEnPlace": [
       "Cube chicken thighs.",
       "Mince garlic and ginger; dice onion.",
       "Mix yogurt, lemon juice, and spices for marinade."
     ],
-    "instructions": "1. Marinate chicken 15–30 minutes.\n2. Sear chicken in butter until lightly browned; remove.\n3. Sauté onion, garlic, and ginger.\n4. Add tomato sauce and spices; simmer 10 minutes.\n5. Return chicken, stir in cream; simmer 10–15 minutes.\n6. Season and garnish with cilantro.",
-    "tipsAndTricks": "Broil marinated chicken for char before adding to sauce.",
+    "instructions": [
+      "Marinate chicken 15–30 minutes.",
+      "Sear chicken in butter until lightly browned; remove.",
+      "Sauté onion, garlic, and ginger.",
+      "Add tomato sauce and spices; simmer 10 minutes.",
+      "Return chicken, stir in cream; simmer 10–15 minutes.",
+      "Season and garnish with cilantro."
+    ],
+    "tipsAndTricks": [
+      "Broil marinated chicken for char before adding to sauce."
+    ],
+    "equipment": [
+      { "equipment": "Large Skillet", "optional": false },
+      { "equipment": "Mixing Bowl", "optional": false },
+      { "equipment": "Wooden Spoon", "optional": false },
+      { "equipment": "Kitchen Knife", "optional": false },
+      { "equipment": "Cutting Board", "optional": false },
+      { "equipment": "Measuring Spoons", "optional": false },
+      { "equipment": "Stove Top", "optional": false }
+    ],
     "moreInfo": "Serve with basmati rice and naan.",
     "image": "/tuscana.jpg"
   },
@@ -165,24 +441,78 @@
     "difficultyDesc": "Easy",
     "difficulty": 2,
     "ingredients": [
-      "12 oz Linguine",
-      "1 lb Large Shrimp, peeled",
-      "3 tbsp Butter",
-      "2 tbsp Olive Oil",
-      "4 cloves Garlic",
-      "1/2 tsp Red Pepper Flakes",
-      "1 Lemon (juice)",
-      "Salt",
-      "Black Pepper",
-      "Parsley"
+      {
+        "ingredient": "Linguine",
+        "amount": 12,
+        "unit": "oz",
+        "optional": false
+      },
+      {
+        "ingredient": "Large Shrimp, Peeled",
+        "amount": 1,
+        "unit": "lb",
+        "optional": false
+      },
+      {
+        "ingredient": "Butter",
+        "amount": 3,
+        "unit": "tbsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Olive Oil",
+        "amount": 2,
+        "unit": "tbsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Garlic",
+        "amount": 4,
+        "unit": "cloves",
+        "optional": false
+      },
+      {
+        "ingredient": "Red Pepper Flakes",
+        "amount": 0.5,
+        "unit": "tsp",
+        "optional": true
+      },
+      {
+        "ingredient": "Lemon Juice",
+        "amount": 1,
+        "unit": "tbsp",
+        "optional": false
+      },
+      { "ingredient": "Salt", "amount": 1, "unit": "tsp", "optional": false },
+      {
+        "ingredient": "Black Pepper",
+        "amount": 0.5,
+        "unit": "tsp",
+        "optional": false
+      },
+      { "ingredient": "Parsley", "amount": 2, "unit": "tbsp", "optional": true }
     ],
     "miceEnPlace": [
       "Boil pasta until al dente.",
       "Mince garlic.",
       "Pat shrimp dry and season."
     ],
-    "instructions": "1. Cook pasta; reserve 1/2 c pasta water.\n2. Sauté garlic and red pepper in olive oil and butter.\n3. Add shrimp; cook 1–2 minutes per side.\n4. Add lemon juice and pasta water; toss with pasta.\n5. Season and garnish with parsley.",
-    "tipsAndTricks": "Don’t overcook shrimp—pull when just opaque.",
+    "instructions": [
+      "Cook pasta; reserve 0.5 c pasta water.",
+      "Sauté garlic and red pepper in olive oil and butter.",
+      "Add shrimp; cook 1–2 minutes per side.",
+      "Add lemon juice and pasta water; toss with pasta.",
+      "Season and garnish with parsley."
+    ],
+    "tipsAndTricks": ["Don’t overcook shrimp—pull when just opaque."],
+    "equipment": [
+      { "equipment": "Large Saucepan", "optional": false },
+      { "equipment": "Large Skillet", "optional": false },
+      { "equipment": "Colander", "optional": false },
+      { "equipment": "Kitchen Knife", "optional": false },
+      { "equipment": "Cutting Board", "optional": false },
+      { "equipment": "Tongs", "optional": true }
+    ],
     "moreInfo": "Great with a side salad or crusty bread.",
     "image": "/greek.jpg"
   },
@@ -201,27 +531,97 @@
     "difficultyDesc": "Moderate",
     "difficulty": 3,
     "ingredients": [
-      "12 oz Egg Noodles",
-      "1 lb Sirloin, thinly sliced",
-      "2 tbsp Butter",
-      "1 tbsp Olive Oil",
-      "1 Onion",
-      "8 oz Mushrooms",
-      "2 cloves Garlic",
-      "1 c Beef Broth",
-      "1 tbsp Dijon Mustard",
-      "1/2 c Sour Cream",
-      "Salt",
-      "Pepper",
-      "Parsley"
+      {
+        "ingredient": "Egg Noodles",
+        "amount": 12,
+        "unit": "oz",
+        "optional": false
+      },
+      {
+        "ingredient": "Sirloin, Thinly Sliced",
+        "amount": 1,
+        "unit": "lb",
+        "optional": false
+      },
+      {
+        "ingredient": "Butter",
+        "amount": 2,
+        "unit": "tbsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Olive Oil",
+        "amount": 1,
+        "unit": "tbsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Onion",
+        "amount": 1,
+        "unit": "whole",
+        "optional": false
+      },
+      {
+        "ingredient": "Mushrooms",
+        "amount": 8,
+        "unit": "oz",
+        "optional": false
+      },
+      {
+        "ingredient": "Garlic",
+        "amount": 2,
+        "unit": "cloves",
+        "optional": false
+      },
+      {
+        "ingredient": "Beef Broth",
+        "amount": 1,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Dijon Mustard",
+        "amount": 1,
+        "unit": "tbsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Sour Cream",
+        "amount": 0.5,
+        "unit": "c",
+        "optional": false
+      },
+      { "ingredient": "Salt", "amount": 1, "unit": "tsp", "optional": false },
+      {
+        "ingredient": "Black Pepper",
+        "amount": 0.5,
+        "unit": "tsp",
+        "optional": false
+      },
+      { "ingredient": "Parsley", "amount": 2, "unit": "tbsp", "optional": true }
     ],
     "miceEnPlace": [
       "Slice beef against the grain.",
       "Slice mushrooms and onion.",
       "Mince garlic."
     ],
-    "instructions": "1. Cook noodles; set aside.\n2. Sear beef quickly; remove.\n3. Sauté onion and mushrooms in butter; add garlic.\n4. Stir in broth and mustard; simmer 5 minutes.\n5. Return beef; off heat stir in sour cream.\n6. Season and serve over noodles.",
-    "tipsAndTricks": "Add sour cream off heat to avoid curdling.",
+    "instructions": [
+      "Cook noodles; set aside.",
+      "Sear beef quickly; remove.",
+      "Sauté onion and mushrooms in butter; add garlic.",
+      "Stir in broth and mustard; simmer 5 minutes.",
+      "Return beef; off heat stir in sour cream.",
+      "Season and serve over noodles."
+    ],
+    "tipsAndTricks": ["Add sour cream off heat to avoid curdling."],
+    "equipment": [
+      { "equipment": "Large Skillet", "optional": false },
+      { "equipment": "Large Saucepan", "optional": false },
+      { "equipment": "Colander", "optional": false },
+      { "equipment": "Wooden Spoon", "optional": false },
+      { "equipment": "Kitchen Knife", "optional": false },
+      { "equipment": "Cutting Board", "optional": false }
+    ],
     "moreInfo": "Garnish with parsley for freshness.",
     "image": "/greek.jpg"
   },
@@ -240,24 +640,87 @@
     "difficultyDesc": "Easy",
     "difficulty": 2,
     "ingredients": [
-      "1 Butternut Squash (peeled, cubed)",
-      "1 Onion",
-      "2 tbsp Butter or Olive Oil",
-      "3 c Vegetable Broth",
-      "1 Apple (optional)",
-      "1/2 tsp Cinnamon",
-      "1/4 tsp Nutmeg",
-      "Salt",
-      "Pepper",
-      "Cream or Coconut Milk (optional)"
+      {
+        "ingredient": "Butternut Squash (Peeled, Cubed)",
+        "amount": 1,
+        "unit": "whole",
+        "optional": false
+      },
+      {
+        "ingredient": "Onion",
+        "amount": 1,
+        "unit": "whole",
+        "optional": false
+      },
+      {
+        "ingredient": "Butter or Olive Oil",
+        "amount": 2,
+        "unit": "tbsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Vegetable Broth",
+        "amount": 3,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Apple (Optional)",
+        "amount": 1,
+        "unit": "whole",
+        "optional": true
+      },
+      {
+        "ingredient": "Cinnamon",
+        "amount": 0.5,
+        "unit": "tsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Nutmeg",
+        "amount": 0.25,
+        "unit": "tsp",
+        "optional": false
+      },
+      { "ingredient": "Salt", "amount": 1, "unit": "tsp", "optional": false },
+      {
+        "ingredient": "Black Pepper",
+        "amount": 0.5,
+        "unit": "tsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Cream or Coconut Milk",
+        "amount": 0.5,
+        "unit": "c",
+        "optional": true
+      }
     ],
     "miceEnPlace": [
       "Dice onion.",
       "Peel and cube squash (or use pre-cut).",
       "If using, peel and dice apple."
     ],
-    "instructions": "1. Sauté onion in butter until soft.\n2. Add squash (and apple), spices, and broth.\n3. Simmer 20–25 minutes until tender.\n4. Blend until smooth; add cream if desired.\n5. Season to taste.",
-    "tipsAndTricks": "Roast squash first for deeper flavor.",
+    "instructions": [
+      "Sauté onion in butter until soft.",
+      "Add squash (and apple), spices, and broth.",
+      "Simmer 20–25 minutes until tender.",
+      "Blend until smooth; add cream if desired.",
+      "Season to taste."
+    ],
+    "tipsAndTricks": ["Roast squash first for deeper flavor."],
+    "equipment": [
+      { "equipment": "Large Saucepan", "optional": false },
+      {
+        "equipment": "Blender",
+        "optional": false,
+        "alt": ["Immersion Blender"]
+      },
+      { "equipment": "Wooden Spoon", "optional": false },
+      { "equipment": "Kitchen Knife", "optional": false },
+      { "equipment": "Cutting Board", "optional": false },
+      { "equipment": "Measuring Cups", "optional": false }
+    ],
     "moreInfo": "Top with pumpkin seeds or a swirl of cream.",
     "image": "/tuscana.jpg"
   },
@@ -276,25 +739,89 @@
     "difficultyDesc": "Moderate",
     "difficulty": 3,
     "ingredients": [
-      "1 lb Chicken Thighs",
-      "2 tbsp Green Curry Paste",
-      "1 can (14 oz) Coconut Milk",
-      "1 c Chicken Broth",
-      "1 Zucchini",
-      "1 Red Bell Pepper",
-      "1 c Snap Peas",
-      "1 tbsp Fish Sauce",
-      "1 tsp Brown Sugar",
-      "Basil Leaves",
-      "Jasmine Rice (for serving)"
+      {
+        "ingredient": "Chicken Thighs",
+        "amount": 1,
+        "unit": "lb",
+        "optional": false
+      },
+      {
+        "ingredient": "Green Curry Paste",
+        "amount": 2,
+        "unit": "tbsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Coconut Milk (14 oz)",
+        "amount": 1,
+        "unit": "can",
+        "optional": false
+      },
+      {
+        "ingredient": "Chicken Broth",
+        "amount": 1,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Zucchini",
+        "amount": 1,
+        "unit": "whole",
+        "optional": false
+      },
+      {
+        "ingredient": "Red Bell Pepper",
+        "amount": 1,
+        "unit": "whole",
+        "optional": false
+      },
+      {
+        "ingredient": "Snap Peas",
+        "amount": 1,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Fish Sauce",
+        "amount": 1,
+        "unit": "tbsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Brown Sugar",
+        "amount": 1,
+        "unit": "tsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Basil Leaves",
+        "amount": 0.25,
+        "unit": "c",
+        "optional": true
+      }
     ],
     "miceEnPlace": [
       "Cube chicken thighs.",
       "Slice zucchini and pepper.",
       "Rinse snap peas."
     ],
-    "instructions": "1. Sauté curry paste in a little oil 30 seconds.\n2. Add coconut milk and broth; bring to simmer.\n3. Add chicken; cook 10–12 minutes.\n4. Add vegetables; simmer 5 minutes.\n5. Season with fish sauce and sugar; top with basil.\n6. Serve with jasmine rice.",
-    "tipsAndTricks": "Adjust heat with more or less curry paste.",
+    "instructions": [
+      "Sauté curry paste in a little oil 30 seconds.",
+      "Add coconut milk and broth; bring to simmer.",
+      "Add chicken; cook 10–12 minutes.",
+      "Add vegetables; simmer 5 minutes.",
+      "Season with fish sauce and sugar; top with basil.",
+      "Serve with jasmine rice."
+    ],
+    "tipsAndTricks": ["Adjust heat with more or less curry paste."],
+    "equipment": [
+      { "equipment": "Large Saucepan", "optional": false },
+      { "equipment": "Wooden Spoon", "optional": false },
+      { "equipment": "Kitchen Knife", "optional": false },
+      { "equipment": "Cutting Board", "optional": false },
+      { "equipment": "Stove Top", "optional": false },
+      { "equipment": "Measuring Spoons", "optional": false }
+    ],
     "moreInfo": "To make vegetarian, swap tofu and veg broth.",
     "image": "/greek.jpg"
   },
@@ -313,24 +840,76 @@
     "difficultyDesc": "Hands-Off",
     "difficulty": 1,
     "ingredients": [
-      "3 lb Pork Shoulder",
-      "1 Onion, sliced",
-      "1 c BBQ Sauce",
-      "1/2 c Chicken Broth",
-      "1 tbsp Brown Sugar",
-      "1 tsp Paprika",
-      "1 tsp Garlic Powder",
-      "Salt",
-      "Pepper",
-      "8 Buns"
+      {
+        "ingredient": "Pork Shoulder",
+        "amount": 3,
+        "unit": "lb",
+        "optional": false
+      },
+      {
+        "ingredient": "Onion, Sliced",
+        "amount": 1,
+        "unit": "whole",
+        "optional": false
+      },
+      {
+        "ingredient": "BBQ Sauce",
+        "amount": 1,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Chicken Broth",
+        "amount": 0.5,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Brown Sugar",
+        "amount": 1,
+        "unit": "tbsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Paprika",
+        "amount": 1,
+        "unit": "tsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Garlic Powder",
+        "amount": 1,
+        "unit": "tsp",
+        "optional": false
+      },
+      { "ingredient": "Salt", "amount": 1, "unit": "tsp", "optional": false },
+      {
+        "ingredient": "Black Pepper",
+        "amount": 0.5,
+        "unit": "tsp",
+        "optional": false
+      },
+      { "ingredient": "Buns", "amount": 8, "unit": "pieces", "optional": false }
     ],
     "miceEnPlace": [
       "Slice onion.",
       "Mix dry spices.",
       "Trim excess fat from pork shoulder."
     ],
-    "instructions": "1. Place onions in slow cooker; add pork and seasonings.\n2. Pour broth; cook on LOW 7–8 hours.\n3. Shred pork; toss with BBQ sauce.\n4. Serve on buns.",
-    "tipsAndTricks": "Finish under broiler for crispy edges.",
+    "instructions": [
+      "Place onions in slow cooker; add pork and seasonings.",
+      "Pour broth; cook on LOW 7–8 hours.",
+      "Shred pork; toss with BBQ sauce.",
+      "Serve on buns."
+    ],
+    "tipsAndTricks": ["Finish under broiler for crispy edges."],
+    "equipment": [
+      { "equipment": "Slow Cooker", "optional": false },
+      { "equipment": "Forks", "optional": false },
+      { "equipment": "Kitchen Knife", "optional": false },
+      { "equipment": "Cutting Board", "optional": false },
+      { "equipment": "Measuring Spoons", "optional": false }
+    ],
     "moreInfo": "Top with coleslaw for crunch.",
     "image": "/margherita.jpg"
   },
@@ -349,26 +928,93 @@
     "difficultyDesc": "Easy",
     "difficulty": 2,
     "ingredients": [
-      "2 Chicken Breasts",
-      "6 c Romaine Lettuce",
-      "1 Cucumber",
-      "1 c Cherry Tomatoes",
-      "1/3 c Kalamata Olives",
-      "1/4 c Red Onion, thinly sliced",
-      "1/3 c Feta Cheese",
-      "2 tbsp Olive Oil",
-      "1 Lemon (juice)",
-      "1 tsp Dried Oregano",
-      "Salt",
-      "Pepper"
+      {
+        "ingredient": "Chicken Breasts",
+        "amount": 2,
+        "unit": "pieces",
+        "optional": false
+      },
+      {
+        "ingredient": "Romaine Lettuce",
+        "amount": 6,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Cucumber",
+        "amount": 1,
+        "unit": "whole",
+        "optional": false
+      },
+      {
+        "ingredient": "Cherry Tomatoes",
+        "amount": 1,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Kalamata Olives",
+        "amount": 0.33,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Red Onion, Thinly Sliced",
+        "amount": 0.25,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Feta Cheese",
+        "amount": 0.33,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Olive Oil",
+        "amount": 2,
+        "unit": "tbsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Lemon Juice",
+        "amount": 1,
+        "unit": "tbsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Dried Oregano",
+        "amount": 1,
+        "unit": "tsp",
+        "optional": false
+      },
+      { "ingredient": "Salt", "amount": 0.5, "unit": "tsp", "optional": false },
+      {
+        "ingredient": "Black Pepper",
+        "amount": 0.25,
+        "unit": "tsp",
+        "optional": false
+      }
     ],
     "miceEnPlace": [
       "Season chicken with salt, pepper, and oregano.",
       "Slice vegetables.",
       "Whisk lemon juice and olive oil."
     ],
-    "instructions": "1. Grill or pan-cook chicken 6–7 min/side; rest and slice.\n2. Toss lettuce, cucumber, tomatoes, onion, and olives.\n3. Dress with lemon-olive oil.\n4. Top with chicken and feta.",
-    "tipsAndTricks": "Add pita chips for crunch.",
+    "instructions": [
+      "Grill or pan-cook chicken 6–7 min/side; rest and slice.",
+      "Toss lettuce, cucumber, tomatoes, onion, and olives.",
+      "Dress with lemon-olive oil.",
+      "Top with chicken and feta."
+    ],
+    "tipsAndTricks": ["Add pita chips for crunch."],
+    "equipment": [
+      { "equipment": "Large Skillet", "optional": false, "alt": ["Grill Pan"] },
+      { "equipment": "Mixing Bowl", "optional": false },
+      { "equipment": "Kitchen Knife", "optional": false },
+      { "equipment": "Cutting Board", "optional": false },
+      { "equipment": "Tongs", "optional": true }
+    ],
     "moreInfo": "Great as a meal prep lunch.",
     "image": "/greek.jpg"
   },
@@ -387,22 +1033,54 @@
     "difficultyDesc": "Easy",
     "difficulty": 1,
     "ingredients": [
-      "1 1/2 c All-Purpose Flour",
-      "3 tbsp Sugar",
-      "1 tbsp Baking Powder",
-      "1/2 tsp Salt",
-      "1 1/4 c Milk",
-      "1 Egg",
-      "3 tbsp Melted Butter",
-      "1 tsp Vanilla Extract"
+      {
+        "ingredient": "All-Purpose Flour",
+        "amount": 1.5,
+        "unit": "c",
+        "optional": false
+      },
+      { "ingredient": "Sugar", "amount": 3, "unit": "tbsp", "optional": false },
+      {
+        "ingredient": "Baking Powder",
+        "amount": 1,
+        "unit": "tbsp",
+        "optional": false
+      },
+      { "ingredient": "Salt", "amount": 0.5, "unit": "tsp", "optional": false },
+      { "ingredient": "Milk", "amount": 1.25, "unit": "c", "optional": false },
+      { "ingredient": "Egg", "amount": 1, "unit": "whole", "optional": false },
+      {
+        "ingredient": "Melted Butter",
+        "amount": 3,
+        "unit": "tbsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Vanilla Extract",
+        "amount": 1,
+        "unit": "tsp",
+        "optional": true
+      }
     ],
     "miceEnPlace": [
       "Whisk dry ingredients.",
       "Whisk wet ingredients separately.",
       "Preheat griddle."
     ],
-    "instructions": "1. Combine wet and dry until just mixed.\n2. Pour 1/4 c batter per pancake.\n3. Flip when bubbles form; cook until golden.\n4. Serve with syrup.",
-    "tipsAndTricks": "Don’t overmix for tender pancakes.",
+    "instructions": [
+      "Combine wet and dry until just mixed.",
+      "Pour 0.25 c batter per pancake.",
+      "Flip when bubbles form; cook until golden.",
+      "Serve with syrup."
+    ],
+    "tipsAndTricks": ["Don’t overmix for tender pancakes."],
+    "equipment": [
+      { "equipment": "Griddle", "optional": true, "alt": ["Large Skillet"] },
+      { "equipment": "Mixing Bowl", "optional": false },
+      { "equipment": "Whisk", "optional": false },
+      { "equipment": "Spatula", "optional": false },
+      { "equipment": "Measuring Cups", "optional": false }
+    ],
     "moreInfo": "Add blueberries or chocolate chips if desired.",
     "image": "/tuscana.jpg"
   },
@@ -421,21 +1099,66 @@
     "difficultyDesc": "Easy",
     "difficulty": 1,
     "ingredients": [
-      "2 Slices Sourdough",
-      "1 Ripe Avocado",
-      "2 Eggs",
-      "1 tsp Lemon Juice",
-      "Salt",
-      "Black Pepper",
-      "Red Pepper Flakes (optional)"
+      {
+        "ingredient": "Sourdough Slices",
+        "amount": 2,
+        "unit": "pieces",
+        "optional": false
+      },
+      {
+        "ingredient": "Ripe Avocado",
+        "amount": 1,
+        "unit": "whole",
+        "optional": false
+      },
+      {
+        "ingredient": "Eggs",
+        "amount": 2,
+        "unit": "pieces",
+        "optional": false
+      },
+      {
+        "ingredient": "Lemon Juice",
+        "amount": 1,
+        "unit": "tsp",
+        "optional": true
+      },
+      {
+        "ingredient": "Salt",
+        "amount": 0.25,
+        "unit": "tsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Black Pepper",
+        "amount": 0.25,
+        "unit": "tsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Red Pepper Flakes",
+        "amount": 0.25,
+        "unit": "tsp",
+        "optional": true
+      }
     ],
     "miceEnPlace": [
       "Toast bread.",
       "Mash avocado with lemon, salt, and pepper.",
       "Cook eggs to preference."
     ],
-    "instructions": "1. Spread avocado on toast.\n2. Top with egg.\n3. Season and add chili flakes if using.",
-    "tipsAndTricks": "Use a squeeze of lemon to prevent browning.",
+    "instructions": [
+      "Spread avocado on toast.",
+      "Top with egg.",
+      "Season and add chili flakes if using."
+    ],
+    "tipsAndTricks": ["Use a squeeze of lemon to prevent browning."],
+    "equipment": [
+      { "equipment": "Toaster", "optional": false, "alt": ["Oven"] },
+      { "equipment": "Small Bowl", "optional": false },
+      { "equipment": "Fork", "optional": false },
+      { "equipment": "Small Skillet", "optional": true }
+    ],
     "moreInfo": "Great with everything bagel seasoning.",
     "image": "/tuscana.jpg"
   },
@@ -454,23 +1177,74 @@
     "difficultyDesc": "Easy",
     "difficulty": 2,
     "ingredients": [
-      "1 lb Ziti Pasta",
-      "3 c Marinara Sauce",
-      "1 c Ricotta Cheese",
-      "2 c Mozzarella, shredded",
-      "1/2 c Parmesan, grated",
-      "1 tbsp Olive Oil",
-      "Salt",
-      "Pepper",
-      "Basil (optional)"
+      {
+        "ingredient": "Ziti Pasta",
+        "amount": 1,
+        "unit": "lb",
+        "optional": false
+      },
+      {
+        "ingredient": "Marinara Sauce",
+        "amount": 3,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Ricotta Cheese",
+        "amount": 1,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Mozzarella, Shredded",
+        "amount": 2,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Parmesan, Grated",
+        "amount": 0.5,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Olive Oil",
+        "amount": 1,
+        "unit": "tbsp",
+        "optional": false
+      },
+      { "ingredient": "Salt", "amount": 1, "unit": "tsp", "optional": false },
+      {
+        "ingredient": "Black Pepper",
+        "amount": 0.5,
+        "unit": "tsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Basil (Optional)",
+        "amount": 0.25,
+        "unit": "c",
+        "optional": true
+      }
     ],
     "miceEnPlace": [
       "Boil pasta to al dente.",
       "Mix ricotta with salt and pepper.",
       "Preheat oven to 375°F (190°C)."
     ],
-    "instructions": "1. Toss pasta with marinara and ricotta.\n2. Transfer to dish; top with mozzarella and Parmesan.\n3. Bake 20–25 minutes until bubbly.\n4. Rest 5 minutes and serve.",
-    "tipsAndTricks": "Broil briefly for a browned top.",
+    "instructions": [
+      "Toss pasta with marinara and ricotta.",
+      "Transfer to dish; top with mozzarella and Parmesan.",
+      "Bake 20–25 minutes until bubbly.",
+      "Rest 5 minutes and serve."
+    ],
+    "tipsAndTricks": ["Broil briefly for a browned top."],
+    "equipment": [
+      { "equipment": "Large Saucepan", "optional": false },
+      { "equipment": "Oven", "optional": false },
+      { "equipment": "Casserole Dish", "optional": false },
+      { "equipment": "Colander", "optional": false }
+    ],
     "moreInfo": "Add cooked sausage for extra protein.",
     "image": "/tuscana.jpg"
   },
@@ -489,24 +1263,81 @@
     "difficultyDesc": "Easy",
     "difficulty": 2,
     "ingredients": [
-      "1 1/2 lb Chicken Thighs",
-      "1/3 c Soy Sauce",
-      "3 tbsp Brown Sugar",
-      "1 tbsp Honey",
-      "1 tbsp Rice Vinegar",
-      "1 tsp Grated Ginger",
-      "2 cloves Garlic",
-      "1 tbsp Cornstarch + 2 tbsp Water",
-      "2 c Cooked Rice",
-      "Steamed Broccoli"
+      {
+        "ingredient": "Chicken Thighs",
+        "amount": 1.5,
+        "unit": "lb",
+        "optional": false
+      },
+      {
+        "ingredient": "Soy Sauce",
+        "amount": 0.33,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Brown Sugar",
+        "amount": 3,
+        "unit": "tbsp",
+        "optional": false
+      },
+      { "ingredient": "Honey", "amount": 1, "unit": "tbsp", "optional": false },
+      {
+        "ingredient": "Rice Vinegar",
+        "amount": 1,
+        "unit": "tbsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Ginger, Grated",
+        "amount": 1,
+        "unit": "tsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Garlic",
+        "amount": 2,
+        "unit": "cloves",
+        "optional": false
+      },
+      {
+        "ingredient": "Cornstarch",
+        "amount": 1,
+        "unit": "tbsp",
+        "optional": false
+      },
+      { "ingredient": "Water", "amount": 2, "unit": "tbsp", "optional": false },
+      {
+        "ingredient": "Cooked Rice",
+        "amount": 2,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Broccoli, Steamed",
+        "amount": 2,
+        "unit": "c",
+        "optional": true
+      }
     ],
     "miceEnPlace": [
       "Whisk soy, sugar, honey, vinegar, ginger, and garlic.",
       "Cube chicken thighs.",
       "Steam broccoli."
     ],
-    "instructions": "1. Sear chicken until cooked.\n2. Add sauce; simmer 2–3 minutes.\n3. Stir in cornstarch slurry; thicken.\n4. Serve over rice with broccoli.",
-    "tipsAndTricks": "Toast sesame seeds for garnish.",
+    "instructions": [
+      "Sear chicken until cooked.",
+      "Add sauce; simmer 2–3 minutes.",
+      "Stir in cornstarch slurry; thicken.",
+      "Serve over rice with broccoli."
+    ],
+    "tipsAndTricks": ["Toast sesame seeds for garnish."],
+    "equipment": [
+      { "equipment": "Large Skillet", "optional": false },
+      { "equipment": "Mixing Bowl", "optional": false },
+      { "equipment": "Measuring Spoons", "optional": false },
+      { "equipment": "Stove Top", "optional": false }
+    ],
     "moreInfo": "Swap chicken for tofu for a vegetarian bowl.",
     "image": "/tuscana.jpg"
   },
@@ -525,23 +1356,74 @@
     "difficultyDesc": "Easy",
     "difficulty": 2,
     "ingredients": [
-      "1 lb Ground Turkey",
-      "1/2 c Breadcrumbs",
-      "1 Egg",
-      "2 tbsp Parmesan, grated",
-      "2 cloves Garlic, minced",
-      "1 tsp Italian Seasoning",
-      "Salt",
-      "Pepper",
-      "2 c Marinara Sauce"
+      {
+        "ingredient": "Ground Turkey",
+        "amount": 1,
+        "unit": "lb",
+        "optional": false
+      },
+      {
+        "ingredient": "Breadcrumbs",
+        "amount": 0.5,
+        "unit": "c",
+        "optional": false
+      },
+      { "ingredient": "Egg", "amount": 1, "unit": "whole", "optional": false },
+      {
+        "ingredient": "Parmesan, Grated",
+        "amount": 2,
+        "unit": "tbsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Garlic, Minced",
+        "amount": 2,
+        "unit": "cloves",
+        "optional": false
+      },
+      {
+        "ingredient": "Italian Seasoning",
+        "amount": 1,
+        "unit": "tsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Salt",
+        "amount": 0.75,
+        "unit": "tsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Black Pepper",
+        "amount": 0.25,
+        "unit": "tsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Marinara Sauce",
+        "amount": 2,
+        "unit": "c",
+        "optional": false
+      }
     ],
     "miceEnPlace": [
       "Preheat oven to 400°F (205°C).",
       "Mix meatball ingredients.",
       "Line a baking sheet."
     ],
-    "instructions": "1. Form 1–1.5\" meatballs.\n2. Bake 15–18 minutes until cooked.\n3. Simmer in marinara 10 minutes.\n4. Serve over pasta or in subs.",
-    "tipsAndTricks": "Don’t overwork the meat for tenderness.",
+    "instructions": [
+      "Form 1–1.5\" meatballs.",
+      "Bake 15–18 minutes until cooked.",
+      "Simmer in marinara 10 minutes.",
+      "Serve over pasta or in subs."
+    ],
+    "tipsAndTricks": ["Don’t overwork the meat for tenderness."],
+    "equipment": [
+      { "equipment": "Oven", "optional": false },
+      { "equipment": "Baking Sheet", "optional": false },
+      { "equipment": "Mixing Bowl", "optional": false },
+      { "equipment": "Parchment Paper", "optional": true }
+    ],
     "moreInfo": "Add chopped parsley for freshness.",
     "image": "/margherita.jpg"
   },
@@ -560,20 +1442,78 @@
     "difficultyDesc": "Hands-On",
     "difficulty": 4,
     "ingredients": [
-      "1 c Arborio Rice",
-      "4 c Chicken or Veg Broth, warm",
-      "8 oz Mushrooms, sliced",
-      "1 small Onion, minced",
-      "2 tbsp Butter",
-      "1 tbsp Olive Oil",
-      "1/2 c Parmesan, grated",
-      "Salt",
-      "Pepper",
-      "White Wine (optional)"
+      {
+        "ingredient": "Arborio Rice",
+        "amount": 1,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Chicken or Veg Broth, Warm",
+        "amount": 4,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Mushrooms, Sliced",
+        "amount": 8,
+        "unit": "oz",
+        "optional": false
+      },
+      {
+        "ingredient": "Onion, Minced",
+        "amount": 1,
+        "unit": "small",
+        "optional": false
+      },
+      {
+        "ingredient": "Butter",
+        "amount": 2,
+        "unit": "tbsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Olive Oil",
+        "amount": 1,
+        "unit": "tbsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Parmesan, Grated",
+        "amount": 0.5,
+        "unit": "c",
+        "optional": false
+      },
+      { "ingredient": "Salt", "amount": 1, "unit": "tsp", "optional": false },
+      {
+        "ingredient": "Black Pepper",
+        "amount": 0.5,
+        "unit": "tsp",
+        "optional": false
+      },
+      {
+        "ingredient": "White Wine",
+        "amount": 0.5,
+        "unit": "c",
+        "optional": true
+      }
     ],
     "miceEnPlace": ["Warm broth in a pot.", "Slice mushrooms.", "Mince onion."],
-    "instructions": "1. Sauté onion in butter and oil.\n2. Add rice; toast 1–2 minutes.\n3. Deglaze with wine (optional).\n4. Add warm broth 1 ladle at a time, stirring until absorbed.\n5. Sauté mushrooms separately; fold in.\n6. Finish with Parmesan; season.",
-    "tipsAndTricks": "Stir frequently to release starch for creaminess.",
+    "instructions": [
+      "Sauté onion in butter and oil.",
+      "Add rice; toast 1–2 minutes.",
+      "Deglaze with wine (optional).",
+      "Add warm broth 1 ladle at a time, stirring until absorbed.",
+      "Sauté mushrooms separately; fold in.",
+      "Finish with Parmesan; season."
+    ],
+    "tipsAndTricks": ["Stir frequently to release starch for creaminess."],
+    "equipment": [
+      { "equipment": "Large Saucepan", "optional": false },
+      { "equipment": "Wooden Spoon", "optional": false },
+      { "equipment": "Ladle", "optional": false },
+      { "equipment": "Small Skillet", "optional": true }
+    ],
     "moreInfo": "Top with chives or truffle oil for luxury.",
     "image": "/greek.jpg"
   },
@@ -592,26 +1532,98 @@
     "difficultyDesc": "Easy",
     "difficulty": 2,
     "ingredients": [
-      "1 lb White Fish (cod or tilapia)",
-      "8 Small Tortillas",
-      "1 c Shredded Cabbage",
-      "1/4 c Red Onion, thinly sliced",
-      "1/4 c Cilantro",
-      "1 Lime (juice)",
-      "1/3 c Sour Cream",
-      "1 tsp Chili Powder",
-      "1/2 tsp Cumin",
-      "Salt",
-      "Pepper",
-      "Oil for cooking"
+      {
+        "ingredient": "White Fish (Cod or Tilapia)",
+        "amount": 1,
+        "unit": "lb",
+        "optional": false
+      },
+      {
+        "ingredient": "Small Tortillas",
+        "amount": 8,
+        "unit": "pieces",
+        "optional": false
+      },
+      {
+        "ingredient": "Shredded Cabbage",
+        "amount": 1,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Red Onion, Thinly Sliced",
+        "amount": 0.25,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Cilantro",
+        "amount": 0.25,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Lime Juice",
+        "amount": 1,
+        "unit": "tbsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Sour Cream",
+        "amount": 0.33,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Chili Powder",
+        "amount": 1,
+        "unit": "tsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Cumin",
+        "amount": 0.5,
+        "unit": "tsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Salt",
+        "amount": 0.75,
+        "unit": "tsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Black Pepper",
+        "amount": 0.25,
+        "unit": "tsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Oil for Cooking",
+        "amount": 1,
+        "unit": "tbsp",
+        "optional": false
+      }
     ],
     "miceEnPlace": [
       "Mix lime crema (sour cream + lime juice).",
       "Season fish with chili, cumin, salt, and pepper.",
       "Prep slaw with cabbage, onion, cilantro."
     ],
-    "instructions": "1. Cook fish in lightly oiled skillet 2–3 minutes/side.\n2. Warm tortillas.\n3. Assemble with fish, slaw, and crema.\n4. Serve with lime wedges.",
-    "tipsAndTricks": "Add avocado slices for richness.",
+    "instructions": [
+      "Cook fish in lightly oiled skillet 2–3 minutes/side.",
+      "Warm tortillas.",
+      "Assemble with fish, slaw, and crema.",
+      "Serve with lime wedges."
+    ],
+    "tipsAndTricks": ["Add avocado slices for richness."],
+    "equipment": [
+      { "equipment": "Large Skillet", "optional": false },
+      { "equipment": "Mixing Bowl", "optional": false },
+      { "equipment": "Kitchen Knife", "optional": false },
+      { "equipment": "Cutting Board", "optional": false },
+      { "equipment": "Spatula", "optional": false }
+    ],
     "moreInfo": "Great grilled during summer.",
     "image": "/margherita.jpg"
   },
@@ -630,24 +1642,81 @@
     "difficultyDesc": "Moderate",
     "difficulty": 3,
     "ingredients": [
-      "6 Bell Peppers",
-      "1 lb Ground Beef",
-      "1 c Cooked Rice",
-      "1 small Onion, diced",
-      "2 cloves Garlic, minced",
-      "2 c Tomato Sauce",
-      "1 c Shredded Cheese",
-      "1 tbsp Olive Oil",
-      "Salt",
-      "Pepper"
+      {
+        "ingredient": "Bell Peppers",
+        "amount": 6,
+        "unit": "pieces",
+        "optional": false
+      },
+      {
+        "ingredient": "Ground Beef",
+        "amount": 1,
+        "unit": "lb",
+        "optional": false
+      },
+      {
+        "ingredient": "Cooked Rice",
+        "amount": 1,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Onion, Diced",
+        "amount": 1,
+        "unit": "small",
+        "optional": false
+      },
+      {
+        "ingredient": "Garlic, Minced",
+        "amount": 2,
+        "unit": "cloves",
+        "optional": false
+      },
+      {
+        "ingredient": "Tomato Sauce",
+        "amount": 2,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Shredded Cheese",
+        "amount": 1,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Olive Oil",
+        "amount": 1,
+        "unit": "tbsp",
+        "optional": false
+      },
+      { "ingredient": "Salt", "amount": 1, "unit": "tsp", "optional": false },
+      {
+        "ingredient": "Black Pepper",
+        "amount": 0.5,
+        "unit": "tsp",
+        "optional": false
+      }
     ],
     "miceEnPlace": [
       "Cook rice.",
       "Dice onion and mince garlic.",
       "Preheat oven to 375°F (190°C)."
     ],
-    "instructions": "1. Sauté beef with onion and garlic; season.\n2. Mix in rice and half the tomato sauce.\n3. Fill peppers; top with remaining sauce.\n4. Cover and bake 30 minutes; uncover, add cheese, bake 10–15 more.",
-    "tipsAndTricks": "Parboil peppers 3 minutes for softer texture.",
+    "instructions": [
+      "Sauté beef with onion and garlic; season.",
+      "Mix in rice and half the tomato sauce.",
+      "Fill peppers; top with remaining sauce.",
+      "Cover and bake 30 minutes; uncover, add cheese, bake 10–15 more."
+    ],
+    "tipsAndTricks": ["Parboil peppers 3 minutes for softer texture."],
+    "equipment": [
+      { "equipment": "Oven", "optional": false },
+      { "equipment": "Large Skillet", "optional": false },
+      { "equipment": "Casserole Dish", "optional": false },
+      { "equipment": "Kitchen Knife", "optional": false },
+      { "equipment": "Cutting Board", "optional": false }
+    ],
     "moreInfo": "Use turkey or lentils for lighter/veg version.",
     "image": "/tuscana.jpg"
   },
@@ -666,20 +1735,63 @@
     "difficultyDesc": "Technique-Based",
     "difficulty": 4,
     "ingredients": [
-      "12 oz Spaghetti",
-      "4 oz Pancetta or Guanciale",
-      "2 Eggs + 2 Yolks",
-      "3/4 c Pecorino Romano, grated",
-      "Black Pepper",
-      "Salt"
+      {
+        "ingredient": "Spaghetti",
+        "amount": 12,
+        "unit": "oz",
+        "optional": false
+      },
+      {
+        "ingredient": "Pancetta or Guanciale",
+        "amount": 4,
+        "unit": "oz",
+        "optional": false
+      },
+      {
+        "ingredient": "Eggs",
+        "amount": 2,
+        "unit": "pieces",
+        "optional": false
+      },
+      {
+        "ingredient": "Egg Yolks",
+        "amount": 2,
+        "unit": "pieces",
+        "optional": false
+      },
+      {
+        "ingredient": "Pecorino Romano, Grated",
+        "amount": 0.75,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Black Pepper",
+        "amount": 1,
+        "unit": "tsp",
+        "optional": false
+      },
+      { "ingredient": "Salt", "amount": 1, "unit": "tsp", "optional": false }
     ],
     "miceEnPlace": [
       "Beat eggs with cheese and pepper.",
       "Dice pancetta.",
       "Boil pasta in salted water."
     ],
-    "instructions": "1. Cook pancetta until crisp; keep fat.\n2. Cook spaghetti; reserve 1 c pasta water.\n3. Toss hot pasta with pancetta and fat; off heat add egg mixture.\n4. Stir vigorously, adding pasta water to create a silky sauce.\n5. Season and serve immediately.",
-    "tipsAndTricks": "Work off heat to avoid scrambling eggs.",
+    "instructions": [
+      "Cook pancetta until crisp; keep fat.",
+      "Cook spaghetti; reserve 1 c pasta water.",
+      "Toss hot pasta with pancetta and fat; off heat add egg mixture.",
+      "Stir vigorously, adding pasta water to create a silky sauce.",
+      "Season and serve immediately."
+    ],
+    "tipsAndTricks": ["Work off heat to avoid scrambling eggs."],
+    "equipment": [
+      { "equipment": "Large Saucepan", "optional": false },
+      { "equipment": "Large Skillet", "optional": false },
+      { "equipment": "Mixing Bowl", "optional": false },
+      { "equipment": "Tongs", "optional": true }
+    ],
     "moreInfo": "Use lots of pepper for authentic flavor.",
     "image": "/tuscana.jpg"
   },
@@ -698,23 +1810,70 @@
     "difficultyDesc": "Easy",
     "difficulty": 2,
     "ingredients": [
-      "1 1/2 lb Chicken Breast, sliced",
-      "1 Red Bell Pepper, sliced",
-      "1 Green Bell Pepper, sliced",
-      "1 Onion, sliced",
-      "2 tbsp Fajita Seasoning",
-      "2 tbsp Oil",
-      "8 Tortillas",
-      "Lime Wedges",
-      "Salt"
+      {
+        "ingredient": "Chicken Breast, Sliced",
+        "amount": 1.5,
+        "unit": "lb",
+        "optional": false
+      },
+      {
+        "ingredient": "Red Bell Pepper, Sliced",
+        "amount": 1,
+        "unit": "whole",
+        "optional": false
+      },
+      {
+        "ingredient": "Green Bell Pepper, Sliced",
+        "amount": 1,
+        "unit": "whole",
+        "optional": false
+      },
+      {
+        "ingredient": "Onion, Sliced",
+        "amount": 1,
+        "unit": "whole",
+        "optional": false
+      },
+      {
+        "ingredient": "Fajita Seasoning",
+        "amount": 2,
+        "unit": "tbsp",
+        "optional": false
+      },
+      { "ingredient": "Oil", "amount": 2, "unit": "tbsp", "optional": false },
+      {
+        "ingredient": "Tortillas",
+        "amount": 8,
+        "unit": "pieces",
+        "optional": false
+      },
+      {
+        "ingredient": "Lime Wedges",
+        "amount": 4,
+        "unit": "pieces",
+        "optional": true
+      },
+      { "ingredient": "Salt", "amount": 0.5, "unit": "tsp", "optional": false }
     ],
     "miceEnPlace": [
       "Slice chicken and vegetables.",
       "Toss chicken with seasoning and oil.",
       "Preheat skillet."
     ],
-    "instructions": "1. Sear chicken until cooked; remove.\n2. Cook peppers and onion until tender-crisp.\n3. Return chicken; toss together.\n4. Serve with tortillas and lime.",
-    "tipsAndTricks": "Cast iron gives the best char.",
+    "instructions": [
+      "Sear chicken until cooked; remove.",
+      "Cook peppers and onion until tender-crisp.",
+      "Return chicken; toss together.",
+      "Serve with tortillas and lime."
+    ],
+    "tipsAndTricks": ["Cast iron gives the best char."],
+    "equipment": [
+      { "equipment": "Large Skillet", "optional": false },
+      { "equipment": "Tongs", "optional": true },
+      { "equipment": "Kitchen Knife", "optional": false },
+      { "equipment": "Cutting Board", "optional": false },
+      { "equipment": "Stove Top", "optional": false }
+    ],
     "moreInfo": "Top with sour cream or guacamole.",
     "image": "/tuscana.jpg"
   },
@@ -733,222 +1892,73 @@
     "difficultyDesc": "Easy",
     "difficulty": 1,
     "ingredients": [
-      "12 oz Short Pasta",
-      "1 1/2 c Cherry Tomatoes, halved",
-      "8 oz Mozzarella Pearls",
-      "1/4 c Basil, torn",
-      "3 tbsp Olive Oil",
-      "1 tbsp Balsamic Vinegar",
-      "Salt",
-      "Pepper"
+      {
+        "ingredient": "Short Pasta",
+        "amount": 12,
+        "unit": "oz",
+        "optional": false
+      },
+      {
+        "ingredient": "Cherry Tomatoes, Halved",
+        "amount": 1.5,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Mozzarella Pearls",
+        "amount": 8,
+        "unit": "oz",
+        "optional": false
+      },
+      {
+        "ingredient": "Basil, Torn",
+        "amount": 0.25,
+        "unit": "c",
+        "optional": false
+      },
+      {
+        "ingredient": "Olive Oil",
+        "amount": 3,
+        "unit": "tbsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Balsamic Vinegar",
+        "amount": 1,
+        "unit": "tbsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Salt",
+        "amount": 0.75,
+        "unit": "tsp",
+        "optional": false
+      },
+      {
+        "ingredient": "Black Pepper",
+        "amount": 0.25,
+        "unit": "tsp",
+        "optional": false
+      }
     ],
     "miceEnPlace": [
       "Boil pasta and cool under cold water.",
       "Halve tomatoes.",
       "Tear basil leaves."
     ],
-    "instructions": "1. Toss pasta, tomatoes, mozzarella, and basil.\n2. Dress with olive oil and balsamic.\n3. Season to taste and chill.",
-    "tipsAndTricks": "Add diced salami for extra savoriness.",
+    "instructions": [
+      "Toss pasta, tomatoes, mozzarella, and basil.",
+      "Dress with olive oil and balsamic.",
+      "Season to taste and chill."
+    ],
+    "tipsAndTricks": ["Add diced salami for extra savoriness."],
+    "equipment": [
+      { "equipment": "Large Saucepan", "optional": false },
+      { "equipment": "Colander", "optional": false },
+      { "equipment": "Mixing Bowl", "optional": false },
+      { "equipment": "Kitchen Knife", "optional": false }
+    ],
     "moreInfo": "Great make-ahead picnic dish.",
     "image": "/greek.jpg"
-  },
-  {
-    "title": "Garlic Butter Green Beans",
-    "description": "Quick sautéed green beans glossed with garlic butter—simple side dish.",
-    "totalTime": "15 minutes",
-    "prepTime": "5 min",
-    "cookTime": "8 min",
-    "cleanupTime": "2 min",
-    "servings": 4,
-    "tasteDesc": "Crisp & Garlicky",
-    "taste": 4,
-    "costDesc": "Low Cost",
-    "cost": 1,
-    "difficultyDesc": "Easy",
-    "difficulty": 1,
-    "ingredients": [
-      "1 lb Green Beans, trimmed",
-      "2 tbsp Butter",
-      "2 cloves Garlic, minced",
-      "Salt",
-      "Pepper",
-      "Lemon Wedges (optional)"
-    ],
-    "miceEnPlace": ["Trim green beans.", "Mince garlic."],
-    "instructions": "1. Blanch beans 2 minutes; drain.\n2. Sauté butter and garlic; add beans.\n3. Toss 2–3 minutes; season and serve.",
-    "tipsAndTricks": "Finish with lemon for brightness.",
-    "moreInfo": "Toast sliced almonds for crunch.",
-    "image": "/margherita.jpg"
-  },
-  {
-    "title": "Sheet Pan Sausage & Veggies",
-    "description": "Roasted sausage with mixed vegetables for an easy one-pan meal.",
-    "totalTime": "40 minutes",
-    "prepTime": "10 min",
-    "cookTime": "28 min",
-    "cleanupTime": "2 min",
-    "servings": 5,
-    "tasteDesc": "Savory & Roasted",
-    "taste": 4,
-    "costDesc": "Low Cost",
-    "cost": 1,
-    "difficultyDesc": "Hands-Off",
-    "difficulty": 1,
-    "ingredients": [
-      "1 lb Smoked Sausage, sliced",
-      "1 Red Potato, cubed",
-      "1 Sweet Potato, cubed",
-      "1 Zucchini, chopped",
-      "1 Red Onion, wedged",
-      "2 tbsp Olive Oil",
-      "1 tsp Italian Seasoning",
-      "Salt",
-      "Pepper"
-    ],
-    "miceEnPlace": [
-      "Preheat oven to 425°F (220°C).",
-      "Chop vegetables.",
-      "Slice sausage."
-    ],
-    "instructions": "1. Toss sausage and veggies with oil and seasoning.\n2. Spread on sheet pan.\n3. Roast 25–30 minutes, tossing once.\n4. Serve hot.",
-    "tipsAndTricks": "Cut veggies uniform for even roasting.",
-    "moreInfo": "Great with a drizzle of balsamic glaze.",
-    "image": "/tuscana.jpg"
-  },
-  {
-    "title": "Creamy Tomato Basil Soup",
-    "description": "Smooth tomato soup enriched with cream and fresh basil.",
-    "totalTime": "35 minutes",
-    "prepTime": "10 min",
-    "cookTime": "20 min",
-    "cleanupTime": "5 min",
-    "servings": 4,
-    "tasteDesc": "Silky & Comforting",
-    "taste": 4,
-    "costDesc": "Low Cost",
-    "cost": 1,
-    "difficultyDesc": "Easy",
-    "difficulty": 2,
-    "ingredients": [
-      "2 tbsp Butter",
-      "1 small Onion, chopped",
-      "2 cloves Garlic, minced",
-      "1 (28 oz) can Crushed Tomatoes",
-      "2 c Chicken or Veg Broth",
-      "1/2 c Heavy Cream",
-      "1/4 c Fresh Basil, chopped",
-      "Salt",
-      "Pepper"
-    ],
-    "miceEnPlace": ["Chop onion and basil.", "Mince garlic."],
-    "instructions": "1. Sauté onion in butter; add garlic.\n2. Add tomatoes and broth; simmer 15 minutes.\n3. Blend until smooth; stir in cream and basil.\n4. Season and serve.",
-    "tipsAndTricks": "Roasted tomatoes deepen flavor.",
-    "moreInfo": "Serve with grilled cheese.",
-    "image": "/greek.jpg"
-  },
-  {
-    "title": "Garlic Herb Roasted Chicken",
-    "description": "Whole chicken roasted with garlic, lemon, and herbs—crisp skin, juicy meat.",
-    "totalTime": "80 minutes",
-    "prepTime": "15 min",
-    "cookTime": "60 min",
-    "cleanupTime": "5 min",
-    "servings": 6,
-    "tasteDesc": "Juicy & Aromatic",
-    "taste": 5,
-    "costDesc": "Moderate",
-    "cost": 2,
-    "difficultyDesc": "Moderate",
-    "difficulty": 3,
-    "ingredients": [
-      "1 Whole Chicken (4–5 lb)",
-      "2 tbsp Butter, softened",
-      "4 cloves Garlic, minced",
-      "1 Lemon, halved",
-      "1 tsp Dried Thyme",
-      "1 tsp Dried Rosemary",
-      "Salt",
-      "Pepper"
-    ],
-    "miceEnPlace": [
-      "Preheat oven to 425°F (220°C).",
-      "Mix butter with garlic and herbs.",
-      "Pat chicken dry."
-    ],
-    "instructions": "1. Rub chicken with herb butter; season well.\n2. Place lemon in cavity.\n3. Roast 55–65 minutes until 165°F.\n4. Rest 10 minutes before carving.",
-    "tipsAndTricks": "Dry skin = crispier roast.\nRoast over veggies to make a side.",
-    "moreInfo": "Pan drippings make great gravy.",
-    "image": "/tuscana.jpg"
-  },
-  {
-    "title": "Cajun Shrimp & Grits",
-    "description": "Creamy grits topped with spicy shrimp and a buttery pan sauce.",
-    "totalTime": "35 minutes",
-    "prepTime": "10 min",
-    "cookTime": "22 min",
-    "cleanupTime": "3 min",
-    "servings": 4,
-    "tasteDesc": "Spicy & Comforting",
-    "taste": 5,
-    "costDesc": "Moderate",
-    "cost": 2,
-    "difficultyDesc": "Easy",
-    "difficulty": 2,
-    "ingredients": [
-      "1 lb Shrimp, peeled",
-      "1 tbsp Cajun Seasoning",
-      "2 tbsp Butter",
-      "2 cloves Garlic, minced",
-      "1 Lemon (juice)",
-      "1 c Quick Grits",
-      "4 c Water or Broth",
-      "1/2 c Cheddar, shredded",
-      "Salt",
-      "Pepper"
-    ],
-    "miceEnPlace": [
-      "Season shrimp with Cajun spices.",
-      "Mince garlic.",
-      "Pre-measure grits and liquid."
-    ],
-    "instructions": "1. Cook grits in water/broth; stir in cheese.\n2. Sauté shrimp in butter 1–2 minutes/side.\n3. Add garlic and lemon; toss.\n4. Spoon shrimp over grits and serve.",
-    "tipsAndTricks": "Finish grits with a knob of butter for gloss.",
-    "moreInfo": "Top with scallions or crispy bacon bits.",
-    "image": "/tuscana.jpg"
-  },
-  {
-    "title": "Classic Chocolate Chip Cookies",
-    "description": "Chewy edges, soft centers, and plenty of chocolate chips.",
-    "totalTime": "35 minutes",
-    "prepTime": "15 min",
-    "cookTime": "12 min",
-    "cleanupTime": "8 min",
-    "servings": 24,
-    "tasteDesc": "Sweet & Chewy",
-    "taste": 5,
-    "costDesc": "Low Cost",
-    "cost": 1,
-    "difficultyDesc": "Easy",
-    "difficulty": 2,
-    "ingredients": [
-      "2 1/4 c All-Purpose Flour",
-      "1/2 tsp Baking Soda",
-      "1/2 tsp Salt",
-      "3/4 c Butter, melted",
-      "1 c Brown Sugar",
-      "1/2 c Granulated Sugar",
-      "1 Egg + 1 Yolk",
-      "2 tsp Vanilla Extract",
-      "1 1/2 c Chocolate Chips"
-    ],
-    "miceEnPlace": [
-      "Whisk dry ingredients together.",
-      "Melt and cool butter slightly.",
-      "Preheat oven to 350°F (175°C)."
-    ],
-    "instructions": "1. Mix sugars with butter; add egg and vanilla.\n2. Fold in dry ingredients, then chips.\n3. Scoop onto sheet; bake 10–12 minutes.\n4. Cool on rack.",
-    "tipsAndTricks": "Chill dough 30 minutes for thicker cookies.",
-    "moreInfo": "Sprinkle flaky salt on top for contrast.",
-    "image": "/tuscana.jpg"
   }
 ]

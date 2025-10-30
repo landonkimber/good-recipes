@@ -92,12 +92,22 @@ const RecipePage = () => {
     return <div className="text-center text-red-600">Recipe not found.</div>;
   }
 
-  const [checkedItems, setCheckedItems] = useState(
+  const [checkedIngredientItems, setCheckedIngredientItems] = useState(
+    Array(recipe.ingredients.length).fill(false)
+  );
+  const [checkedEquipmentItems, setCheckedEquipmentItems] = useState(
     Array(recipe.ingredients.length).fill(false)
   );
 
-  const toggleCheck = (index) => {
-    setCheckedItems((prev) => prev.map((val, i) => (i === index ? !val : val)));
+  const toggleIngredientCheck = (index) => {
+    setCheckedIngredientItems((prev) =>
+      prev.map((val, i) => (i === index ? !val : val))
+    );
+  };
+  const toggleEquipmentCheck = (index) => {
+    setCheckedEquipmentItems((prev) =>
+      prev.map((val, i) => (i === index ? !val : val))
+    );
   };
 
   console.log(`Recipe : ${recipe}`);
@@ -264,23 +274,24 @@ const RecipePage = () => {
                 </h3>
                 <div className="h-1 w-full bg-sky-800 mx-1 my-1"></div>
                 <ul>
-                  {recipe.ingredients.map((ingredient, index) => (
+                  {recipe.ingredients.map((element, index) => (
                     <li
                       key={index}
                       className="flex items-center cursor-pointer"
-                      onClick={() => toggleCheck(index)}
+                      onClick={() => toggleIngredientCheck(index)}
                     >
-                      {checkedItems[index] ? (
+                      {checkedIngredientItems[index] ? (
                         <FaCheckCircle className="text-emerald-500 text-lg md:text-xl" />
                       ) : (
                         <FaRegCircle className="text-sky-800 text-lg md:text-xl" />
                       )}
                       <span
-                        className={`transition-colors ${
-                          checkedItems[index] ? "line-through" : ""
+                        className={`transition-colors mx-2 ${
+                          checkedIngredientItems[index] ? "line-through" : ""
                         }`}
                       >
-                        {ingredient}
+                        {element.amount}&nbsp;{element.unit}&nbsp;
+                        {element.ingredient}
                       </span>
                     </li>
                   ))}
@@ -296,23 +307,25 @@ const RecipePage = () => {
                 <div className="h-1 w-full bg-slate-300 mx-1 my-1"></div>
                 <ul>
                   {/* THIS WILL NEED TO BE UPDATED TO USE THE EQUIPMENT ARRAY ONCE DATA IS UPDATED */}
-                  {recipe.ingredients.map((ingredient, index) => (
+                  {recipe.equipment.map((element, index) => (
                     <li
                       key={index}
                       className="flex items-center cursor-pointer"
-                      onClick={() => toggleCheck(index)}
+                      onClick={() => toggleEquipmentCheck(index)}
                     >
-                      {checkedItems[index] ? (
+                      {checkedEquipmentItems[index] ? (
                         <FaCheckCircle className="text-emerald-500 text-lg md:text-xl" />
                       ) : (
                         <FaRegCircle className="text-slate-300 text-lg md:text-xl" />
                       )}
                       <span
-                        className={`transition-colors ${
-                          checkedItems[index] ? "line-through" : ""
+                        className={`transition-colors mx-2 ${
+                          checkedEquipmentItems[index] ? "line-through" : ""
                         }`}
                       >
-                        {ingredient}
+                        {element.optional ? "(Optional) " : ""}
+                        {element.equipment}
+                        {element.alt ? ` Or ${element.alt}` : ""}
                       </span>
                     </li>
                   ))}
@@ -339,11 +352,23 @@ const RecipePage = () => {
                   <h3 className="text-lg text-center md:text-xl lg:text-2xl text-sky-800 mb-2">
                     Tips And Tricks!
                   </h3>
-                  <p className="text-md lg:text-lg text-sky-800">
-                    {recipe.tipsAndTricks}
-                  </p>
+                  <ul className="text-md lg:text-lg text-sky-800">
+                    {recipe.tipsAndTricks.map((element, index) => (
+                      <li>{element}</li>
+                    ))}
+                  </ul>
                 </div>
               </div>
+              <h2 className="text-xl text-left md:text-2xl lg:text-3xl text-sky-800 mb-2">
+                Instructions
+              </h2>
+              <ol className="text-md lg:text-lg text-sky-800">
+                {recipe.instructions.map((element, index) => (
+                  <li>
+                    {index + 1}. {element}
+                  </li>
+                ))}
+              </ol>
             </div>
           </div>
         </div>
