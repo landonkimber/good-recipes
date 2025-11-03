@@ -110,6 +110,46 @@ const RecipePage = () => {
     );
   };
 
+  // *** Attempt at getting keywords for ingredients and equipment to automatically highlight in instructions.
+  // //  FUNCTION FOR HIGHLIGHTING INGREDIENTS AND EQUIPMENT
+  // const normalize = (s) => s.toLowerCase().replace(/[.,!?;:()"'`]/g, "");
+
+  // const ingredientList = recipe.ingredients.map((i) => normalize(i.ingredient));
+
+  // const equipmentList = recipe.equipment.map((e) => normalize(e.equipment));
+
+  // console.log(ingredientList);
+  // console.log(equipmentList);
+
+  // const highlightMatches = (lines, ingredientList, equipmentList) => {
+  //   // Build a regex that matches full words or phrases (escape regex chars)
+
+  //   const pattern = new RegExp(
+  //     `\\b(${ingredientList
+  //       .map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
+  //       .join("|")})\\b`,
+  //     "gi"
+  //   );
+  //   const highlightedInstructions = lines.map((line) =>
+  //     line.replace(pattern, (match) => `!${match}!`)
+  //   );
+
+  //   const equipmentPattern = new RegExp(
+  //     `\\b(${equipmentList
+  //       .map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
+  //       .join("|")})\\b`,
+  //     "gi"
+  //   );
+  //   return highlightedInstructions.map((line) =>
+  //     line.replace(equipmentPattern, (match) => `?${match}?`)
+  //   );
+  // };
+
+  // const highlightedInstructions = highlightMatches(
+  //   recipe.instructions,
+  //   ingredientList,
+  //   equipmentList
+  // );
   console.log(`Recipe : ${recipe}`);
 
   return (
@@ -347,24 +387,26 @@ const RecipePage = () => {
                 </ol>
                 <div
                   id="tips"
-                  className="w-1/2 bg-slate-300 p-2 lg:p-4 font-redhat"
+                  className="w-1/2 bg-amber-300 p-2 lg:p-4 rounded-md font-redhat"
                 >
-                  <h3 className="text-lg text-center md:text-xl lg:text-2xl text-sky-800 mb-2">
+                  <h3 className="text-lg text-center md:text-xl lg:text-2xl text-sky-800 font-bold mb-2">
                     Tips And Tricks!
                   </h3>
-                  <ul className="text-md lg:text-lg text-sky-800">
+                  <ul className="text-md lg:text-lg text-sky-800 font-bold">
                     {recipe.tipsAndTricks.map((element, index) => (
                       <li>{element}</li>
                     ))}
                   </ul>
                 </div>
               </div>
-              <h2 className="text-xl text-left md:text-2xl lg:text-3xl text-sky-800 mb-2">
-                Instructions
+              <h2 className="text-2xl lg:text-4xl m-4 font-bold font-redhat text-slate-300">
+                Instuctions
               </h2>
+              <div className="h-1 w-full bg-slate-300 my-2"></div>
               <ol className="text-md lg:text-lg text-sky-800">
+                {/* {console.log(highlightedInstructions)} */}
                 {recipe.instructions.map((element, index) => (
-                  <li>
+                  <li className="text-slate-300 text-lg md:text-xl lg:text-2xl m-1">
                     {index + 1}. {element}
                   </li>
                 ))}
