@@ -9,6 +9,11 @@ import NavBar from "./components/NavBar";
 // import RecipePage from "./pages/RecipePage";
 import RecipePage from "./pages/RECIPEPAGEMOBILE";
 
+//Contact Pages
+import Contact from "./pages/Contact";
+import SubmitARecipe from "./pages/SubmitARecipe";
+import ContactForm from "./pages/ContactForm";
+
 function App() {
   return (
     <>
@@ -18,6 +23,10 @@ function App() {
         <MainBG />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/submit-a-recipe" element={<SubmitARecipe />} />
+          <Route path="contact-form" element={<ContactForm />} />
+
           <Route path="/:slug" element={<RecipePage />} />
         </Routes>
       </main>

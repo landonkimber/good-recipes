@@ -1,0 +1,666 @@
+// SubmitARecipe.jsx
+import React, { useState } from "react";
+
+const randomBool = Math.random() < 0.5;
+// Optional: sample data loader so you can test quickly
+const sampleRecipe = {
+  title: "BBQ Pulled Pork Sandwiches",
+  description:
+    "Slow-cooked pork shoulder shredded and tossed with tangy BBQ sauce.",
+  totalTime: "8 hours",
+  prepTime: "10 min",
+  cookTime: "7 hr 45 min",
+  cleanupTime: "5 min",
+  servings: 8,
+  tasteDesc: "Smoky & Sweet",
+  taste: 5,
+  costDesc: "Low Cost",
+  cost: 1,
+  difficultyDesc: "Hands-Off",
+  difficulty: 1,
+  ingredients: [
+    { ingredient: "Pork Shoulder", amount: 3, unit: "lb", optional: false },
+    { ingredient: "Onion, Sliced", amount: 1, unit: "whole", optional: false },
+    { ingredient: "BBQ Sauce", amount: 1, unit: "c", optional: false },
+    { ingredient: "Chicken Broth", amount: 0.5, unit: "c", optional: false },
+    { ingredient: "Brown Sugar", amount: 1, unit: "tbsp", optional: false },
+    { ingredient: "Paprika", amount: 1, unit: "tsp", optional: false },
+    { ingredient: "Garlic Powder", amount: 1, unit: "tsp", optional: false },
+    { ingredient: "Salt", amount: 1, unit: "tsp", optional: false },
+    { ingredient: "Black Pepper", amount: 0.5, unit: "tsp", optional: false },
+    { ingredient: "Buns", amount: 8, unit: "pieces", optional: false },
+  ],
+  miceEnPlace: [
+    "Slice onion.",
+    "Mix dry spices.",
+    "Trim excess fat from pork shoulder.",
+  ],
+  instructions: [
+    "Place onions in slow cooker; add pork and seasonings.",
+    "Pour broth; cook on LOW 7–8 hours.",
+    "Shred pork; toss with BBQ sauce.",
+    "Serve on buns.",
+  ],
+  tipsAndTricks: ["Finish under broiler for crispy edges."],
+  equipment: [
+    { equipment: "Slow Cooker", optional: false },
+    { equipment: "Forks", optional: false },
+    { equipment: "Kitchen Knife", optional: false },
+    { equipment: "Cutting Board", optional: false },
+    { equipment: "Measuring Spoons", optional: false },
+  ],
+  moreInfo: "Top with coleslaw for crunch.",
+  image: "/margherita.jpg",
+};
+
+const SubmitARecipe = () => {
+  const isMobile = window.innerWidth < 768 ? true : false;
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [errors, setErrors] = useState({ phone: "", email: "" });
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [totalTime, setTotalTime] = useState("");
+  const [prepTime, setPrepTime] = useState("");
+  const [cookTime, setCookTime] = useState("");
+  const [cleanupTime, setCleanupTime] = useState("");
+  const [servings, setServings] = useState(0);
+  const [tasteDesc, setTasteDesc] = useState("");
+  const [taste, setTaste] = useState(0);
+  const [costDesc, setCostDesc] = useState("");
+  const [cost, setCost] = useState(0);
+  const [difficultyDesc, setDifficultyDesc] = useState("");
+  const [difficulty, setDifficulty] = useState(0);
+  const [ingredients, setIngredients] = useState([
+    { ingredient: "", amount: 0, unit: "", optional: false },
+  ]);
+  const [miceEnPlace, setMiceEnPlace] = useState([""]);
+  const [instructions, setInstructions] = useState([""]);
+  const [tipsAndTricks, setTipsAndTricks] = useState([""]);
+  const [equipment, setEquipment] = useState([
+    { equipment: "", optional: false },
+  ]);
+  const [moreInfo, setMoreInfo] = useState("");
+  const [image, setImage] = useState("");
+
+  function loadSample() {
+    setFirstName(randomBool ? "Jane" : "John");
+    setLastName("Doh'");
+    setEmail(`${randomBool ? "jane" : "john"}doh@example.com`);
+    setPhone("XXXXXXXXXX");
+    setTitle(sampleRecipe.title);
+    setDescription(sampleRecipe.description);
+    setTotalTime(sampleRecipe.totalTime);
+    setPrepTime(sampleRecipe.prepTime);
+    setCookTime(sampleRecipe.cookTime);
+    setCleanupTime(sampleRecipe.cleanupTime);
+    setServings(sampleRecipe.servings);
+    setTasteDesc(sampleRecipe.tasteDesc);
+    setTaste(sampleRecipe.taste);
+    setCostDesc(sampleRecipe.costDesc);
+    setCost(sampleRecipe.cost);
+    setDifficultyDesc(sampleRecipe.difficultyDesc);
+    setDifficulty(sampleRecipe.difficulty);
+    setIngredients(sampleRecipe.ingredients);
+    setMiceEnPlace(sampleRecipe.miceEnPlace);
+    setInstructions(sampleRecipe.instructions);
+    setTipsAndTricks(sampleRecipe.tipsAndTricks);
+    setEquipment(sampleRecipe.equipment);
+    setMoreInfo(sampleRecipe.moreInfo);
+    setImage(sampleRecipe.image);
+  }
+
+  function resetForm() {
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setPhone("");
+    setTitle("");
+    setDescription("");
+    setTotalTime("");
+    setPrepTime("");
+    setCookTime("");
+    setCleanupTime("");
+    setServings(0);
+    setTasteDesc("");
+    setTaste(0);
+    setCostDesc("");
+    setCost(0);
+    setDifficultyDesc("");
+    setDifficulty(0);
+    setIngredients([{ ingredient: "", amount: 0, unit: "", optional: false }]);
+    setMiceEnPlace([""]);
+    setInstructions([""]);
+    setTipsAndTricks([""]);
+    setEquipment([{ equipment: "", optional: false }]);
+    setMoreInfo("");
+    setImage("");
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const payload = {
+      firstName,
+      lastName,
+      email,
+      phone,
+      title,
+      description,
+      totalTime,
+      prepTime,
+      cookTime,
+      cleanupTime,
+      servings: Number(servings),
+      tasteDesc,
+      taste: Number(taste),
+      costDesc,
+      cost: Number(cost),
+      difficultyDesc,
+      difficulty: Number(difficulty),
+      ingredients: ingredients.map((it) => ({
+        ingredient: it.ingredient,
+        amount: Number(it.amount),
+        unit: it.unit,
+        optional: Boolean(it.optional),
+      })),
+      miceEnPlace: miceEnPlace.filter((s) => s.trim() !== ""),
+      instructions: instructions.filter((s) => s.trim() !== ""),
+      tipsAndTricks: tipsAndTricks.filter((s) => s.trim() !== ""),
+      equipment: equipment
+        .filter((e) => e.equipment.trim() !== "")
+        .map((e) => ({
+          equipment: e.equipment,
+          optional: Boolean(e.optional),
+        })),
+      moreInfo,
+      image,
+    };
+
+    // For now, just log. Replace with POST as needed.
+    console.log("Recipe submitted:", payload);
+    alert("Recipe JSON logged to console.");
+  }
+
+  // --- Helpers for list updates ---
+  const updateArrayItem = (arrSetter) => (index, newValue) =>
+    arrSetter((prev) => prev.map((v, i) => (i === index ? newValue : v)));
+
+  const addArrayItem = (arrSetter, emptyValue) => () =>
+    arrSetter((prev) => [...prev, emptyValue]);
+
+  const removeArrayItem = (arrSetter) => (index) =>
+    arrSetter((prev) => prev.filter((_, i) => i !== index));
+
+  // Formats for phone
+  function formatPhoneNumber(value) {
+    // Remove all non-digits
+    const digits = value.replace(/\D/g, "").slice(0, 10);
+    const parts = [];
+
+    if (digits.length > 0) parts.push("(" + digits.slice(0, 3));
+    if (digits.length >= 4) parts.push(")-" + digits.slice(3, 6));
+    if (digits.length >= 7) parts.push("-" + digits.slice(6, 10));
+
+    return parts.join("");
+  }
+
+  function handlePhoneChange(e) {
+    const formatted = formatPhoneNumber(e.target.value);
+    setPhone(formatted);
+
+    // Validation: must be 10 digits
+    const isValid = /^\(\d{3}\)-\d{3}-\d{4}$/.test(formatted);
+    setErrors((prev) => ({
+      ...prev,
+      phone: isValid || formatted === "" ? "" : "Phone must be 10 digits",
+    }));
+  }
+
+  function handleEmailChange(e) {
+    const value = e.target.value;
+    setEmail(value);
+
+    // Simple email regex
+    const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    setErrors((prev) => ({
+      ...prev,
+      email: isValid || value === "" ? "" : "Invalid email address",
+    }));
+  }
+
+  // Render
+  return (
+    <div
+      className={`mx-auto relative h-auto w-full max-w-7xl ${
+        isMobile ? "pt-[11.6vh]" : "pt-[14.5vh]"
+      } bg-slate-800/60 backdrop-blur-[5px] rounded-sm`}
+    >
+      <div
+        id="submit-recipe-header"
+        className="w-full p-4 lg:p-8 text-lg text-slate-50 font-bold md:text-xl lg:text-2xl flex flex-col items-center"
+      >
+        <h1 className="text-center m-2 text-2xl md:text-3xl lg:text-4xl font-redhat">
+          Submit A Recipe For Review
+        </h1>
+        <div className="h-1 w-[80%] my-4 mx-auto bg-sky-500"></div>
+        <div>
+          <button
+            type="button"
+            onClick={loadSample}
+            className="text-center m-2  mx-4 bg-amber-400 p-2 rounded-md"
+          >
+            Load Example
+          </button>
+          <button
+            type="button"
+            onClick={resetForm}
+            style={{ marginLeft: 8 }}
+            className="text-center m-2 mx-4  bg-red-400 p-2 rounded-md"
+          >
+            Reset
+          </button>
+          <button
+            type="button"
+            onClick={handleSubmit}
+            style={{ marginLeft: 8 }}
+            className="text-center m-2 mx-4 bg-emerald-400  p-2 rounded-md"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+
+      <form onSubmit={handleSubmit}>
+        <fieldset id="about-you">
+          <div className="w-[90%] m-4 text-lg md:text-xl lg:text-2xl text-sky-800 bg-slate-300 p-2 md:p-4 rounded-md">
+            <legend className="font-redhat font-bold text-xl md:text-2xl lg:text-3xl">
+              About You
+            </legend>
+
+            <div className="h-1 w-[80%] my-4 mx-auto bg-amber-400 rounded-md"></div>
+            <div className="grid grid-cols-2">
+              <label className="w-full h-auto p-1 md:p-2 mx-auto flex justify-end text-nowrap items-center font-redhat font-bold">
+                First Name
+                <input
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  className={`w-full mx-2 rounded-md p-1 md-p-2 bg-slate-50 border-2 border-transparent font-normal focus:border-sky-300 ${
+                    !firstName ? "border-transparent" : "border-emerald-400"
+                  }`}
+                  placeholder={randomBool ? "Jane" : "John"}
+                />
+              </label>
+              <label className="w-full h-auto p-1 md:p-2 mx-auto flex justify-end text-nowrap items-center font-redhat font-bold">
+                Last Name
+                <input
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                  className={`w-full mx-2 rounded-md p-1 md-p-2 bg-slate-50 border-2 border-transparent font-normal focus:border-sky-300 ${
+                    !lastName ? "border-transparent" : "border-emerald-400"
+                  }`}
+                  placeholder="Doe"
+                />
+              </label>
+              <label className="w-full h-auto p-1 md:p-2 mx-auto flex justify-end text-nowrap items-center font-redhat font-bold">
+                Email
+                <input
+                  value={email}
+                  onChange={handleEmailChange}
+                  className={`w-full mx-2 rounded-md p-1 md-p-2 bg-slate-50 border-2 border-transparent font-normal focus:border-sky-300 ${
+                    errors.email
+                      ? "border-red-500"
+                      : email
+                      ? "border-emerald-400"
+                      : "border-transparent"
+                  }`}
+                  placeholder={`${randomBool ? "jane" : "john"}doh@example.com`}
+                />
+              </label>
+
+              <label className="w-full h-auto p-1 md:p-2 mx-auto flex justify-end text-nowrap items-center font-redhat font-bold">
+                Phone
+                <input
+                  value={phone}
+                  onChange={handlePhoneChange}
+                  className={`w-full mx-2 rounded-md p-1 md-p-2 bg-slate-50 border-2 border-transparent font-normal focus:border-sky-300  ${
+                    errors.phone
+                      ? "border-red-500"
+                      : phone
+                      ? "border-emerald-400"
+                      : "border-transparent"
+                  }`}
+                  placeholder={`(123)-555-1234`}
+                />
+              </label>
+              {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
+              {errors.phone && <p style={{ color: "red" }}>{errors.phone}</p>}
+            </div>
+          </div>
+        </fieldset>
+        <fieldset id="recipe-stats">
+          <legend>Your Recipe</legend>
+          <label>
+            Title
+            <input value={title} onChange={(e) => setTitle(e.target.value)} />
+          </label>
+
+          <label>
+            Description
+            <textarea
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </label>
+
+          <label>
+            Total Time
+            <input
+              value={totalTime}
+              onChange={(e) => setTotalTime(e.target.value)}
+            />
+          </label>
+
+          <label>
+            Prep Time
+            <input
+              value={prepTime}
+              onChange={(e) => setPrepTime(e.target.value)}
+            />
+          </label>
+
+          <label>
+            Cook Time
+            <input
+              value={cookTime}
+              onChange={(e) => setCookTime(e.target.value)}
+            />
+          </label>
+
+          <label>
+            Cleanup Time
+            <input
+              value={cleanupTime}
+              onChange={(e) => setCleanupTime(e.target.value)}
+            />
+          </label>
+
+          <label>
+            Servings
+            <input
+              type="number"
+              value={servings}
+              onChange={(e) => setServings(e.target.value)}
+            />
+          </label>
+
+          <label>
+            Taste Description
+            <input
+              value={tasteDesc}
+              onChange={(e) => setTasteDesc(e.target.value)}
+            />
+          </label>
+
+          <label>
+            Taste (number)
+            <input
+              type="number"
+              value={taste}
+              onChange={(e) => setTaste(e.target.value)}
+            />
+          </label>
+
+          <label>
+            Cost Description
+            <input
+              value={costDesc}
+              onChange={(e) => setCostDesc(e.target.value)}
+            />
+          </label>
+
+          <label>
+            Cost (number)
+            <input
+              type="number"
+              value={cost}
+              onChange={(e) => setCost(e.target.value)}
+            />
+          </label>
+
+          <label>
+            Difficulty Description
+            <input
+              value={difficultyDesc}
+              onChange={(e) => setDifficultyDesc(e.target.value)}
+            />
+          </label>
+
+          <label>
+            Difficulty (number)
+            <input
+              type="number"
+              value={difficulty}
+              onChange={(e) => setDifficulty(e.target.value)}
+            />
+          </label>
+        </fieldset>
+
+        <fieldset id="ingredients-and-equipment">
+          {/* INGREDIENTS */}
+          <legend>Ingredients</legend>
+          {ingredients.map((it, idx) => (
+            <div key={idx}>
+              <label>
+                Ingredient
+                <input
+                  value={it.ingredient}
+                  onChange={(e) =>
+                    updateArrayItem(setIngredients)(idx, {
+                      ...it,
+                      ingredient: e.target.value,
+                    })
+                  }
+                />
+              </label>
+
+              <label>
+                Amount
+                <input
+                  type="number"
+                  step="any"
+                  value={it.amount}
+                  onChange={(e) =>
+                    updateArrayItem(setIngredients)(idx, {
+                      ...it,
+                      amount: e.target.value,
+                    })
+                  }
+                />
+              </label>
+
+              <label>
+                Unit
+                <input
+                  value={it.unit}
+                  onChange={(e) =>
+                    updateArrayItem(setIngredients)(idx, {
+                      ...it,
+                      unit: e.target.value,
+                    })
+                  }
+                />
+              </label>
+
+              <label>
+                Optional
+                <input
+                  type="checkbox"
+                  checked={it.optional}
+                  onChange={(e) =>
+                    updateArrayItem(setIngredients)(idx, {
+                      ...it,
+                      optional: e.target.checked,
+                    })
+                  }
+                />
+              </label>
+
+              <button
+                type="button"
+                onClick={() => removeArrayItem(setIngredients)(idx)}
+              >
+                Remove
+              </button>
+            </div>
+          ))}
+          <button
+            type="button"
+            onClick={addArrayItem(setIngredients, {
+              ingredient: "",
+              amount: 0,
+              unit: "",
+              optional: false,
+            })}
+          >
+            Add Ingredient
+          </button>
+          {/* EQUIPMENT */}
+          <legend>Equipment</legend>
+          {equipment.map((eq, idx) => (
+            <div key={idx}>
+              <label>
+                Equipment
+                <input
+                  value={eq.equipment}
+                  onChange={(e) =>
+                    updateArrayItem(setEquipment)(idx, {
+                      ...eq,
+                      equipment: e.target.value,
+                    })
+                  }
+                />
+              </label>
+              <label>
+                Optional
+                <input
+                  type="checkbox"
+                  checked={eq.optional}
+                  onChange={(e) =>
+                    updateArrayItem(setEquipment)(idx, {
+                      ...eq,
+                      optional: e.target.checked,
+                    })
+                  }
+                />
+              </label>
+              <button
+                type="button"
+                onClick={() => removeArrayItem(setEquipment)(idx)}
+              >
+                Remove
+              </button>
+            </div>
+          ))}
+          <button
+            type="button"
+            onClick={addArrayItem(setEquipment, {
+              equipment: "",
+              optional: false,
+            })}
+          >
+            Add Equipment
+          </button>
+        </fieldset>
+
+        <fieldset id="instructions">
+          <legend>Mise En Place (key: miceEnPlace)</legend>
+          {miceEnPlace.map((step, idx) => (
+            <div key={idx}>
+              <input
+                value={step}
+                onChange={(e) =>
+                  updateArrayItem(setMiceEnPlace)(idx, e.target.value)
+                }
+              />
+              <button
+                type="button"
+                onClick={() => removeArrayItem(setMiceEnPlace)(idx)}
+              >
+                Remove
+              </button>
+            </div>
+          ))}
+          <button type="button" onClick={addArrayItem(setMiceEnPlace, "")}>
+            Add Prep Step
+          </button>
+
+          <legend>Instructions</legend>
+          {instructions.map((step, idx) => (
+            <div key={idx}>
+              <input
+                value={step}
+                onChange={(e) =>
+                  updateArrayItem(setInstructions)(idx, e.target.value)
+                }
+              />
+              <button
+                type="button"
+                onClick={() => removeArrayItem(setInstructions)(idx)}
+              >
+                Remove
+              </button>
+            </div>
+          ))}
+          <button type="button" onClick={addArrayItem(setInstructions, "")}>
+            Add Instruction
+          </button>
+        </fieldset>
+
+        <fieldset id="extras">
+          <legend>Tips & Tricks</legend>
+          {tipsAndTricks.map((tip, idx) => (
+            <div key={idx}>
+              <input
+                value={tip}
+                onChange={(e) =>
+                  updateArrayItem(setTipsAndTricks)(idx, e.target.value)
+                }
+              />
+              <button
+                type="button"
+                onClick={() => removeArrayItem(setTipsAndTricks)(idx)}
+              >
+                Remove
+              </button>
+            </div>
+          ))}
+          <button type="button" onClick={addArrayItem(setTipsAndTricks, "")}>
+            Add Tip
+          </button>
+          <legend>Extras</legend>
+          <label>
+            More Info
+            <textarea
+              value={moreInfo}
+              onChange={(e) => setMoreInfo(e.target.value)}
+            />
+          </label>
+
+          <label>
+            Image (path or URL)
+            <input value={image} onChange={(e) => setImage(e.target.value)} />
+          </label>
+        </fieldset>
+
+        <div>
+          <button type="submit">Submit Recipe</button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default SubmitARecipe;
