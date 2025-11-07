@@ -149,10 +149,10 @@ const SubmitARecipe = () => {
       phone,
       title,
       description,
-      totalTime,
-      prepTime,
-      cookTime,
-      cleanupTime,
+      totalTime: Number(totalMin),
+      prepTime: Number(prepTime),
+      cookTime: Number(cookTime),
+      cleanupTime: Number(cleanupTime),
       servings: Number(servings),
       tasteDesc,
       taste: Number(taste),
@@ -231,6 +231,73 @@ const SubmitARecipe = () => {
     }));
   }
 
+  const formatDuration = (h, m) => {
+    const total = h * 60 + m;
+    return total; // returns a number
+  };
+
+  const parseDuration = (value = 0) => {
+    const total = Number(value) || 0;
+    const hours = Math.floor(total / 60);
+    const minutes = total % 60;
+    return { hours, minutes };
+  };
+
+  const formatReadable = (mins) => {
+    const h = Math.floor(mins / 60);
+    const m = mins % 60;
+    return h > 0
+      ? `${h} hr${h > 1 ? "s" : ""} ${m ? m + " min" : ""}`
+      : `${m} min`;
+  };
+  const totalMin =
+    Number(prepTime || 0) + Number(cookTime || 0) + Number(cleanupTime || 0);
+
+  function DurationField({ label, value, onChange }) {
+    const { hours, minutes } = parseDuration(value);
+
+    const handleHours = (e) =>
+      onChange(formatDuration(Number(e.target.value), minutes));
+    const handleMinutes = (e) =>
+      onChange(formatDuration(hours, Number(e.target.value)));
+
+    return (
+      <label className="w-full h-auto p-1 md:p-2 mx-auto flex flex-col text-nowrap text-left font-redhat font-bold">
+        {label}
+        <div className="w-full flex gap-2 mt-1">
+          <select
+            value={hours}
+            onChange={handleHours}
+            className={`w-1/2 ${inputFieldStyling(hours)} bg-slate-500`}
+          >
+            {Array.from({ length: 25 }, (_, i) => (
+              <option key={i} value={i}>
+                {i} {i === 1 ? "hour" : "hours"}
+              </option>
+            ))}
+          </select>
+
+          <select
+            value={minutes}
+            onChange={handleMinutes}
+            className={`w-1/2 ${inputFieldStyling(minutes)} bg-slate-500`}
+          >
+            {[0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55].map((m) => (
+              <option key={m} value={m}>
+                {m} min
+              </option>
+            ))}
+          </select>
+        </div>
+      </label>
+    );
+  }
+
+  const inputFieldStyling = (data) =>
+    `rounded-md p-1 md:p-2 bg-slate-50 border-2 font-normal focus:border-sky-300 ${
+      !data ? "border-transparent" : "border-emerald-400"
+    }`;
+
   // Render
   return (
     <div
@@ -275,7 +342,7 @@ const SubmitARecipe = () => {
 
       <form onSubmit={handleSubmit}>
         <fieldset id="about-you">
-          <div className="w-[90%] m-4 text-lg md:text-xl lg:text-2xl text-sky-800 bg-slate-300 p-2 md:p-4 rounded-md">
+          <div className="w-[90%] mx-auto text-lg md:text-xl lg:text-2xl text-sky-800 bg-slate-300 p-2 md:p-4 rounded-md">
             <legend className="font-redhat font-bold text-xl md:text-2xl lg:text-3xl">
               About You
             </legend>
@@ -287,9 +354,7 @@ const SubmitARecipe = () => {
                 <input
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
-                  className={`w-full mx-2 rounded-md p-1 md-p-2 bg-slate-50 border-2 border-transparent font-normal focus:border-sky-300 ${
-                    !firstName ? "border-transparent" : "border-emerald-400"
-                  }`}
+                  className={`w-full ${inputFieldStyling(firstName)} mx-2 `}
                   placeholder={randomBool ? "Jane" : "John"}
                 />
               </label>
@@ -298,9 +363,7 @@ const SubmitARecipe = () => {
                 <input
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
-                  className={`w-full mx-2 rounded-md p-1 md-p-2 bg-slate-50 border-2 border-transparent font-normal focus:border-sky-300 ${
-                    !lastName ? "border-transparent" : "border-emerald-400"
-                  }`}
+                  className={`w-full ${inputFieldStyling(lastName)} mx-2`}
                   placeholder="Doe"
                 />
               </label>
@@ -309,12 +372,12 @@ const SubmitARecipe = () => {
                 <input
                   value={email}
                   onChange={handleEmailChange}
-                  className={`w-full mx-2 rounded-md p-1 md-p-2 bg-slate-50 border-2 border-transparent font-normal focus:border-sky-300 ${
+                  className={`w-full mx-2 rounded-md p-1 md:p-2 bg-slate-50 border-2 font-normal focus:border-sky-300 ${
                     errors.email
                       ? "border-red-500"
                       : email
                       ? "border-emerald-400"
-                      : "border-transparent"
+                      : " border-transparent "
                   }`}
                   placeholder={`${randomBool ? "jane" : "john"}doh@example.com`}
                 />
@@ -325,12 +388,12 @@ const SubmitARecipe = () => {
                 <input
                   value={phone}
                   onChange={handlePhoneChange}
-                  className={`w-full mx-2 rounded-md p-1 md-p-2 bg-slate-50 border-2 border-transparent font-normal focus:border-sky-300  ${
+                  className={`w-full mx-2 rounded-md p-1 md:p-2 bg-slate-50 border-2 font-normal focus:border-sky-300  ${
                     errors.phone
                       ? "border-red-500"
                       : phone
                       ? "border-emerald-400"
-                      : "border-transparent"
+                      : " border-transparent "
                   }`}
                   placeholder={`(123)-555-1234`}
                 />
@@ -340,323 +403,338 @@ const SubmitARecipe = () => {
             </div>
           </div>
         </fieldset>
-        <fieldset id="recipe-stats">
-          <legend>Your Recipe</legend>
-          <label>
-            Title
-            <input value={title} onChange={(e) => setTitle(e.target.value)} />
-          </label>
 
-          <label>
-            Description
-            <textarea
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-          </label>
-
-          <label>
-            Total Time
-            <input
-              value={totalTime}
-              onChange={(e) => setTotalTime(e.target.value)}
-            />
-          </label>
-
-          <label>
-            Prep Time
-            <input
-              value={prepTime}
-              onChange={(e) => setPrepTime(e.target.value)}
-            />
-          </label>
-
-          <label>
-            Cook Time
-            <input
-              value={cookTime}
-              onChange={(e) => setCookTime(e.target.value)}
-            />
-          </label>
-
-          <label>
-            Cleanup Time
-            <input
-              value={cleanupTime}
-              onChange={(e) => setCleanupTime(e.target.value)}
-            />
-          </label>
-
-          <label>
-            Servings
-            <input
-              type="number"
-              value={servings}
-              onChange={(e) => setServings(e.target.value)}
-            />
-          </label>
-
-          <label>
-            Taste Description
-            <input
-              value={tasteDesc}
-              onChange={(e) => setTasteDesc(e.target.value)}
-            />
-          </label>
-
-          <label>
-            Taste (number)
-            <input
-              type="number"
-              value={taste}
-              onChange={(e) => setTaste(e.target.value)}
-            />
-          </label>
-
-          <label>
-            Cost Description
-            <input
-              value={costDesc}
-              onChange={(e) => setCostDesc(e.target.value)}
-            />
-          </label>
-
-          <label>
-            Cost (number)
-            <input
-              type="number"
-              value={cost}
-              onChange={(e) => setCost(e.target.value)}
-            />
-          </label>
-
-          <label>
-            Difficulty Description
-            <input
-              value={difficultyDesc}
-              onChange={(e) => setDifficultyDesc(e.target.value)}
-            />
-          </label>
-
-          <label>
-            Difficulty (number)
-            <input
-              type="number"
-              value={difficulty}
-              onChange={(e) => setDifficulty(e.target.value)}
-            />
-          </label>
-        </fieldset>
-
-        <fieldset id="ingredients-and-equipment">
-          {/* INGREDIENTS */}
-          <legend>Ingredients</legend>
-          {ingredients.map((it, idx) => (
-            <div key={idx}>
-              <label>
-                Ingredient
-                <input
-                  value={it.ingredient}
-                  onChange={(e) =>
-                    updateArrayItem(setIngredients)(idx, {
-                      ...it,
-                      ingredient: e.target.value,
-                    })
-                  }
-                />
-              </label>
-
-              <label>
-                Amount
-                <input
-                  type="number"
-                  step="any"
-                  value={it.amount}
-                  onChange={(e) =>
-                    updateArrayItem(setIngredients)(idx, {
-                      ...it,
-                      amount: e.target.value,
-                    })
-                  }
-                />
-              </label>
-
-              <label>
-                Unit
-                <input
-                  value={it.unit}
-                  onChange={(e) =>
-                    updateArrayItem(setIngredients)(idx, {
-                      ...it,
-                      unit: e.target.value,
-                    })
-                  }
-                />
-              </label>
-
-              <label>
-                Optional
-                <input
-                  type="checkbox"
-                  checked={it.optional}
-                  onChange={(e) =>
-                    updateArrayItem(setIngredients)(idx, {
-                      ...it,
-                      optional: e.target.checked,
-                    })
-                  }
-                />
-              </label>
-
-              <button
-                type="button"
-                onClick={() => removeArrayItem(setIngredients)(idx)}
-              >
-                Remove
-              </button>
-            </div>
-          ))}
-          <button
-            type="button"
-            onClick={addArrayItem(setIngredients, {
-              ingredient: "",
-              amount: 0,
-              unit: "",
-              optional: false,
-            })}
-          >
-            Add Ingredient
-          </button>
-          {/* EQUIPMENT */}
-          <legend>Equipment</legend>
-          {equipment.map((eq, idx) => (
-            <div key={idx}>
-              <label>
-                Equipment
-                <input
-                  value={eq.equipment}
-                  onChange={(e) =>
-                    updateArrayItem(setEquipment)(idx, {
-                      ...eq,
-                      equipment: e.target.value,
-                    })
-                  }
-                />
-              </label>
-              <label>
-                Optional
-                <input
-                  type="checkbox"
-                  checked={eq.optional}
-                  onChange={(e) =>
-                    updateArrayItem(setEquipment)(idx, {
-                      ...eq,
-                      optional: e.target.checked,
-                    })
-                  }
-                />
-              </label>
-              <button
-                type="button"
-                onClick={() => removeArrayItem(setEquipment)(idx)}
-              >
-                Remove
-              </button>
-            </div>
-          ))}
-          <button
-            type="button"
-            onClick={addArrayItem(setEquipment, {
-              equipment: "",
-              optional: false,
-            })}
-          >
-            Add Equipment
-          </button>
-        </fieldset>
-
-        <fieldset id="instructions">
-          <legend>Mise En Place (key: miceEnPlace)</legend>
-          {miceEnPlace.map((step, idx) => (
-            <div key={idx}>
+        <div className="w-[90%] mx-auto h-auto mt-4 p-2 md:p-4 bg-slate-700 md:text-xl lg:text-2xl text-slate-200 rounded-md">
+          <fieldset id="recipe-stats" className="flex flex-col">
+            <legend className="w-full font-redhat font-bold text-xl md:text-2xl lg:text-3xl text-center font-slate-300">
+              Your Recipe
+            </legend>
+            <div className="h-1 w-[80%] my-4 mx-auto bg-amber-400 rounded-md"></div>
+            <label className="w-full h-auto p-1 md:p-2 mx-auto flex flex-col text-nowrap text-left font-bold">
+              Recipe Title
               <input
-                value={step}
-                onChange={(e) =>
-                  updateArrayItem(setMiceEnPlace)(idx, e.target.value)
-                }
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                className={`w-full ${inputFieldStyling(title)} bg-slate-500`}
+                placeholder="Recipe Title Here"
               />
-              <button
-                type="button"
-                onClick={() => removeArrayItem(setMiceEnPlace)(idx)}
-              >
-                Remove
-              </button>
-            </div>
-          ))}
-          <button type="button" onClick={addArrayItem(setMiceEnPlace, "")}>
-            Add Prep Step
-          </button>
+            </label>
 
-          <legend>Instructions</legend>
-          {instructions.map((step, idx) => (
-            <div key={idx}>
+            <label className="w-full h-auto p-1 md:p-2 mx-auto flex flex-col items-start text-nowrap text-left font-bold">
+              Description
+              <textarea
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                className={`w-full ${inputFieldStyling(
+                  description
+                )} bg-slate-500 min-h-40`}
+                placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat..."
+              />
+            </label>
+            <label className="w-full h-auto p-1 md:p-2 mx-auto flex flex-col items-start text-nowrap text-left font-bold">
+              Servings
               <input
-                value={step}
-                onChange={(e) =>
-                  updateArrayItem(setInstructions)(idx, e.target.value)
-                }
+                type="number"
+                value={servings}
+                onChange={(e) => setServings(e.target.value)}
+                className={`w-full ${inputFieldStyling(servings)} bg-slate-500`}
               />
-              <button
-                type="button"
-                onClick={() => removeArrayItem(setInstructions)(idx)}
-              >
-                Remove
-              </button>
+            </label>
+            <div className="grid grid-cols-2 gap-2 lg:gap-4 my-2 lg:my-4">
+              <DurationField
+                label="Prep Time"
+                value={prepTime}
+                onChange={setPrepTime}
+              />
+              <DurationField
+                label="Cook Time"
+                value={cookTime}
+                onChange={setCookTime}
+              />
+              <DurationField
+                label="Cleanup Time"
+                value={cleanupTime}
+                onChange={setCleanupTime}
+              />
+              <label className="w-full h-auto p-1 md:p-2 mx-auto flex flex-col text-nowrap text-left bg-sky-300 rounded-md text-sky-800 font-redhat font-bold">
+                Total Time
+                <input
+                  type="text"
+                  readOnly
+                  value={formatReadable(
+                    Number(prepTime || 0) +
+                      Number(cookTime || 0) +
+                      Number(cleanupTime || 0)
+                  )}
+                  className={`w-full ${inputFieldStyling(
+                    totalMin
+                  )} bg-slate-600 text-slate-200 cursor-not-allowed`}
+                />
+              </label>
             </div>
-          ))}
-          <button type="button" onClick={addArrayItem(setInstructions, "")}>
-            Add Instruction
-          </button>
-        </fieldset>
 
-        <fieldset id="extras">
-          <legend>Tips & Tricks</legend>
-          {tipsAndTricks.map((tip, idx) => (
-            <div key={idx}>
+            <label>
+              Taste Description
               <input
-                value={tip}
-                onChange={(e) =>
-                  updateArrayItem(setTipsAndTricks)(idx, e.target.value)
-                }
+                value={tasteDesc}
+                onChange={(e) => setTasteDesc(e.target.value)}
               />
-              <button
-                type="button"
-                onClick={() => removeArrayItem(setTipsAndTricks)(idx)}
-              >
-                Remove
-              </button>
-            </div>
-          ))}
-          <button type="button" onClick={addArrayItem(setTipsAndTricks, "")}>
-            Add Tip
-          </button>
-          <legend>Extras</legend>
-          <label>
-            More Info
-            <textarea
-              value={moreInfo}
-              onChange={(e) => setMoreInfo(e.target.value)}
-            />
-          </label>
+            </label>
 
-          <label>
-            Image (path or URL)
-            <input value={image} onChange={(e) => setImage(e.target.value)} />
-          </label>
-        </fieldset>
+            <label>
+              Taste (number)
+              <input
+                type="number"
+                value={taste}
+                onChange={(e) => setTaste(e.target.value)}
+              />
+            </label>
 
-        <div>
-          <button type="submit">Submit Recipe</button>
+            <label>
+              Cost Description
+              <input
+                value={costDesc}
+                onChange={(e) => setCostDesc(e.target.value)}
+              />
+            </label>
+
+            <label>
+              Cost (number)
+              <input
+                type="number"
+                value={cost}
+                onChange={(e) => setCost(e.target.value)}
+              />
+            </label>
+
+            <label>
+              Difficulty Description
+              <input
+                value={difficultyDesc}
+                onChange={(e) => setDifficultyDesc(e.target.value)}
+              />
+            </label>
+
+            <label>
+              Difficulty (number)
+              <input
+                type="number"
+                value={difficulty}
+                onChange={(e) => setDifficulty(e.target.value)}
+              />
+            </label>
+          </fieldset>
+
+          <fieldset id="ingredients-and-equipment">
+            {/* INGREDIENTS */}
+            <legend>Ingredients</legend>
+            {ingredients.map((it, idx) => (
+              <div key={idx}>
+                <label>
+                  Ingredient
+                  <input
+                    value={it.ingredient}
+                    onChange={(e) =>
+                      updateArrayItem(setIngredients)(idx, {
+                        ...it,
+                        ingredient: e.target.value,
+                      })
+                    }
+                  />
+                </label>
+
+                <label>
+                  Amount
+                  <input
+                    type="number"
+                    step="any"
+                    value={it.amount}
+                    onChange={(e) =>
+                      updateArrayItem(setIngredients)(idx, {
+                        ...it,
+                        amount: e.target.value,
+                      })
+                    }
+                  />
+                </label>
+
+                <label>
+                  Unit
+                  <input
+                    value={it.unit}
+                    onChange={(e) =>
+                      updateArrayItem(setIngredients)(idx, {
+                        ...it,
+                        unit: e.target.value,
+                      })
+                    }
+                  />
+                </label>
+
+                <label>
+                  Optional
+                  <input
+                    type="checkbox"
+                    checked={it.optional}
+                    onChange={(e) =>
+                      updateArrayItem(setIngredients)(idx, {
+                        ...it,
+                        optional: e.target.checked,
+                      })
+                    }
+                  />
+                </label>
+
+                <button
+                  type="button"
+                  onClick={() => removeArrayItem(setIngredients)(idx)}
+                >
+                  Remove
+                </button>
+              </div>
+            ))}
+            <button
+              type="button"
+              onClick={addArrayItem(setIngredients, {
+                ingredient: "",
+                amount: 0,
+                unit: "",
+                optional: false,
+              })}
+            >
+              Add Ingredient
+            </button>
+            {/* EQUIPMENT */}
+            <legend>Equipment</legend>
+            {equipment.map((eq, idx) => (
+              <div key={idx}>
+                <label>
+                  Equipment
+                  <input
+                    value={eq.equipment}
+                    onChange={(e) =>
+                      updateArrayItem(setEquipment)(idx, {
+                        ...eq,
+                        equipment: e.target.value,
+                      })
+                    }
+                  />
+                </label>
+                <label>
+                  Optional
+                  <input
+                    type="checkbox"
+                    checked={eq.optional}
+                    onChange={(e) =>
+                      updateArrayItem(setEquipment)(idx, {
+                        ...eq,
+                        optional: e.target.checked,
+                      })
+                    }
+                  />
+                </label>
+                <button
+                  type="button"
+                  onClick={() => removeArrayItem(setEquipment)(idx)}
+                >
+                  Remove
+                </button>
+              </div>
+            ))}
+            <button
+              type="button"
+              onClick={addArrayItem(setEquipment, {
+                equipment: "",
+                optional: false,
+              })}
+            >
+              Add Equipment
+            </button>
+          </fieldset>
+
+          <fieldset id="instructions">
+            <legend>Mise En Place (key: miceEnPlace)</legend>
+            {miceEnPlace.map((step, idx) => (
+              <div key={idx}>
+                <input
+                  value={step}
+                  onChange={(e) =>
+                    updateArrayItem(setMiceEnPlace)(idx, e.target.value)
+                  }
+                />
+                <button
+                  type="button"
+                  onClick={() => removeArrayItem(setMiceEnPlace)(idx)}
+                >
+                  Remove
+                </button>
+              </div>
+            ))}
+            <button type="button" onClick={addArrayItem(setMiceEnPlace, "")}>
+              Add Prep Step
+            </button>
+
+            <legend>Instructions</legend>
+            {instructions.map((step, idx) => (
+              <div key={idx}>
+                <input
+                  value={step}
+                  onChange={(e) =>
+                    updateArrayItem(setInstructions)(idx, e.target.value)
+                  }
+                />
+                <button
+                  type="button"
+                  onClick={() => removeArrayItem(setInstructions)(idx)}
+                >
+                  Remove
+                </button>
+              </div>
+            ))}
+            <button type="button" onClick={addArrayItem(setInstructions, "")}>
+              Add Instruction
+            </button>
+          </fieldset>
+
+          <fieldset id="extras">
+            <legend>Tips & Tricks</legend>
+            {tipsAndTricks.map((tip, idx) => (
+              <div key={idx}>
+                <input
+                  value={tip}
+                  onChange={(e) =>
+                    updateArrayItem(setTipsAndTricks)(idx, e.target.value)
+                  }
+                />
+                <button
+                  type="button"
+                  onClick={() => removeArrayItem(setTipsAndTricks)(idx)}
+                >
+                  Remove
+                </button>
+              </div>
+            ))}
+            <button type="button" onClick={addArrayItem(setTipsAndTricks, "")}>
+              Add Tip
+            </button>
+            <legend>Extras</legend>
+            <label>
+              More Info
+              <textarea
+                value={moreInfo}
+                onChange={(e) => setMoreInfo(e.target.value)}
+              />
+            </label>
+
+            <label>
+              Image (path or URL)
+              <input value={image} onChange={(e) => setImage(e.target.value)} />
+            </label>
+          </fieldset>
+
+          <div>
+            <button type="submit">Submit Recipe</button>
+          </div>
         </div>
       </form>
     </div>
