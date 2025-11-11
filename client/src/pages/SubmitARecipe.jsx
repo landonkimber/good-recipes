@@ -604,67 +604,73 @@ const SubmitARecipe = () => {
 
           <fieldset id="ingredients-and-equipment">
             {/* INGREDIENTS */}
-            <legend>Ingredients</legend>
+            <legend className="font-redhat mb-2 font-bold text-xl md:text-2xl lg:text-3xl text-center font-slate-300">
+              Ingredients
+            </legend>
+            <div className="w-full flex font-redhat text-lg md:text-xl lg:text-2xl">
+              <div className="w-1/2">Ingredient Name</div>
+              <div className="w-[10%]">Amount</div>
+              <div className="w-[20%]">Unit</div>
+              <div className="w-[10%]">Optional?</div>
+              <div className="w-[10%]"></div>
+            </div>
+
             {ingredients.map((it, idx) => (
-              <div key={idx}>
-                <label>
-                  Ingredient
-                  <input
-                    value={it.ingredient}
-                    onChange={(e) =>
-                      updateArrayItem(setIngredients)(idx, {
-                        ...it,
-                        ingredient: e.target.value,
-                      })
-                    }
-                  />
-                </label>
+              <div
+                key={idx}
+                className="w-full flex first:rounded-t-lg last:rounded-b-lg odd:bg-indigo-100 even:bg-indigo-200"
+              >
+                <input
+                  value={it.ingredient}
+                  onChange={(e) =>
+                    updateArrayItem(setIngredients)(idx, {
+                      ...it,
+                      ingredient: e.target.value,
+                    })
+                  }
+                  className="w-1/2 m-1 py-1 bg-transparent text-slate-800 rounded-sm"
+                />
 
-                <label>
-                  Amount
-                  <input
-                    type="number"
-                    step="any"
-                    value={it.amount}
-                    onChange={(e) =>
-                      updateArrayItem(setIngredients)(idx, {
-                        ...it,
-                        amount: e.target.value,
-                      })
-                    }
-                  />
-                </label>
+                <input
+                  type="number"
+                  step="any"
+                  value={it.amount}
+                  onChange={(e) =>
+                    updateArrayItem(setIngredients)(idx, {
+                      ...it,
+                      amount: e.target.value,
+                    })
+                  }
+                  className="w-[10%] py-1 px-2 bg-slate-800/10 text-slate-800"
+                />
 
-                <label>
-                  Unit
-                  <input
-                    value={it.unit}
-                    onChange={(e) =>
-                      updateArrayItem(setIngredients)(idx, {
-                        ...it,
-                        unit: e.target.value,
-                      })
-                    }
-                  />
-                </label>
+                <input
+                  value={it.unit}
+                  onChange={(e) =>
+                    updateArrayItem(setIngredients)(idx, {
+                      ...it,
+                      unit: e.target.value,
+                    })
+                  }
+                  className="w-[20%] m-1 py-1 bg-transparent text-slate-800"
+                />
 
-                <label>
-                  Optional
-                  <input
-                    type="checkbox"
-                    checked={it.optional}
-                    onChange={(e) =>
-                      updateArrayItem(setIngredients)(idx, {
-                        ...it,
-                        optional: e.target.checked,
-                      })
-                    }
-                  />
-                </label>
+                <input
+                  type="checkbox"
+                  checked={it.optional}
+                  onChange={(e) =>
+                    updateArrayItem(setIngredients)(idx, {
+                      ...it,
+                      optional: e.target.checked,
+                    })
+                  }
+                  className="w-[10%] m-2"
+                />
 
                 <button
                   type="button"
                   onClick={() => removeArrayItem(setIngredients)(idx)}
+                  className="w-[10%] rounded-md bg-red-400 p-1 m-1"
                 >
                   Remove
                 </button>
@@ -678,6 +684,7 @@ const SubmitARecipe = () => {
                 unit: "",
                 optional: false,
               })}
+              className="w-60 text-nowrap bg-emerald-600 text-slate-50 rounded-md p-1 md:p-2 my-2"
             >
               Add Ingredient
             </button>
