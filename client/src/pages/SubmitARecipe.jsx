@@ -1,5 +1,19 @@
 // SubmitARecipe.jsx
-import React, { useState } from "react";
+import { useState } from "react";
+
+import {
+  FaClock,
+  FaUserAlt,
+  FaUtensils,
+  FaFireAlt,
+  FaSoap,
+  FaDollarSign,
+  FaHeart,
+  FaStar,
+  FaRegCircle,
+  FaCheckCircle,
+  FaInfoCircle,
+} from "react-icons/fa";
 
 const randomBool = Math.random() < 0.5;
 // Optional: sample data loader so you can test quickly
@@ -179,10 +193,31 @@ const SubmitARecipe = () => {
       image,
     };
 
-    // For now, just log. Replace with POST as needed.
+    // For now, JSON is submitted to console
     console.log("Recipe submitted:", payload);
     alert("Recipe JSON logged to console.");
   }
+
+  const IconRatingSelect = ({
+    count,
+    total = 5,
+    Icon,
+    color,
+    emptyColor,
+    setFunction,
+  }) => (
+    <div className="flex flex-rows justify-evenly w-full md:w-3/4 lg:w-[60%] mx-auto">
+      {[...Array(total)].map((_, i) => (
+        <Icon
+          key={i}
+          onClick={() => setFunction(i + 1)}
+          className={`text-3xl md:text-3xl lg:text-5xl xl:text-6xl mx-0 md:mx-1 ${
+            i < count ? color : emptyColor
+          } hover:cursor-pointer`}
+        />
+      ))}
+    </div>
+  );
 
   // --- Helpers for list updates ---
   const updateArrayItem = (arrSetter) => (index, newValue) =>
@@ -301,9 +336,8 @@ const SubmitARecipe = () => {
   // Render
   return (
     <div
-      className={`mx-auto relative h-auto w-full max-w-7xl ${
-        isMobile ? "pt-[11.6vh]" : "pt-[14.5vh]"
-      } bg-slate-800/60 backdrop-blur-[5px] rounded-sm`}
+      className="relative w-[100vw]
+       bg-slate-800/60 backdrop-blur-[5px] rounded-sm max-w-7xl mx-auto"
     >
       <div
         id="submit-recipe-header"
@@ -404,7 +438,7 @@ const SubmitARecipe = () => {
           </div>
         </fieldset>
 
-        <div className="w-[90%] mx-auto h-auto mt-4 p-2 md:p-4 bg-slate-700 md:text-xl lg:text-2xl text-slate-200 rounded-md">
+        <div className="w-full h-auto mt-4 p-2 md:p-4 bg-slate-700 md:text-xl lg:text-2xl text-slate-200 rounded-md">
           <fieldset id="recipe-stats" className="flex flex-col">
             <legend className="w-full font-redhat font-bold text-xl md:text-2xl lg:text-3xl text-center font-slate-300">
               Your Recipe
@@ -416,12 +450,19 @@ const SubmitARecipe = () => {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 className={`w-full ${inputFieldStyling(title)} bg-slate-500`}
-                placeholder="Recipe Title Here"
+                placeholder="Food Title Here"
               />
             </label>
 
             <label className="w-full h-auto p-1 md:p-2 mx-auto flex flex-col items-start text-nowrap text-left font-bold">
-              Description
+              <h1>Description</h1>
+              <h2 className="ml-4 flex items-center text-wrap text-sm md:text-md lg:text-lg text-slate-400">
+                <FaInfoCircle className="flex-shrink-0 h-4 w-4 lg:h-8 lg:w-8 m-2" />
+                <p>
+                  Write a quick but eye-catching description not just about your
+                  food but, also your recipe.
+                </p>
+              </h2>
               <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
@@ -473,54 +514,90 @@ const SubmitARecipe = () => {
               </label>
             </div>
 
-            <label>
-              Taste Description
+            <label className="w-full h-auto mb-4 p-1 md:p-2 mx-auto flex flex-col items-start text-nowrap text-left font-bold">
+              Taste
+              <div className="h-1 w-full my-1 bg-amber-400 rounded-md"></div>
+              <h1 className="ml-2 text-slate-400">Rate the taste</h1>
+              <IconRatingSelect
+                count={taste}
+                setFunction={setTaste}
+                Icon={FaHeart}
+                color="text-rose-400 drop-shadow-md drop-shadow-rose-300"
+                emptyColor="text-slate-600"
+              />
+              <h1 className="ml-2 text-slate-400">Taste Description</h1>
+              <h2 className="ml-4 flex items-center text-wrap text-sm md:text-md lg:text-lg text-slate-400">
+                <FaInfoCircle className="flex-shrink-0 h-4 w-4 lg:h-8 lg:w-8 m-2" />
+                <p>
+                  In a few words, describe how your food tastes. Ex. "Sweet, yet
+                  sour!"
+                </p>
+              </h2>
               <input
                 value={tasteDesc}
                 onChange={(e) => setTasteDesc(e.target.value)}
+                className={`w-full ${inputFieldStyling(
+                  tasteDesc
+                )} bg-slate-500`}
+                placeholder="A few fun adjectives here..."
               />
             </label>
-
-            <label>
-              Taste (number)
-              <input
-                type="number"
-                value={taste}
-                onChange={(e) => setTaste(e.target.value)}
+            <label className="w-full h-auto mb-4 p-1 md:p-2 mx-auto flex flex-col items-start text-nowrap text-left font-bold">
+              Cost
+              <div className="h-1 w-full my-1 bg-amber-400 rounded-md"></div>
+              <h1 className="ml-2 text-slate-400">Rate the cost</h1>
+              <IconRatingSelect
+                count={cost}
+                setFunction={setCost}
+                Icon={FaDollarSign}
+                color="text-emerald-600 drop-shadow-md drop-shadow-emerald-200"
+                emptyColor="text-slate-600"
               />
-            </label>
-
-            <label>
-              Cost Description
+              <h1 className="ml-2 text-slate-400">Cost Description</h1>
+              <h2 className="ml-4 flex items-center text-wrap text-sm md:text-md lg:text-lg text-slate-400">
+                <FaInfoCircle className="flex-shrink-0 h-4 w-4 lg:h-8 lg:w-8 m-2" />
+                <p>
+                  Again, as consisely as possible, tell the reader how much this
+                  recipe costs to make. Consider both the ingredients, spices,
+                  and the equipment required to properly make the dish. Not
+                  everyone has a KitchenAid. Ex. "Cheap with the right tools!"
+                </p>
+              </h2>
               <input
                 value={costDesc}
                 onChange={(e) => setCostDesc(e.target.value)}
+                className={`w-full ${inputFieldStyling(costDesc)} bg-slate-500`}
+                placeholder="More adjectives here."
               />
             </label>
 
-            <label>
-              Cost (number)
-              <input
-                type="number"
-                value={cost}
-                onChange={(e) => setCost(e.target.value)}
+            <label className="w-full h-auto mb-4 p-1 md:p-2 mx-auto flex flex-col items-start text-nowrap text-left font-bold">
+              Difficulty
+              <div className="h-1 w-full my-1 bg-amber-400 rounded-md"></div>
+              <h1 className="ml-2 text-slate-400">Rate the difficulty</h1>
+              <IconRatingSelect
+                count={difficulty}
+                setFunction={setDifficulty}
+                Icon={FaStar}
+                color="text-amber-300 drop-shadow-md drop-shadow-amber-100"
+                emptyColor="text-slate-600"
               />
-            </label>
-
-            <label>
-              Difficulty Description
+              <h1 className="ml-2 text-slate-400">Difficulty Description</h1>
+              <h2 className="ml-4 flex items-center text-wrap text-sm md:text-md lg:text-lg text-slate-400">
+                <FaInfoCircle className="flex-shrink-0 h-4 w-4 lg:h-8 lg:w-8 m-2" />
+                <p>
+                  How difficult would this be for the&nbsp;
+                  <span className="italic underline">average</span>&nbsp;at home
+                  cook? Ex. "Easy with patience"
+                </p>
+              </h2>
               <input
-                value={difficultyDesc}
-                onChange={(e) => setDifficultyDesc(e.target.value)}
-              />
-            </label>
-
-            <label>
-              Difficulty (number)
-              <input
-                type="number"
-                value={difficulty}
-                onChange={(e) => setDifficulty(e.target.value)}
+                value={tasteDesc}
+                onChange={(e) => setTasteDesc(e.target.value)}
+                className={`w-full ${inputFieldStyling(
+                  tasteDesc
+                )} bg-slate-500`}
+                placeholder="A few fun adjectives here..."
               />
             </label>
           </fieldset>
