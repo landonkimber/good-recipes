@@ -1,12 +1,10 @@
 import { Link } from "react-router-dom";
 
 const Contact = () => {
-  const isMobile = window.innerWidth > 768 ? true : false;
+  window.scrollTo(0, 0);
   return (
     <div
-      className={`mx-auto relative h-[50vh] w-full max-w-7xl ${
-        isMobile ? "pt-[11.6vh]" : "pt-[14.5vh]"
-      } bg-slate-800/60 backdrop-blur-[5px] rounded-sm flex flex-row justify-center items-center`}
+      className={`mx-auto relative h-[50vh] w-full max-w-7xl bg-slate-800/60 backdrop-blur-[5px] rounded-sm flex flex-row justify-center items-center`}
     >
       {/* Left: Logo + Title */}
       <Link
