@@ -64,9 +64,10 @@ const NavBar = () => {
 
   // TAILWIND CSS STYLES
   const AwningBottomStyle =
-    "h-full w-full rounded-b-full shadow-inset-sides relative z-[51] after:absolute after:inset-0 after:box-border after:border-b-2 after:border-l-2 after:border-r-2 after:rounded-b-full after:border-dashed after:pointer-events-none after:-translate-y-[2px] after:z-[51]";
+    "h-full rounded-b-full shadow-inset-sides relative z-[51] after:absolute after:inset-0 after:box-border after:border-b-2 after:border-l-2 after:border-r-2 after:rounded-b-full after:border-dashed after:pointer-events-none after:-translate-y-[2px] after:z-[51]";
+
   const AwningTopStyle =
-    "h-full w-full relative shadow-inset-sides after:absolute after:inset-0 after:box-border after:border-l-2 after:border-r-2 after:border-dashed after:pointer-events-none after:-translate-y-[2px]";
+    "h-full relative shadow-inset-sides after:absolute after:inset-0 after:box-border after:border-l-2 after:border-r-2 after:border-dashed after:pointer-events-none after:-translate-y-[2px]";
 
   const stripeArray = Array.from({ length: stripeCount }, (_, index) => {
     const isEven = index % 2 === 0;
@@ -74,7 +75,8 @@ const NavBar = () => {
     return (
       <div
         key={`top-${index}`}
-        className={`${stripeColor} ${AwningTopStyle}`}
+        // make each stripe flexible instead of full width
+        className={`${stripeColor} ${AwningTopStyle} flex-1`}
       />
     );
   });
@@ -88,7 +90,7 @@ const NavBar = () => {
     return (
       <div
         key={`bottom-${index}`}
-        className={`${stripeColor} ${AwningBottomStyle} ${stitchColor}`}
+        className={`${stripeColor} ${AwningBottomStyle} ${stitchColor} flex-1`}
       />
     );
   });
@@ -114,13 +116,14 @@ const NavBar = () => {
             id="top-awning"
             className={`relative w-full ${
               isMobile ? "h-[13.6vh]" : "h-[17.5vh]"
-            } flex items-center`}
+            } flex flex-row`}
           >
             {stripeArray}
           </div>
+
           <div
             id="bottom-awning"
-            className="relative w-full h-[5vh] flex items-center"
+            className="relative w-full h-[5vh] flex flex-row items-center"
           >
             {bottomStripeArray}
           </div>
@@ -140,7 +143,7 @@ const NavBar = () => {
           </Link>
           <Link to="/">
             <h1
-              className={`flex whitespace-nowrap underline decoration-yellow-300 p-2 bg-sky-900 rounded-lg font-lobster text-amber-500 font-bold items-center justify-center z-40 px-[2vw] ${
+              className={`flex whitespace-nowrap underline decoration-yellow-300 p-2 bg-sky-900 rounded-lg font-lobster text-amber-500 font-bold items-center justify-center z-40  ${
                 isMobile ? "text-3xl h-[12vh]" : "text-7xl h-[14vh]"
               } transition hover:scale-[105%]`}
             >

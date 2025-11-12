@@ -32,6 +32,8 @@ const ExploreModal = ({ recipe, onClose }) => {
   if (!recipe) return null;
   const screenWidth = window.innerWidth;
 
+  console.log(recipe.ingredients);
+
   const buttonSize =
     window.innerWidth > 1000 ? (window.innerWidth > 768 ? 44 : 32) : 24;
   const modalSize = screenWidth < 768 ? "w-full" : "min-w-72rem w-[75vw]";
@@ -161,21 +163,33 @@ const ExploreModal = ({ recipe, onClose }) => {
                   <p className="underline text-xs md:text-xl font-redhat  text-sky-700">
                     What you'll need!
                   </p>
-                  <p className="w-full p-1 text-xs md:text-xl my-4 p-2 text-wrap  font-redhat text-slate-900 overflow-hidden">
-                    {recipe.ingredients}
-                  </p>
+                  <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 wrap p-1 text-xs md:text-xl my-4 p-2 text-wrap  font-redhat text-slate-900 overflow-hidden">
+                    {recipe.ingredients.map((element, index) => (
+                      <li className="flex flex-auto items-center">
+                        {element.ingredient}
+                      </li>
+                    ))}
+                  </ul>
                   <p className="underline text-xs md:text-xl font-redhat  text-sky-700">
                     Before you cook
                   </p>
-                  <p className="w-full my-2 p-1 text-xs md:text-xl text-wrap font-redhat text-slate-900 overflow-hiddenl">
-                    {recipe.miceEnPlace}
-                  </p>
+                  <ol className="w-full my-2 p-1 text-wrap text-xs md:text-xl font-redhat text-slate-900 overflow-hidden">
+                    {recipe.miceEnPlace.map((element, index) => (
+                      <li>
+                        {index + 1}. {element}
+                      </li>
+                    ))}
+                  </ol>
                   <p className="underline text-xs md:text-xl font-redhat text-sky-700">
                     Instructions
                   </p>
-                  <p className="w-full my-2 p-1 text-wrap text-xs md:text-xl font-redhat text-slate-900 overflow-hidden">
-                    {recipe.instructions}
-                  </p>
+                  <ol className="w-full my-2 p-1 text-wrap text-xs md:text-xl font-redhat text-slate-900 overflow-hidden">
+                    {recipe.instructions.map((element, index) => (
+                      <li>
+                        {index + 1}. {element}
+                      </li>
+                    ))}
+                  </ol>
                   <div className="absolute w-[95%] h-4 bg-gradient-to-t from-slate-300 to-transparent z-[60]"></div>
                 </div>
                 <div className="max-w-full h-[20%] p-1 bg-slate-200 flex justify-start align-center gap-2 pl-1 text-sky-900 text-xs md:text-lg lg:pb-3 md:pb-1 overflow-y-hidden overflow-x-auto">

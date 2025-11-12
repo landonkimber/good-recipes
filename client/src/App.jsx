@@ -7,17 +7,33 @@ import Home from "./pages/Home";
 import MainBG from "./components/MainBG";
 import NavBar from "./components/NavBar";
 // import RecipePage from "./pages/RecipePage";
-import RecipePage from "./pages/RECIPEPAGEMOBILE";
+import RecipePage from "./pages/RecipePage";
+
+//Contact Pages
+import Contact from "./pages/Contact";
+import SubmitARecipe from "./pages/SubmitARecipe";
+import ContactForm from "./pages/ContactForm";
 
 function App() {
+  const isMobile = window.innerWidth > 768 ? true : false;
   return (
     <>
       <NavBar />
 
-      <main className={`pt-[13vh]`}>
+      <main>
         <MainBG />
+        <div
+          id="main-padding"
+          className={`w-full border border-red-300 ${
+            isMobile ? "h-[15.6vh]" : "h-[19.5vh]"
+          }`}
+        ></div>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/submit-a-recipe" element={<SubmitARecipe />} />
+          <Route path="contact-form" element={<ContactForm />} />
+
           <Route path="/:slug" element={<RecipePage />} />
         </Routes>
       </main>
