@@ -37,9 +37,9 @@ const sampleRecipe = {
     { ingredient: "Onion, Sliced", amount: 1, unit: "whole", optional: false },
     { ingredient: "BBQ Sauce", amount: 1, unit: "c", optional: false },
     { ingredient: "Chicken Broth", amount: 0.5, unit: "c", optional: false },
-    { ingredient: "Brown Sugar", amount: 1, unit: "tbsp", optional: false },
-    { ingredient: "Paprika", amount: 1, unit: "tsp", optional: false },
-    { ingredient: "Garlic Powder", amount: 1, unit: "tsp", optional: false },
+    { ingredient: "Brown Sugar", amount: 1, unit: "tbsp", optional: true },
+    { ingredient: "Paprika", amount: 1, unit: "tsp", optional: true },
+    { ingredient: "Garlic Powder", amount: 1, unit: "tsp", optional: true },
     { ingredient: "Salt", amount: 1, unit: "tsp", optional: false },
     { ingredient: "Black Pepper", amount: 0.5, unit: "tsp", optional: false },
     { ingredient: "Buns", amount: 8, unit: "pieces", optional: false },
@@ -57,11 +57,11 @@ const sampleRecipe = {
   ],
   tipsAndTricks: ["Finish under broiler for crispy edges."],
   equipment: [
-    { equipment: "Slow Cooker", optional: false },
-    { equipment: "Forks", optional: false },
-    { equipment: "Kitchen Knife", optional: false },
-    { equipment: "Cutting Board", optional: false },
-    { equipment: "Measuring Spoons", optional: false },
+    { equipment: "Slow Cooker", optionalEt: false },
+    { equipment: "Forks", optionalEt: false },
+    { equipment: "Kitchen Knife", optionalEt: false },
+    { equipment: "Cutting Board", optionalEt: false },
+    { equipment: "Measuring Spoons", optionalEt: false },
   ],
   moreInfo: "Top with coleslaw for crunch.",
   image: "/margherita.jpg",
@@ -95,7 +95,7 @@ const SubmitARecipe = () => {
   const [instructions, setInstructions] = useState([""]);
   const [tipsAndTricks, setTipsAndTricks] = useState([""]);
   const [equipment, setEquipment] = useState([
-    { equipment: "", optional: false },
+    { equipment: "", alt: "", optionalEt: false },
   ]);
   const [moreInfo, setMoreInfo] = useState("");
   const [image, setImage] = useState("");
@@ -184,10 +184,11 @@ const SubmitARecipe = () => {
       instructions: instructions.filter((s) => s.trim() !== ""),
       tipsAndTricks: tipsAndTricks.filter((s) => s.trim() !== ""),
       equipment: equipment
-        .filter((e) => e.equipment.trim() !== "")
-        .map((e) => ({
-          equipment: e.equipment,
-          optional: Boolean(e.optional),
+        .filter((et) => et.equipment.trim() !== "")
+        .map((et) => ({
+          equipment: et.equipment,
+          alt: et.alt,
+          optionalEt: Boolean(et.optionalEt),
         })),
       moreInfo,
       image,
@@ -206,7 +207,7 @@ const SubmitARecipe = () => {
     emptyColor,
     setFunction,
   }) => (
-    <div className="flex flex-rows justify-evenly w-full md:w-3/4 lg:w-[60%] mx-auto">
+    <div className="flex flex-row justify-evenly w-full md:w-3/4 lg:w-[60%] mx-auto">
       {[...Array(total)].map((_, i) => (
         <Icon
           key={i}
@@ -297,7 +298,7 @@ const SubmitARecipe = () => {
       onChange(formatDuration(hours, Number(e.target.value)));
 
     return (
-      <label className="w-full h-auto p-1 md:p-2 mx-auto flex flex-col text-nowrap text-left font-redhat font-bold">
+      <label className="w-full h-auto p-1 md:p-2 mx-auto flex flex-col whitespace-nowrap text-left font-redhat font-bold">
         {label}
         <div className="w-full flex gap-2 mt-1">
           <select
@@ -336,7 +337,7 @@ const SubmitARecipe = () => {
   // Render
   return (
     <div
-      className="relative w-[100vw]
+      className="relative w-full
        bg-slate-800/60 backdrop-blur-[5px] rounded-sm max-w-7xl mx-auto"
     >
       <div
@@ -381,9 +382,9 @@ const SubmitARecipe = () => {
               About You
             </legend>
 
-            <div className="h-1 w-[80%] my-4 mx-auto bg-amber-400 rounded-md"></div>
+            <div className="h-1 max-w-[80%] my-4 mx-auto bg-amber-400 rounded-md"></div>
             <div className="grid grid-cols-2">
-              <label className="w-full h-auto p-1 md:p-2 mx-auto flex justify-end text-nowrap items-center font-redhat font-bold">
+              <label className="w-full h-auto p-1 md:p-2 mx-auto flex justify-end whitespace-nowrap items-center font-redhat font-bold">
                 First Name
                 <input
                   value={firstName}
@@ -392,7 +393,7 @@ const SubmitARecipe = () => {
                   placeholder={randomBool ? "Jane" : "John"}
                 />
               </label>
-              <label className="w-full h-auto p-1 md:p-2 mx-auto flex justify-end text-nowrap items-center font-redhat font-bold">
+              <label className="w-full h-auto p-1 md:p-2 mx-auto flex justify-end whitespace-nowrap items-center font-redhat font-bold">
                 Last Name
                 <input
                   value={lastName}
@@ -401,7 +402,7 @@ const SubmitARecipe = () => {
                   placeholder="Doe"
                 />
               </label>
-              <label className="w-full h-auto p-1 md:p-2 mx-auto flex justify-end text-nowrap items-center font-redhat font-bold">
+              <label className="w-full h-auto p-1 md:p-2 mx-auto flex justify-end whitespace-nowrap items-center font-redhat font-bold">
                 Email
                 <input
                   value={email}
@@ -417,7 +418,7 @@ const SubmitARecipe = () => {
                 />
               </label>
 
-              <label className="w-full h-auto p-1 md:p-2 mx-auto flex justify-end text-nowrap items-center font-redhat font-bold">
+              <label className="w-full h-auto p-1 md:p-2 mx-auto flex justify-end whitespace-nowrap items-center font-redhat font-bold">
                 Phone
                 <input
                   value={phone}
@@ -443,8 +444,8 @@ const SubmitARecipe = () => {
             <legend className="w-full font-redhat font-bold text-xl md:text-2xl lg:text-3xl text-center font-slate-300">
               Your Recipe
             </legend>
-            <div className="h-1 w-[80%] my-4 mx-auto bg-amber-400 rounded-md"></div>
-            <label className="w-full h-auto p-1 md:p-2 mx-auto flex flex-col text-nowrap text-left font-bold">
+            <div className="h-1 max-w-[80%] my-4 mx-auto bg-amber-400 rounded-md"></div>
+            <label className="w-full h-auto p-1 md:p-2 mx-auto flex flex-col whitespace-nowrap text-left font-bold">
               Recipe Title
               <input
                 value={title}
@@ -454,9 +455,9 @@ const SubmitARecipe = () => {
               />
             </label>
 
-            <label className="w-full h-auto p-1 md:p-2 mx-auto flex flex-col items-start text-nowrap text-left font-bold">
+            <label className="w-full h-auto p-1 md:p-2 mx-auto flex flex-col items-start whitespace-nowrap text-left font-bold">
               <h1>Description</h1>
-              <h2 className="ml-4 flex items-center text-wrap text-sm md:text-md lg:text-lg text-slate-400">
+              <h2 className="ml-4 flex max-w-[90%] items-center text-wrap text-sm md:text-md lg:text-lg text-slate-400">
                 <FaInfoCircle className="flex-shrink-0 h-4 w-4 lg:h-8 lg:w-8 m-2" />
                 <p>
                   Write a quick but eye-catching description not just about your
@@ -472,7 +473,7 @@ const SubmitARecipe = () => {
                 placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat..."
               />
             </label>
-            <label className="w-full h-auto p-1 md:p-2 mx-auto flex flex-col items-start text-nowrap text-left font-bold">
+            <label className="w-full h-auto p-1 md:p-2 mx-auto flex flex-col items-start whitespace-nowrap text-left font-bold">
               Servings
               <input
                 type="number"
@@ -497,7 +498,7 @@ const SubmitARecipe = () => {
                 value={cleanupTime}
                 onChange={setCleanupTime}
               />
-              <label className="w-full h-auto p-1 md:p-2 mx-auto flex flex-col text-nowrap text-left bg-sky-300 rounded-md text-sky-800 font-redhat font-bold">
+              <label className="w-full h-auto p-1 md:p-2 mx-auto flex flex-col whitespace-nowrap text-left bg-sky-300 rounded-md text-sky-800 font-redhat font-bold">
                 Total Time
                 <input
                   type="text"
@@ -514,7 +515,7 @@ const SubmitARecipe = () => {
               </label>
             </div>
 
-            <label className="w-full h-auto mb-4 p-1 md:p-2 mx-auto flex flex-col items-start text-nowrap text-left font-bold">
+            <label className="w-full h-auto mb-4 p-1 md:p-2 mx-auto flex flex-col items-start whitespace-nowrap text-left font-bold">
               Taste
               <div className="h-1 w-full my-1 bg-amber-400 rounded-md"></div>
               <h1 className="ml-2 text-slate-400">Rate the taste</h1>
@@ -526,7 +527,7 @@ const SubmitARecipe = () => {
                 emptyColor="text-slate-600"
               />
               <h1 className="ml-2 text-slate-400">Taste Description</h1>
-              <h2 className="ml-4 flex items-center text-wrap text-sm md:text-md lg:text-lg text-slate-400">
+              <h2 className="ml-4 flex max-w-[90%] items-center text-wrap text-sm md:text-md lg:text-lg text-slate-400">
                 <FaInfoCircle className="flex-shrink-0 h-4 w-4 lg:h-8 lg:w-8 m-2" />
                 <p>
                   In a few words, describe how your food tastes. Ex. "Sweet, yet
@@ -542,7 +543,7 @@ const SubmitARecipe = () => {
                 placeholder="A few fun adjectives here..."
               />
             </label>
-            <label className="w-full h-auto mb-4 p-1 md:p-2 mx-auto flex flex-col items-start text-nowrap text-left font-bold">
+            <label className="w-full h-auto mb-4 p-1 md:p-2 mx-auto flex flex-col items-start whitespace-nowrap text-left font-bold">
               Cost
               <div className="h-1 w-full my-1 bg-amber-400 rounded-md"></div>
               <h1 className="ml-2 text-slate-400">Rate the cost</h1>
@@ -554,7 +555,7 @@ const SubmitARecipe = () => {
                 emptyColor="text-slate-600"
               />
               <h1 className="ml-2 text-slate-400">Cost Description</h1>
-              <h2 className="ml-4 flex items-center text-wrap text-sm md:text-md lg:text-lg text-slate-400">
+              <h2 className="ml-4 flex max-w-[90%] items-center text-wrap text-sm md:text-md lg:text-lg text-slate-400">
                 <FaInfoCircle className="flex-shrink-0 h-4 w-4 lg:h-8 lg:w-8 m-2" />
                 <p>
                   Again, as consisely as possible, tell the reader how much this
@@ -571,7 +572,7 @@ const SubmitARecipe = () => {
               />
             </label>
 
-            <label className="w-full h-auto mb-4 p-1 md:p-2 mx-auto flex flex-col items-start text-nowrap text-left font-bold">
+            <label className="w-full h-auto mb-4 p-1 md:p-2 mx-auto flex flex-col items-start whitespace-nowrap text-left font-bold">
               Difficulty
               <div className="h-1 w-full my-1 bg-amber-400 rounded-md"></div>
               <h1 className="ml-2 text-slate-400">Rate the difficulty</h1>
@@ -583,7 +584,7 @@ const SubmitARecipe = () => {
                 emptyColor="text-slate-600"
               />
               <h1 className="ml-2 text-slate-400">Difficulty Description</h1>
-              <h2 className="ml-4 flex items-center text-wrap text-sm md:text-md lg:text-lg text-slate-400">
+              <h2 className="ml-4 flex max-w-[90%] items-center text-wrap text-sm md:text-md lg:text-lg text-slate-400">
                 <FaInfoCircle className="flex-shrink-0 h-4 w-4 lg:h-8 lg:w-8 m-2" />
                 <p>
                   How difficult would this be for the&nbsp;
@@ -608,11 +609,13 @@ const SubmitARecipe = () => {
               Ingredients
             </legend>
             <div className="w-full flex font-redhat text-lg md:text-xl lg:text-2xl">
-              <div className="w-1/2">Ingredient Name</div>
-              <div className="w-[10%]">Amount</div>
-              <div className="w-[20%]">Unit</div>
-              <div className="w-[10%]">Optional?</div>
-              <div className="w-[10%]"></div>
+              <div className="w-[45%] min-w-0">Ingredient Name</div>
+              <div className="w-[15%]  min-w-0">
+                {isMobile ? "#" : "Amount"}
+              </div>
+              <div className="w-[15%] min-w-0">Unit</div>
+              <div className="w-[15%] min-w-0">Optional?</div>
+              <div className="w-[10%] min-w-0"></div>
             </div>
 
             {ingredients.map((it, idx) => (
@@ -628,7 +631,7 @@ const SubmitARecipe = () => {
                       ingredient: e.target.value,
                     })
                   }
-                  className="w-1/2 m-1 py-1 bg-transparent text-slate-800 rounded-sm"
+                  className="w-[45%]  min-w-0 py-1 bg-transparent text-slate-800 rounded-sm"
                 />
 
                 <input
@@ -641,7 +644,7 @@ const SubmitARecipe = () => {
                       amount: e.target.value,
                     })
                   }
-                  className="w-[10%] py-1 px-2 bg-slate-800/10 text-slate-800"
+                  className="w-[15%]  min-w-0 py-1 px-2 bg-slate-800/10 text-slate-800"
                 />
 
                 <input
@@ -652,7 +655,7 @@ const SubmitARecipe = () => {
                       unit: e.target.value,
                     })
                   }
-                  className="w-[20%] m-1 py-1 bg-transparent text-slate-800"
+                  className="w-[15%] min-w-0 py-1 bg-transparent text-slate-800"
                 />
 
                 <input
@@ -664,15 +667,15 @@ const SubmitARecipe = () => {
                       optional: e.target.checked,
                     })
                   }
-                  className="w-[10%] m-2"
+                  className="w-[15%] min-w-0 flex-shrink-0"
                 />
 
                 <button
                   type="button"
                   onClick={() => removeArrayItem(setIngredients)(idx)}
-                  className="w-[10%] rounded-md bg-red-400 p-1 m-1"
+                  className="w-[10%] min-w-0 rounded-md bg-red-400 p-1"
                 >
-                  Remove
+                  X
                 </button>
               </div>
             ))}
@@ -684,44 +687,66 @@ const SubmitARecipe = () => {
                 unit: "",
                 optional: false,
               })}
-              className="w-60 text-nowrap bg-emerald-600 text-slate-50 rounded-md p-1 md:p-2 my-2"
+              className="w-60 whitespace-nowrap bg-emerald-600 text-slate-50 rounded-md p-1 md:p-2 my-2"
             >
               Add Ingredient
             </button>
             {/* EQUIPMENT */}
-            <legend>Equipment</legend>
-            {equipment.map((eq, idx) => (
-              <div key={idx}>
-                <label>
-                  Equipment
-                  <input
-                    value={eq.equipment}
-                    onChange={(e) =>
-                      updateArrayItem(setEquipment)(idx, {
-                        ...eq,
-                        equipment: e.target.value,
-                      })
-                    }
-                  />
-                </label>
-                <label>
-                  Optional
-                  <input
-                    type="checkbox"
-                    checked={eq.optional}
-                    onChange={(e) =>
-                      updateArrayItem(setEquipment)(idx, {
-                        ...eq,
-                        optional: e.target.checked,
-                      })
-                    }
-                  />
-                </label>
+            <legend className="font-redhat mb-2 font-bold text-xl md:text-2xl lg:text-3xl text-center font-slate-300">
+              Equipment
+            </legend>
+            <div className="w-full flex font-redhat text-lg md:text-xl lg:text-2xl">
+              <div className="w-[40%] min-w-0">Equipment</div>
+              <div className="w-[30%] min-w-0">Alt</div>
+              <div className="w-[15%] min-w-0">Optional?</div>
+              <div className="w-[15%] min-w-0"></div>
+            </div>
+
+            {equipment.map((et, idy) => (
+              <div
+                key={idy}
+                className="w-full flex flex-wrap first:rounded-t-lg last:rounded-b-lg odd:bg-indigo-100 even:bg-indigo-200"
+              >
+                <input
+                  value={et.equipment}
+                  onChange={(e) =>
+                    updateArrayItem(setEquipment)(idy, {
+                      ...et,
+                      equipment: e.target.value,
+                    })
+                  }
+                  className="w-[40%] min-w-0 py-1 bg-transparent text-slate-800 rounded-sm"
+                />
+
+                <input
+                  value={et.alt}
+                  onChange={(e) =>
+                    updateArrayItem(setEquipment)(idy, {
+                      ...et,
+                      alt: e.target.value,
+                    })
+                  }
+                  className="w-[30%] min-w-0 py-1 bg-slate-500/10 text-slate-800 rounded-sm"
+                />
+
+                <input
+                  type="checkbox"
+                  checked={et.optionalEt}
+                  onChange={(e) =>
+                    updateArrayItem(setEquipment)(idy, {
+                      ...et,
+                      optionalEt: e.target.checked,
+                    })
+                  }
+                  className="w-[15%] min-w-0"
+                />
+
                 <button
                   type="button"
-                  onClick={() => removeArrayItem(setEquipment)(idx)}
+                  onClick={() => removeArrayItem(setEquipment)(idy)}
+                  className="w-[15%] min-w-0 rounded-lg bg-red-400 p-1"
                 >
-                  Remove
+                  X
                 </button>
               </div>
             ))}
@@ -729,8 +754,10 @@ const SubmitARecipe = () => {
               type="button"
               onClick={addArrayItem(setEquipment, {
                 equipment: "",
-                optional: false,
+                alt: "",
+                optionalEt: false,
               })}
+              className="w-60 whitespace-nowrap bg-emerald-600 text-slate-50 rounded-md p-1 md:p-2 my-2"
             >
               Add Equipment
             </button>
