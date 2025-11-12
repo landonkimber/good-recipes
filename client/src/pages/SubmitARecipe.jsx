@@ -444,7 +444,7 @@ const SubmitARecipe = () => {
             <legend className="w-full font-redhat font-bold text-xl md:text-2xl lg:text-3xl text-center font-slate-300">
               Your Recipe
             </legend>
-            <div className="h-1 max-w-[80%] my-4 mx-auto bg-amber-400 rounded-md"></div>
+            <div className="h-1 w-[80%] my-4 mx-auto bg-blue-600 rounded-md"></div>
             <label className="w-full h-auto p-1 md:p-2 mx-auto flex flex-col whitespace-nowrap text-left font-bold">
               Recipe Title
               <input
@@ -517,7 +517,7 @@ const SubmitARecipe = () => {
 
             <label className="w-full h-auto mb-4 p-1 md:p-2 mx-auto flex flex-col items-start whitespace-nowrap text-left font-bold">
               Taste
-              <div className="h-1 w-full my-1 bg-amber-400 rounded-md"></div>
+              <div className="h-1 w-full my-1 bg-rose-400 rounded-full"></div>
               <h1 className="ml-2 text-slate-400">Rate the taste</h1>
               <IconRatingSelect
                 count={taste}
@@ -545,7 +545,7 @@ const SubmitARecipe = () => {
             </label>
             <label className="w-full h-auto mb-4 p-1 md:p-2 mx-auto flex flex-col items-start whitespace-nowrap text-left font-bold">
               Cost
-              <div className="h-1 w-full my-1 bg-amber-400 rounded-md"></div>
+              <div className="h-1 w-full my-1 bg-emerald-600 rounded-md"></div>
               <h1 className="ml-2 text-slate-400">Rate the cost</h1>
               <IconRatingSelect
                 count={cost}
@@ -605,23 +605,23 @@ const SubmitARecipe = () => {
 
           <fieldset id="ingredients-and-equipment">
             {/* INGREDIENTS */}
-            <legend className="font-redhat mb-2 font-bold text-xl md:text-2xl lg:text-3xl text-center font-slate-300">
-              Ingredients
+            <legend className="font-redhat my-2 md:my-4 f font-bold underline text-xl md:text-2xl lg:text-3xl text-center font-slate-300">
+              &nbsp;&nbsp;&nbsp;&nbsp;Ingredients&nbsp;&nbsp;&nbsp;&nbsp;
             </legend>
             <div className="w-full flex font-redhat text-lg md:text-xl lg:text-2xl">
-              <div className="w-[45%] min-w-0">Ingredient Name</div>
-              <div className="w-[15%]  min-w-0">
+              <div className="w-[45%] min-w-0 ">Ingredient Name</div>
+              <div className="w-[13%]  min-w-0">
                 {isMobile ? "#" : "Amount"}
               </div>
               <div className="w-[15%] min-w-0">Unit</div>
               <div className="w-[15%] min-w-0">Optional?</div>
-              <div className="w-[10%] min-w-0"></div>
+              <div className="w-[12%] min-w-0"></div>
             </div>
 
             {ingredients.map((it, idx) => (
               <div
                 key={idx}
-                className="w-full flex first:rounded-t-lg last:rounded-b-lg odd:bg-indigo-100 even:bg-indigo-200"
+                className="w-full flex p-1 first:rounded-t-lg last:rounded-b-lg odd:bg-indigo-100 even:bg-indigo-200"
               >
                 <input
                   value={it.ingredient}
@@ -644,7 +644,7 @@ const SubmitARecipe = () => {
                       amount: e.target.value,
                     })
                   }
-                  className="w-[15%]  min-w-0 py-1 px-2 bg-slate-800/10 text-slate-800"
+                  className="w-[13%]  min-w-0 py-1 px-2 bg-slate-800/10 text-slate-800"
                 />
 
                 <input
@@ -673,7 +673,7 @@ const SubmitARecipe = () => {
                 <button
                   type="button"
                   onClick={() => removeArrayItem(setIngredients)(idx)}
-                  className="w-[10%] min-w-0 rounded-md bg-red-400 p-1"
+                  className="w-[12%] text-slate-50 font-normal min-w-0 rounded-lg bg-red-400 hover:transform hover:scale-[105%] hover:font-bold p-1"
                 >
                   X
                 </button>
@@ -687,30 +687,30 @@ const SubmitARecipe = () => {
                 unit: "",
                 optional: false,
               })}
-              className="w-60 whitespace-nowrap bg-emerald-600 text-slate-50 rounded-md p-1 md:p-2 my-2"
+              className="w-60 whitespace-nowrap bg-emerald-600 text-slate-50 rounded-md hover:transform hover:scale-[105%] hover:font-bol p-1 md:p-2 my-2"
             >
               Add Ingredient
             </button>
             {/* EQUIPMENT */}
-            <legend className="font-redhat mb-2 font-bold text-xl md:text-2xl lg:text-3xl text-center font-slate-300">
-              Equipment
+            <legend className="font-redhat my-2 md:my-4 font-bold underline text-xl md:text-2xl lg:text-3xl text-center font-slate-300">
+              &nbsp;&nbsp;&nbsp;&nbsp;Equipment&nbsp;&nbsp;&nbsp;&nbsp;
             </legend>
             <div className="w-full flex font-redhat text-lg md:text-xl lg:text-2xl">
               <div className="w-[40%] min-w-0">Equipment</div>
-              <div className="w-[30%] min-w-0">Alt</div>
+              <div className="w-[33%] min-w-0">Alt</div>
               <div className="w-[15%] min-w-0">Optional?</div>
-              <div className="w-[15%] min-w-0"></div>
+              <div className="w-[12%] min-w-0"></div>
             </div>
 
-            {equipment.map((et, idy) => (
+            {equipment.map((et, idx) => (
               <div
-                key={idy}
-                className="w-full flex flex-wrap first:rounded-t-lg last:rounded-b-lg odd:bg-indigo-100 even:bg-indigo-200"
+                key={idx}
+                className="w-full flex flex-wrap first:rounded-t-lg last:rounded-b-lg odd:bg-indigo-100 even:bg-indigo-200 p-1"
               >
                 <input
                   value={et.equipment}
                   onChange={(e) =>
-                    updateArrayItem(setEquipment)(idy, {
+                    updateArrayItem(setEquipment)(idx, {
                       ...et,
                       equipment: e.target.value,
                     })
@@ -721,19 +721,19 @@ const SubmitARecipe = () => {
                 <input
                   value={et.alt}
                   onChange={(e) =>
-                    updateArrayItem(setEquipment)(idy, {
+                    updateArrayItem(setEquipment)(idx, {
                       ...et,
                       alt: e.target.value,
                     })
                   }
-                  className="w-[30%] min-w-0 py-1 bg-slate-500/10 text-slate-800 rounded-sm"
+                  className="w-[33%] min-w-0 py-1 bg-slate-500/10 text-slate-800 rounded-sm"
                 />
 
                 <input
                   type="checkbox"
                   checked={et.optionalEt}
                   onChange={(e) =>
-                    updateArrayItem(setEquipment)(idy, {
+                    updateArrayItem(setEquipment)(idx, {
                       ...et,
                       optionalEt: e.target.checked,
                     })
@@ -743,8 +743,8 @@ const SubmitARecipe = () => {
 
                 <button
                   type="button"
-                  onClick={() => removeArrayItem(setEquipment)(idy)}
-                  className="w-[15%] min-w-0 rounded-lg bg-red-400 p-1"
+                  onClick={() => removeArrayItem(setEquipment)(idx)}
+                  className="w-[12%] text-slate-50 font-normal min-w-0 rounded-lg bg-red-400 hover:transform hover:scale-[105%] hover:font-bold p-1"
                 >
                   X
                 </button>
@@ -757,52 +757,85 @@ const SubmitARecipe = () => {
                 alt: "",
                 optionalEt: false,
               })}
-              className="w-60 whitespace-nowrap bg-emerald-600 text-slate-50 rounded-md p-1 md:p-2 my-2"
+              className="w-60 whitespace-nowrap bg-emerald-600 text-slate-50 rounded-md hover:transform hover:scale-[105%] hover:font-bold p-1 md:p-2 my-2"
             >
               Add Equipment
             </button>
           </fieldset>
 
           <fieldset id="instructions">
-            <legend>Mise En Place (key: miceEnPlace)</legend>
+            <legend className="font-redhat my-2 md:my-4 font-bold underline text-xl md:text-2xl lg:text-3xl text-center font-slate-300">
+              &nbsp;&nbsp;&nbsp;&nbsp;Mice En Place&nbsp;&nbsp;&nbsp;&nbsp;
+            </legend>
+            <div className="w-full flex font-redhat text-lg md:text-xl lg:text-2xl">
+              <div className="w-[8%] min-w-0 text-center">#</div>
+              <div className="w-[80%]">Instruction</div>
+              <div className="w-[12%] min-w-0"></div>
+            </div>
             {miceEnPlace.map((step, idx) => (
-              <div key={idx}>
+              <div
+                key={idx}
+                className="w-full h-auto flex p-1 flex-wrap first:rounded-t-lg last:rounded-b-lg odd:bg-orange-100 even:bg-orange-50 text-slate-600"
+              >
+                <div className="w-[8%] py-2 text-right pr-2">{idx + 1}.</div>
                 <input
                   value={step}
                   onChange={(e) =>
                     updateArrayItem(setMiceEnPlace)(idx, e.target.value)
                   }
+                  className="w-[80%] text-wrap bg-transparent rounded-sm "
                 />
                 <button
                   type="button"
                   onClick={() => removeArrayItem(setMiceEnPlace)(idx)}
+                  className="w-[12%] text-slate-50 font-normal min-w-0 rounded-lg bg-red-400 hover:transform hover:scale-[105%] hover:font-bold p-1"
                 >
-                  Remove
+                  X
                 </button>
               </div>
             ))}
-            <button type="button" onClick={addArrayItem(setMiceEnPlace, "")}>
+            <button
+              type="button"
+              onClick={addArrayItem(setMiceEnPlace, "")}
+              className="w-60 whitespace-nowrap bg-emerald-600 text-slate-50 rounded-md hover:transform hover:scale-[105%] hover:font-bol p-1 md:p-2 my-2"
+            >
               Add Prep Step
             </button>
-
-            <legend>Instructions</legend>
-            {instructions.map((step, idx) => (
-              <div key={idx}>
+            <legend className="font-redhat my-2 md:my-4 font-bold underline text-xl md:text-2xl lg:text-3xl text-center font-slate-300">
+              &nbsp;&nbsp;&nbsp;&nbsp;Instructions&nbsp;&nbsp;&nbsp;&nbsp;
+            </legend>
+            <div className="w-full flex font-redhat text-lg md:text-xl lg:text-2xl">
+              <div className="w-[8%] min-w-0 text-center">#</div>
+              <div className="w-[80%]">Instruction</div>
+              <div className="w-[12%] min-w-0"></div>
+            </div>
+            {instructions.map((instruction, idx) => (
+              <div
+                key={idx}
+                className="w-full h-auto flex p-1 flex-wrap first:rounded-t-lg last:rounded-b-lg odd:bg-orange-100 even:bg-orange-50 text-slate-600"
+              >
+                <div className="w-[8%] py-2 text-right pr-2">{idx + 1}.</div>
                 <input
-                  value={step}
+                  value={instruction}
                   onChange={(e) =>
                     updateArrayItem(setInstructions)(idx, e.target.value)
                   }
+                  className="w-[80%] text-wrap bg-transparent rounded-sm "
                 />
                 <button
                   type="button"
                   onClick={() => removeArrayItem(setInstructions)(idx)}
+                  className="w-[12%] text-slate-50 font-normal min-w-0 rounded-lg bg-red-400 hover:transform hover:scale-[105%] hover:font-bold p-1"
                 >
-                  Remove
+                  X
                 </button>
               </div>
             ))}
-            <button type="button" onClick={addArrayItem(setInstructions, "")}>
+            <button
+              type="button"
+              onClick={addArrayItem(setInstructions, "")}
+              className="w-60 whitespace-nowrap bg-emerald-600 text-slate-50 rounded-md hover:transform hover:scale-[105%] hover:font-bol p-1 md:p-2 my-2"
+            >
               Add Instruction
             </button>
           </fieldset>

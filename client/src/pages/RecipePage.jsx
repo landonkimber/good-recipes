@@ -374,7 +374,7 @@ const RecipePage = () => {
               </div>
             </div>
             <div id="mice-en-place" className="">
-              <h2 className="text-2xl text-center md:text-3xl lg:text-4xl underline font-bold font-redhat text-slate-300 m-4">
+              <h2 className="text-2xl text-center md:text-3xl lg:text-4xl underline font-bold font-redhat text-slate-50 m-4">
                 &nbsp;&nbsp;&nbsp;&nbsp;Mice En Place&nbsp;&nbsp;&nbsp;&nbsp;
               </h2>
               <div id="recipe-prep" className="flex">
@@ -388,7 +388,7 @@ const RecipePage = () => {
                 </ol>
                 <div
                   id="tips"
-                  className="w-1/2 bg-amber-300 p-2 lg:p-4 rounded-md font-redhat"
+                  className="w-1/2 bg-amber-200 p-2 lg:p-4 rounded-md font-redhat"
                 >
                   <h3 className="text-lg text-center md:text-xl lg:text-2xl text-sky-800 font-bold mb-2">
                     Tips And Tricks!
@@ -400,10 +400,9 @@ const RecipePage = () => {
                   </ul>
                 </div>
               </div>
-              <h2 className="text-2xl lg:text-4xl m-4 font-bold font-redhat text-slate-300">
-                Instructions
+              <h2 className="text-2xl text-center md:text-3xl lg:text-4xl underline font-bold font-redhat text-slate-50 m-4">
+                &nbsp;&nbsp;&nbsp;&nbsp;Instructions&nbsp;&nbsp;&nbsp;&nbsp;
               </h2>
-              <div className="h-1 w-full bg-slate-300 my-2"></div>
               <ol className="text-md lg:text-lg text-sky-800">
                 {/* {console.log(highlightedInstructions)} */}
                 {recipe.instructions.map((element, index) => (
