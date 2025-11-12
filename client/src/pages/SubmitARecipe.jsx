@@ -338,7 +338,7 @@ const SubmitARecipe = () => {
   return (
     <div
       className="relative w-full
-       bg-slate-800/60 backdrop-blur-[5px] rounded-sm max-w-7xl mx-auto"
+       bg-slate-800/60 backdrop-blur-[5px] rounded-sm max-w-7xl mx-auto mt-[3vh] md:mt-[8vh] lg:mt-[10vh]"
     >
       <div
         id="submit-recipe-header"
@@ -604,172 +604,174 @@ const SubmitARecipe = () => {
           </fieldset>
 
           <fieldset id="ingredients-and-equipment">
-            {/* INGREDIENTS */}
-            <legend className="font-redhat my-2 md:my-4 f font-bold underline text-xl md:text-2xl lg:text-3xl text-center font-slate-300">
-              &nbsp;&nbsp;&nbsp;&nbsp;Ingredients&nbsp;&nbsp;&nbsp;&nbsp;
-            </legend>
-            <div className="w-full flex font-redhat text-lg md:text-xl lg:text-2xl">
-              <div className="w-[45%] min-w-0 ">Ingredient Name</div>
-              <div className="w-[13%]  min-w-0">
-                {isMobile ? "#" : "Amount"}
+            <div className="bg-blue-600 rounded-lg p-2 md:p-4">
+              {/* INGREDIENTS */}
+              <legend className="font-redhat my-2 md:my-4 f font-bold underline text-xl md:text-2xl lg:text-3xl text-center">
+                &nbsp;&nbsp;&nbsp;&nbsp;Ingredients&nbsp;&nbsp;&nbsp;&nbsp;
+              </legend>
+              <div className="w-full flex font-redhat text-lg md:text-xl lg:text-2xl">
+                <div className="w-[45%] min-w-0 ">Ingredient Name</div>
+                <div className="w-[13%]  min-w-0">
+                  {isMobile ? "#" : "Amount"}
+                </div>
+                <div className="w-[15%] min-w-0">Unit</div>
+                <div className="w-[15%] min-w-0">Optional?</div>
+                <div className="w-[12%] min-w-0"></div>
               </div>
-              <div className="w-[15%] min-w-0">Unit</div>
-              <div className="w-[15%] min-w-0">Optional?</div>
-              <div className="w-[12%] min-w-0"></div>
-            </div>
 
-            {ingredients.map((it, idx) => (
-              <div
-                key={idx}
-                className="w-full flex p-1 first:rounded-t-lg last:rounded-b-lg odd:bg-indigo-100 even:bg-indigo-200"
-              >
-                <input
-                  value={it.ingredient}
-                  onChange={(e) =>
-                    updateArrayItem(setIngredients)(idx, {
-                      ...it,
-                      ingredient: e.target.value,
-                    })
-                  }
-                  className="w-[45%]  min-w-0 py-1 bg-transparent text-slate-800 rounded-sm"
-                />
-
-                <input
-                  type="number"
-                  step="any"
-                  value={it.amount}
-                  onChange={(e) =>
-                    updateArrayItem(setIngredients)(idx, {
-                      ...it,
-                      amount: e.target.value,
-                    })
-                  }
-                  className="w-[13%]  min-w-0 py-1 px-2 bg-slate-800/10 text-slate-800"
-                />
-
-                <input
-                  value={it.unit}
-                  onChange={(e) =>
-                    updateArrayItem(setIngredients)(idx, {
-                      ...it,
-                      unit: e.target.value,
-                    })
-                  }
-                  className="w-[15%] min-w-0 py-1 bg-transparent text-slate-800"
-                />
-
-                <input
-                  type="checkbox"
-                  checked={it.optional}
-                  onChange={(e) =>
-                    updateArrayItem(setIngredients)(idx, {
-                      ...it,
-                      optional: e.target.checked,
-                    })
-                  }
-                  className="w-[15%] min-w-0 flex-shrink-0"
-                />
-
-                <button
-                  type="button"
-                  onClick={() => removeArrayItem(setIngredients)(idx)}
-                  className="w-[12%] text-slate-50 font-normal min-w-0 rounded-lg bg-red-400 hover:transform hover:scale-[105%] hover:font-bold p-1"
+              {ingredients.map((it, idx) => (
+                <div
+                  key={idx}
+                  className="w-full flex p-1 first:rounded-t-lg last:rounded-b-lg odd:bg-indigo-100 even:bg-indigo-200"
                 >
-                  X
-                </button>
-              </div>
-            ))}
-            <button
-              type="button"
-              onClick={addArrayItem(setIngredients, {
-                ingredient: "",
-                amount: 0,
-                unit: "",
-                optional: false,
-              })}
-              className="w-60 whitespace-nowrap bg-emerald-600 text-slate-50 rounded-md hover:transform hover:scale-[105%] hover:font-bol p-1 md:p-2 my-2"
-            >
-              Add Ingredient
-            </button>
-            {/* EQUIPMENT */}
-            <legend className="font-redhat my-2 md:my-4 font-bold underline text-xl md:text-2xl lg:text-3xl text-center font-slate-300">
-              &nbsp;&nbsp;&nbsp;&nbsp;Equipment&nbsp;&nbsp;&nbsp;&nbsp;
-            </legend>
-            <div className="w-full flex font-redhat text-lg md:text-xl lg:text-2xl">
-              <div className="w-[40%] min-w-0">Equipment</div>
-              <div className="w-[33%] min-w-0">Alt</div>
-              <div className="w-[15%] min-w-0">Optional?</div>
-              <div className="w-[12%] min-w-0"></div>
-            </div>
+                  <input
+                    value={it.ingredient}
+                    onChange={(e) =>
+                      updateArrayItem(setIngredients)(idx, {
+                        ...it,
+                        ingredient: e.target.value,
+                      })
+                    }
+                    className="w-[45%]  min-w-0 py-1 bg-transparent text-slate-800 rounded-sm"
+                  />
 
-            {equipment.map((et, idx) => (
-              <div
-                key={idx}
-                className="w-full flex flex-wrap first:rounded-t-lg last:rounded-b-lg odd:bg-indigo-100 even:bg-indigo-200 p-1"
+                  <input
+                    type="number"
+                    step="any"
+                    value={it.amount}
+                    onChange={(e) =>
+                      updateArrayItem(setIngredients)(idx, {
+                        ...it,
+                        amount: e.target.value,
+                      })
+                    }
+                    className="w-[13%]  min-w-0 px-2 bg-slate-800/10 text-slate-800"
+                  />
+
+                  <input
+                    value={it.unit}
+                    onChange={(e) =>
+                      updateArrayItem(setIngredients)(idx, {
+                        ...it,
+                        unit: e.target.value,
+                      })
+                    }
+                    className="w-[15%] min-w-0 py-1 bg-transparent text-slate-800"
+                  />
+
+                  <input
+                    type="checkbox"
+                    checked={it.optional}
+                    onChange={(e) =>
+                      updateArrayItem(setIngredients)(idx, {
+                        ...it,
+                        optional: e.target.checked,
+                      })
+                    }
+                    className="w-[15%] min-w-0 flex-shrink-0"
+                  />
+
+                  <button
+                    type="button"
+                    onClick={() => removeArrayItem(setIngredients)(idx)}
+                    className="w-[12%] text-slate-50 font-normal min-w-0 rounded-lg bg-red-400 hover:transform hover:scale-[105%] hover:font-bold p-1"
+                  >
+                    X
+                  </button>
+                </div>
+              ))}
+              <button
+                type="button"
+                onClick={addArrayItem(setIngredients, {
+                  ingredient: "",
+                  amount: 0,
+                  unit: "",
+                  optional: false,
+                })}
+                className="w-60 whitespace-nowrap bg-emerald-600 text-slate-50 rounded-md hover:transform hover:scale-[105%] hover:font-bol p-1 md:p-2 my-2"
               >
-                <input
-                  value={et.equipment}
-                  onChange={(e) =>
-                    updateArrayItem(setEquipment)(idx, {
-                      ...et,
-                      equipment: e.target.value,
-                    })
-                  }
-                  className="w-[40%] min-w-0 py-1 bg-transparent text-slate-800 rounded-sm"
-                />
-
-                <input
-                  value={et.alt}
-                  onChange={(e) =>
-                    updateArrayItem(setEquipment)(idx, {
-                      ...et,
-                      alt: e.target.value,
-                    })
-                  }
-                  className="w-[33%] min-w-0 py-1 bg-slate-500/10 text-slate-800 rounded-sm"
-                />
-
-                <input
-                  type="checkbox"
-                  checked={et.optionalEt}
-                  onChange={(e) =>
-                    updateArrayItem(setEquipment)(idx, {
-                      ...et,
-                      optionalEt: e.target.checked,
-                    })
-                  }
-                  className="w-[15%] min-w-0"
-                />
-
-                <button
-                  type="button"
-                  onClick={() => removeArrayItem(setEquipment)(idx)}
-                  className="w-[12%] text-slate-50 font-normal min-w-0 rounded-lg bg-red-400 hover:transform hover:scale-[105%] hover:font-bold p-1"
-                >
-                  X
-                </button>
+                Add Ingredient
+              </button>
+              {/* EQUIPMENT */}
+              <legend className="font-redhat my-2 md:my-4 font-bold underline text-xl md:text-2xl lg:text-3xl text-center">
+                &nbsp;&nbsp;&nbsp;&nbsp;Equipment&nbsp;&nbsp;&nbsp;&nbsp;
+              </legend>
+              <div className="w-full flex font-redhat text-lg md:text-xl lg:text-2xl">
+                <div className="w-[40%] min-w-0">Equipment</div>
+                <div className="w-[33%] min-w-0">Alt</div>
+                <div className="w-[15%] min-w-0">Optional?</div>
+                <div className="w-[12%] min-w-0"></div>
               </div>
-            ))}
-            <button
-              type="button"
-              onClick={addArrayItem(setEquipment, {
-                equipment: "",
-                alt: "",
-                optionalEt: false,
-              })}
-              className="w-60 whitespace-nowrap bg-emerald-600 text-slate-50 rounded-md hover:transform hover:scale-[105%] hover:font-bold p-1 md:p-2 my-2"
-            >
-              Add Equipment
-            </button>
+
+              {equipment.map((et, idx) => (
+                <div
+                  key={idx}
+                  className="w-full flex flex-wrap first:rounded-t-lg last:rounded-b-lg odd:bg-indigo-100 even:bg-indigo-200 p-1"
+                >
+                  <input
+                    value={et.equipment}
+                    onChange={(e) =>
+                      updateArrayItem(setEquipment)(idx, {
+                        ...et,
+                        equipment: e.target.value,
+                      })
+                    }
+                    className="w-[40%] min-w-0 py-1 bg-transparent text-slate-800 rounded-sm"
+                  />
+
+                  <input
+                    value={et.alt}
+                    onChange={(e) =>
+                      updateArrayItem(setEquipment)(idx, {
+                        ...et,
+                        alt: e.target.value,
+                      })
+                    }
+                    className="w-[33%] min-w-0 bg-slate-500/10 text-slate-800 rounded-sm"
+                  />
+
+                  <input
+                    type="checkbox"
+                    checked={et.optionalEt}
+                    onChange={(e) =>
+                      updateArrayItem(setEquipment)(idx, {
+                        ...et,
+                        optionalEt: e.target.checked,
+                      })
+                    }
+                    className="w-[15%] min-w-0"
+                  />
+
+                  <button
+                    type="button"
+                    onClick={() => removeArrayItem(setEquipment)(idx)}
+                    className="w-[12%] text-slate-50 font-normal min-w-0 rounded-lg bg-red-400 hover:transform hover:scale-[105%] hover:font-bold p-1"
+                  >
+                    X
+                  </button>
+                </div>
+              ))}
+              <button
+                type="button"
+                onClick={addArrayItem(setEquipment, {
+                  equipment: "",
+                  alt: "",
+                  optionalEt: false,
+                })}
+                className="w-60 whitespace-nowrap bg-emerald-600 text-slate-50 rounded-md hover:transform hover:scale-[105%] hover:font-bold p-1 md:p-2 my-2"
+              >
+                Add Equipment
+              </button>
+            </div>
           </fieldset>
 
           <fieldset id="instructions">
-            <legend className="font-redhat my-2 md:my-4 font-bold underline text-xl md:text-2xl lg:text-3xl text-center font-slate-300">
+            <legend className="w-full font-redhat my-2 md:my-4 font-bold underline text-xl md:text-2xl lg:text-3xl text-center">
               &nbsp;&nbsp;&nbsp;&nbsp;Mice En Place&nbsp;&nbsp;&nbsp;&nbsp;
             </legend>
             <div className="w-full flex font-redhat text-lg md:text-xl lg:text-2xl">
               <div className="w-[8%] min-w-0 text-center">#</div>
-              <div className="w-[80%]">Instruction</div>
+              <div className="w-[80%]">Preparation</div>
               <div className="w-[12%] min-w-0"></div>
             </div>
             {miceEnPlace.map((step, idx) => (
@@ -778,17 +780,21 @@ const SubmitARecipe = () => {
                 className="w-full h-auto flex p-1 flex-wrap first:rounded-t-lg last:rounded-b-lg odd:bg-orange-100 even:bg-orange-50 text-slate-600"
               >
                 <div className="w-[8%] py-2 text-right pr-2">{idx + 1}.</div>
-                <input
+                <textarea
                   value={step}
-                  onChange={(e) =>
-                    updateArrayItem(setMiceEnPlace)(idx, e.target.value)
-                  }
-                  className="w-[80%] text-wrap bg-transparent rounded-sm "
+                  onChange={(e) => {
+                    updateArrayItem(setMiceEnPlace)(idx, e.target.value);
+                    e.target.style.height = "auto";
+                    e.target.style.height = `${e.target.scrollHeight}px`;
+                  }}
+                  className="w-[80%] min-h-4 p-1 md:p-2 bg-transparent rounded-sm "
+                  placeholder="Type here..."
+                  rows={1}
                 />
                 <button
                   type="button"
                   onClick={() => removeArrayItem(setMiceEnPlace)(idx)}
-                  className="w-[12%] text-slate-50 font-normal min-w-0 rounded-lg bg-red-400 hover:transform hover:scale-[105%] hover:font-bold p-1"
+                  className="w-[12%] h-12 text-slate-50 font-normal min-w-0 rounded-lg bg-red-400 hover:transform hover:scale-[105%] hover:font-bold p-1"
                 >
                   X
                 </button>
@@ -815,12 +821,16 @@ const SubmitARecipe = () => {
                 className="w-full h-auto flex p-1 flex-wrap first:rounded-t-lg last:rounded-b-lg odd:bg-orange-100 even:bg-orange-50 text-slate-600"
               >
                 <div className="w-[8%] py-2 text-right pr-2">{idx + 1}.</div>
-                <input
+                <textarea
                   value={instruction}
-                  onChange={(e) =>
-                    updateArrayItem(setInstructions)(idx, e.target.value)
-                  }
-                  className="w-[80%] text-wrap bg-transparent rounded-sm "
+                  onChange={(e) => {
+                    updateArrayItem(setInstructions)(idx, e.target.value);
+                    e.target.style.height = "auto";
+                    e.target.style.height = `${e.target.scrollHeight}px`;
+                  }}
+                  className="w-[80%] min-h-4 p-1 md:p-2 bg-transparent rounded-sm "
+                  placeholder="Type here..."
+                  rows={1}
                 />
                 <button
                   type="button"
@@ -841,43 +851,87 @@ const SubmitARecipe = () => {
           </fieldset>
 
           <fieldset id="extras">
-            <legend>Tips & Tricks</legend>
-            {tipsAndTricks.map((tip, idx) => (
-              <div key={idx}>
-                <input
-                  value={tip}
-                  onChange={(e) =>
-                    updateArrayItem(setTipsAndTricks)(idx, e.target.value)
-                  }
-                />
-                <button
-                  type="button"
-                  onClick={() => removeArrayItem(setTipsAndTricks)(idx)}
-                >
-                  Remove
-                </button>
+            <div className="bg-violet-600 rounded-lg p-4 px-8 mt-2 md:mt-4">
+              <legend className="w-full font-redhat my-2 md:my-4 font-bold underline text-xl md:text-2xl lg:text-3xl text-center text-slate-50">
+                &nbsp;&nbsp;&nbsp;&nbsp;Extras&nbsp;&nbsp;&nbsp;&nbsp;
+              </legend>
+              <h1 className="text-slate-50 items-start whitespace-nowrap text-left font-bold">
+                Tips & Tricks
+              </h1>
+              <div className="w-full flex font-redhat text-lg md:text-xl lg:text-2xl">
+                <div className="w-[4%] min-w-0 text-center"></div>
+                <div className="w-[84%] text-slate-50">Add A Tip</div>
+                <div className="w-[12%] min-w-0"></div>
               </div>
-            ))}
-            <button type="button" onClick={addArrayItem(setTipsAndTricks, "")}>
-              Add Tip
-            </button>
-            <legend>Extras</legend>
-            <label>
-              More Info
-              <textarea
-                value={moreInfo}
-                onChange={(e) => setMoreInfo(e.target.value)}
-              />
-            </label>
+              {tipsAndTricks.map((tip, idx) => (
+                <div
+                  key={idx}
+                  className="w-full h-auto flex p-1 flex-wrap first:rounded-t-lg last:rounded-b-lg odd:bg-purple-300 even:bg-fuchsia-200 text-slate-600"
+                >
+                  <div className="w-[4%] flex justify-center items-center">
+                    <FaStar />
+                  </div>
+                  <textarea
+                    value={tip}
+                    onChange={(e) => {
+                      updateArrayItem(setTipsAndTricks)(idx, e.target.value);
+                      e.target.style.height = "auto";
+                      e.target.style.height = `${e.target.scrollHeight}px`;
+                    }}
+                    className="w-[84%] min-h-4 p-1 md:p-2 bg-transparent rounded-sm "
+                    placeholder="Type here..."
+                    rows={1}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => removeArrayItem(setTipsAndTricks)(idx)}
+                    className="w-[12%] h-12 text-slate-50 font-normal min-w-0 rounded-lg bg-red-400 hover:transform hover:scale-[105%] hover:font-bold p-1"
+                  >
+                    X
+                  </button>
+                </div>
+              ))}
+              <button
+                type="button"
+                onClick={addArrayItem(setTipsAndTricks, "")}
+                className="w-60 whitespace-nowrap bg-emerald-600 text-slate-50 rounded-md hover:transform hover:scale-[105%] hover:font-bol p-1 md:p-2 my-2"
+              >
+                Add Tip
+              </button>
 
-            <label>
-              Image (path or URL)
-              <input value={image} onChange={(e) => setImage(e.target.value)} />
-            </label>
+              <label className="w-full h-auto p-1 md:p-2 mx-auto flex flex-col text-slate-50 items-start whitespace-nowrap text-left font-bold">
+                <h1>More Info About The Recipe</h1>
+                {/* <h2 className="ml-4 flex max-w-[90%] items-center text-wrap text-sm md:text-md lg:text-lg text-slate-50">
+                  <FaInfoCircle className="flex-shrink-0 h-4 w-4 lg:h-8 lg:w-8 m-2" />
+                  <p>Optional but recomended</p>
+                </h2> */}
+                <textarea
+                  value={moreInfo}
+                  onChange={(e) => setMoreInfo(e.target.value)}
+                  className={`w-full ${inputFieldStyling(
+                    moreInfo
+                  )} text-slate-600 bg-violet-200 min-h-40`}
+                  placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                />
+              </label>
+
+              <label>
+                Image (path or URL)
+                <input
+                  value={image}
+                  onChange={(e) => setImage(e.target.value)}
+                />
+              </label>
+            </div>
           </fieldset>
 
-          <div>
-            <button type="submit">Submit Recipe</button>
+          <div className="w-3/4 rounded-full bg-emerald-400 h-12 mx-auto my-4 md:my-8 flex justify-center items-center">
+            <button
+              type="submit"
+              className="font-redhat font-bold text-slate-50"
+            >
+              Submit Recipe
+            </button>
           </div>
         </div>
       </form>

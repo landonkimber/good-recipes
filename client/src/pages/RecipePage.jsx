@@ -82,7 +82,6 @@ const RecipeStats = ({ recipeData }) => (
 );
 
 const RecipePage = () => {
-  window.scrollTo(0, 0);
   const { slug } = useParams();
 
   const recipe = recipeData.find(
