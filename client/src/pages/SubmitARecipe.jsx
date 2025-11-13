@@ -21,16 +21,15 @@ const sampleRecipe = {
   title: "BBQ Pulled Pork Sandwiches",
   description:
     "Slow-cooked pork shoulder shredded and tossed with tangy BBQ sauce.",
-  totalTime: "8 hours",
-  prepTime: "10 min",
-  cookTime: "7 hr 45 min",
-  cleanupTime: "5 min",
+  prepTime: 20,
+  cookTime: 450,
+  cleanupTime: 25,
   servings: 8,
   tasteDesc: "Smoky & Sweet",
   taste: 5,
   costDesc: "Low Cost",
   cost: 1,
-  difficultyDesc: "Hands-Off",
+  difficultyDesc: "Slow and Steady",
   difficulty: 1,
   ingredients: [
     { ingredient: "Pork Shoulder", amount: 3, unit: "lb", optional: false },
@@ -51,7 +50,7 @@ const sampleRecipe = {
   ],
   instructions: [
     "Place onions in slow cooker; add pork and seasonings.",
-    "Pour broth; cook on LOW 7–8 hours.",
+    "Pour broth; cook on LOW 7-8 hours.",
     "Shred pork; toss with BBQ sauce.",
     "Serve on buns.",
   ],
@@ -101,10 +100,6 @@ const SubmitARecipe = () => {
   const [image, setImage] = useState("");
 
   function loadSample() {
-    setFirstName(randomBool ? "Jane" : "John");
-    setLastName("Doh'");
-    setEmail(`${randomBool ? "jane" : "john"}doh@example.com`);
-    setPhone("XXXXXXXXXX");
     setTitle(sampleRecipe.title);
     setDescription(sampleRecipe.description);
     setTotalTime(sampleRecipe.totalTime);
@@ -347,7 +342,13 @@ const SubmitARecipe = () => {
         <h1 className="text-center m-2 text-2xl md:text-3xl lg:text-4xl font-redhat">
           Submit A Recipe For Review
         </h1>
-        <div className="h-1 w-[80%] my-4 mx-auto bg-sky-500"></div>
+        <div className="h-1 w-[80%] my-4 mx-auto bg-slate-300"></div>
+        <p className="font-normal">
+          Have a lowcost, easy, and delicious recipe worth sharing?? We are
+          always looking for more content to fill our site! Please fill out the
+          application below to subimit a recipe to our team and the chance to be
+          featured on Good Recipes!
+        </p>
         <div>
           <button
             type="button"
@@ -593,10 +594,10 @@ const SubmitARecipe = () => {
                 </p>
               </h2>
               <input
-                value={tasteDesc}
+                value={difficultyDesc}
                 onChange={(e) => setTasteDesc(e.target.value)}
                 className={`w-full ${inputFieldStyling(
-                  tasteDesc
+                  difficultyDesc
                 )} bg-slate-500`}
                 placeholder="A few fun adjectives here..."
               />
@@ -606,7 +607,7 @@ const SubmitARecipe = () => {
           <fieldset id="ingredients-and-equipment">
             <div className="bg-blue-600 rounded-lg p-2 md:p-4">
               {/* INGREDIENTS */}
-              <legend className="font-redhat my-2 md:my-4 f font-bold underline text-xl md:text-2xl lg:text-3xl text-center">
+              <legend className="font-redhat my-2 md:my-4 f font-bold underline text-xl md:text-2xl lg:text-3xl text-left">
                 &nbsp;&nbsp;&nbsp;&nbsp;Ingredients&nbsp;&nbsp;&nbsp;&nbsp;
               </legend>
               <div className="w-full flex font-redhat text-lg md:text-xl lg:text-2xl">
@@ -645,7 +646,7 @@ const SubmitARecipe = () => {
                         amount: e.target.value,
                       })
                     }
-                    className="w-[13%]  min-w-0 px-2 bg-slate-800/10 text-slate-800"
+                    className="w-[13%]  min-w-0 px-2 bg-slate-800/10 rounded-md text-slate-800"
                   />
 
                   <input
@@ -693,7 +694,7 @@ const SubmitARecipe = () => {
                 Add Ingredient
               </button>
               {/* EQUIPMENT */}
-              <legend className="font-redhat my-2 md:my-4 font-bold underline text-xl md:text-2xl lg:text-3xl text-center">
+              <legend className="font-redhat my-2 md:my-4 font-bold underline text-xl md:text-2xl lg:text-3xl text-left">
                 &nbsp;&nbsp;&nbsp;&nbsp;Equipment&nbsp;&nbsp;&nbsp;&nbsp;
               </legend>
               <div className="w-full flex font-redhat text-lg md:text-xl lg:text-2xl">
@@ -727,7 +728,7 @@ const SubmitARecipe = () => {
                         alt: e.target.value,
                       })
                     }
-                    className="w-[33%] min-w-0 bg-slate-500/10 text-slate-800 rounded-sm"
+                    className="w-[33%] min-w-0 bg-slate-500/10 text-slate-800 rounded-md"
                   />
 
                   <input
@@ -766,7 +767,7 @@ const SubmitARecipe = () => {
           </fieldset>
 
           <fieldset id="instructions">
-            <legend className="w-full font-redhat my-2 md:my-4 font-bold underline text-xl md:text-2xl lg:text-3xl text-center">
+            <legend className="w-full font-redhat my-2 md:my-4 font-bold underline text-xl md:text-2xl lg:text-3xl text-left">
               &nbsp;&nbsp;&nbsp;&nbsp;Mice En Place&nbsp;&nbsp;&nbsp;&nbsp;
             </legend>
             <div className="w-full flex font-redhat text-lg md:text-xl lg:text-2xl">
@@ -807,7 +808,7 @@ const SubmitARecipe = () => {
             >
               Add Prep Step
             </button>
-            <legend className="font-redhat my-2 md:my-4 font-bold underline text-xl md:text-2xl lg:text-3xl text-center font-slate-300">
+            <legend className="font-redhat my-2 md:my-4 font-bold underline text-xl md:text-2xl lg:text-3xl text-left font-slate-300">
               &nbsp;&nbsp;&nbsp;&nbsp;Instructions&nbsp;&nbsp;&nbsp;&nbsp;
             </legend>
             <div className="w-full flex font-redhat text-lg md:text-xl lg:text-2xl">
