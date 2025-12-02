@@ -616,7 +616,7 @@ const SubmitARecipe = () => {
                   {isMobile ? "#" : "Amount"}
                 </div>
                 <div className="w-[15%] min-w-0">Unit</div>
-                <div className="w-[15%] min-w-0">Optional?</div>
+                <div className="w-[15%] text-center min-w-0">Optional?</div>
                 <div className="w-[12%] min-w-0"></div>
               </div>
 
@@ -700,7 +700,7 @@ const SubmitARecipe = () => {
               <div className="w-full flex font-redhat text-lg md:text-xl lg:text-2xl">
                 <div className="w-[40%] min-w-0">Equipment</div>
                 <div className="w-[33%] min-w-0">Alt</div>
-                <div className="w-[15%] min-w-0">Optional?</div>
+                <div className="w-[15%] text-center min-w-0">Optional?</div>
                 <div className="w-[12%] min-w-0"></div>
               </div>
 
@@ -916,13 +916,13 @@ const SubmitARecipe = () => {
                 />
               </label>
 
-              <label>
+              {/* <label>
                 Image (path or URL)
                 <input
                   value={image}
                   onChange={(e) => setImage(e.target.value)}
                 />
-              </label>
+              </label> */}
             </div>
           </fieldset>
 

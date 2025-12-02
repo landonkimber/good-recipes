@@ -192,7 +192,7 @@ const ExploreModal = ({ recipe, onClose }) => {
                   </ol>
                   <div className="absolute w-[95%] h-4 bg-gradient-to-t from-slate-300 to-transparent z-[60]"></div>
                 </div>
-                <div className="max-w-full h-[20%] p-1 bg-slate-200 flex justify-start align-center gap-2 pl-1 text-sky-900 text-xs md:text-lg lg:pb-3 md:pb-1 overflow-y-hidden overflow-x-auto">
+                <div className="max-w-full h-[20%] p-1 py-auto  bg-slate-200 flex justify-start items-center gap-2 pl-1 text-sky-900 text-xs md:text-lg md:pb-1 overflow-y-hidden overflow-x-auto">
                   <p className="h-fit px-2 py-1 font-redhat rounded text-nowrap bg-sky-300">
                     {recipe.totalTime}
                   </p>
