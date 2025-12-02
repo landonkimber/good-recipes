@@ -6,7 +6,16 @@ import ExploreModal from "./ExploreModal";
 
 const Explore = () => {
   const [selectedRecipe, setSelectedRecipe] = useState(null);
-  const [selectedParams, setSelectedParams] = useState(0);
+  const [selectedParams, setSelectedParams] = useState({
+    difficultyParamMin: 0,
+    difficultyParamMax: 5,
+    costParamMin: 0,
+    costParamMax: 5,
+    healthParamMin: 0,
+    healthParamMax: 5,
+    // timeParamMin: 0,
+    // timeParamMax: 1000,
+  });
 
   function getResults(
     difficultyParamMin = 0,
@@ -14,27 +23,27 @@ const Explore = () => {
     costParamMin = 0,
     costParamMax = 5,
     healthParamMin = 0,
-    healthParamMax = 5,
-    timeParamMin = 0,
-    timeParamMax
+    healthParamMax = 5
+    // timeParamMin = 0,
+    // timeParamMax
   ) {
     return function (recipe) {
-      console.log(recipe);
-      console.log(recipe.difficulty);
       if (
-        recipe.difficulty >= difficultyParamMin &&
-        recipe.difficulty <= difficultyParamMax &&
-        recipe.cost >= costParamMin &&
-        recipe.cost <= costParamMax &&
+        recipe.difficulty >= selectedParams.difficultyParamMin &&
+        recipe.difficulty <= selectedParams.difficultyParamMax &&
+        recipe.cost >= selectedParams.costParamMin &&
+        recipe.cost <= selectedParams.costParamMax &&
         //Needs to eventually be changed to recipe.health
-        recipe.taste >= healthParamMin &&
-        recipe.taste <= healthParamMax
+        recipe.taste >= selectedParams.healthParamMin &&
+        recipe.taste <= selectedParams.healthParamMax
         // Commenting out time until the total time value is a number
         // && recipe.totaltime >= timeParamMin &&
         // recipe.totaltime <= timeParamMax
       ) {
-        console.log("passed recipe!");
+        console.log("passed recipe Params!");
         return recipe;
+      } else {
+        console.log("recipe did not pass Params :|");
       }
     };
   }
@@ -77,7 +86,10 @@ const Explore = () => {
   );
 
   return (
-    <div id="explore-guide" className="relative flex flex-col max-w-7xl z-20">
+    <div
+      id="explore-guide"
+      className="relative flex flex-col max-w-7xl w-full z-20"
+    >
       <div
         id="explore-nav"
         className="flex flex-col items-center w-full h-auto bg-slate-50 rounded-t-md mt-2"
@@ -92,8 +104,12 @@ const Explore = () => {
         <div
           className="h-1 w-[90%] mx-auto h-12 my-1 mb-3 bg-slate-800 rounded-md"
           onClick={() => {
-            setSelectedParams((prev) => prev + 1);
+            setSelectedParams({
+              ...selectedParams,
+              difficultyParamMin: selectedParams.difficultyParamMin + 1,
+            });
             console.log("clicked");
+            console.log(selectedParams);
           }}
         >
           Click here
