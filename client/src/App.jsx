@@ -15,7 +15,7 @@ import SubmitARecipe from "./pages/SubmitARecipe";
 import ContactForm from "./pages/ContactForm";
 
 function App() {
-  const isMobile = window.innerWidth > 768 ? true : false;
+  const isMobile = window.innerWidth < 768 ? true : false;
   return (
     <>
       <NavBar />
@@ -24,8 +24,8 @@ function App() {
         <MainBG />
         <div
           id="main-padding"
-          className={`w-full border border-red-300 ${
-            isMobile ? "h-[15.6vh]" : "h-[19.5vh]"
+          className={`w-full top-0 right-0 ${
+            isMobile ? "h-[13.6vh]" : "h-[17.5vh]"
           }`}
         ></div>
         <Routes>

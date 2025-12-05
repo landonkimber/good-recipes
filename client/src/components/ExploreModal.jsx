@@ -16,11 +16,11 @@ const ModalPortal = ({ children }) => {
 };
 
 const IconRating = ({ count, total = 5, Icon, color, emptyColor }) => (
-  <div className="flex gap-1">
+  <div className="w-fit mx-auto flex gap-1">
     {[...Array(total)].map((_, i) => (
       <Icon
         key={i}
-        className={`text-2xl md:text-2xl lg:text-4xl xl:text-5xl mx-0 md:mx-1 ${
+        className={`text-md md:text-xl lg:text-3xl xl:text-5xl mx-0 md:mx-1 ${
           i < count ? color : emptyColor
         }`}
       />
@@ -98,32 +98,31 @@ const ExploreModal = ({ recipe, onClose }) => {
           >
             <div className="flex flex-col justify-center items-center w-1/3 bg-gradient-to-tl rounded-tl-xl from-sky-950 to-slate-800 overflow-hidden">
               <div className="text-center">
-                <h2 className="text-lg text-2xl md:text-2xl lg:text-2xl text-slate-300 font-redhat font-semibold mb-1">
+                <h2 className="text-md md:text-2xl lg:text-3xl text-slate-300 font-redhat font-semibold mb-1">
                   {recipe.tasteDesc}
                 </h2>
-
                 <IconRating
                   count={recipe.taste}
                   Icon={FaHeart}
                   color="text-rose-400 drop-shadow-md drop-shadow-rose-300"
-                  emptyColor="text-slate-600"
+                  emptyColor="text-slate-600 drop-shadow-inner"
                 />
               </div>
 
               <div className="text-center">
-                <h2 className="text-lg text-2xl md:text-2xl lg:text-2xl text-slate-300 font-redhat font-semibold mb-1">
+                <h2 className="text-md md:text-2xl lg:text-3xl  text-slate-300 font-redhat font-semibold mb-1">
                   {recipe.costDesc}
                 </h2>
                 <IconRating
                   count={recipe.cost}
                   Icon={FaDollarSign}
                   color="text-emerald-600 drop-shadow-md drop-shadow-emerald-200"
-                  emptyColor="text-slate-600 "
+                  emptyColor="text-slate-600  drop-shadow-inner"
                 />
               </div>
 
               <div className="text-center">
-                <h2 className="text-lg text-2xl md:text-2xl lg:text-2xl text-slate-300 font-redhat font-semibold mb-1">
+                <h2 className="text-md md:text-2xl lg:text-3xl text-slate-300 font-redhat font-semibold mb-1">
                   {recipe.difficultyDesc}
                 </h2>
                 <IconRating
@@ -137,35 +136,33 @@ const ExploreModal = ({ recipe, onClose }) => {
             <div className="flex flex-row justify-between w-2/3 bg-slate-300 bg-cover">
               <div className="flex flex-col justify-between h-full w-[80%]">
                 <div className="relative h-[80%] w-full p-1 md:p-1 lg:p-2 grid-rows-2 overflow-x-hidden overflow-y-scroll">
-                  <div className="flex flex-row w-full h-auto justify-between">
-                    <h2 className="text-xl md:text-4xl text-slate-900 flex items-center font-redhat font-bold underline">
-                      {recipe.title}
-                    </h2>
-                    <div className="flex w-auto flex-col md:flex-col lg:flex-row items-center justify-center md:pr-1 lg:pr-4">
+                  <div className="flex justify-start w-full h-auto">
+                    <div className="flex w-auto flex-row md:flex-col lg:flex-row items-center justify-center md:pr-1 lg:pr-4">
                       <img
                         src="/headshot.jpg"
                         alt="image of a headshot"
                         className="h-8 w-8 md:h-12 md:w-12 rounded-full md:mx-4 mx-1"
                       />
-                      <div className="font-redhat text-sky-900">
-                        <p className="text-center md:text-center text-sm lg:text-left">
+                      <div className=" font-redhat text-sky-900">
+                        <p className="text-center md:text-center text-xs lg:text-md lg:text-left">
                           Jane Doe
                         </p>
-                        <p className="text-center md:ml-0 md:text-center lg:text-left text-xs ml-1 text-navy-700">
+                        <p className="text-center md:ml-0 md:text-center lg:text-left text-xs lg:text-sm ml-1 text-navy-700">
                           08/19/2025
                         </p>
                       </div>
                     </div>
                   </div>
-                  <p className="w-full text-xs p-1 md:text-xl my-4 p-0 md:p-2 font-redhat text-slate-900 overflow-hidden">
+                  <p className="w-full text-xs p-1 md:text-xl my-4 p-0 md:p-2 font-redhat font-bold text-slate-900 overflow-hidden">
                     {recipe.description}
                   </p>
                   <p className="underline text-xs md:text-xl font-redhat  text-sky-700">
                     What you'll need!
                   </p>
-                  <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 wrap p-1 text-xs md:text-xl my-4 p-2 text-wrap  font-redhat text-slate-900 overflow-hidden">
+                  <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 wrap p-1 text-xs md:text-xl my-4 p-2 text-wrap  font-redhat text-slate-900 overflow-hidden">
                     {recipe.ingredients.map((element, index) => (
-                      <li className="flex flex-auto items-center">
+                      <li className="items-center">
+                        <span className="text-sky-500">• </span>
                         {element.ingredient}
                       </li>
                     ))}

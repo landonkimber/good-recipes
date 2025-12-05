@@ -19,9 +19,9 @@ const Home = () => {
 
         {/* Overlay Content Box */}
         <div className="relative z-10 h-full flex items-center justify-center px-6">
-          <div className="bg-gray-800/50 h-[60%] md:h-[50%] backdrop-blur-md rounded-md flex flex-col md:flex-row sm:flex-col w-full max-w-7xl p-4">
+          <div className="bg-gray-800/50 h-min-[60%] md:h-[50%] backdrop-blur-md rounded-md flex flex-col md:flex-row sm:flex-col w-full max-w-7xl p-4">
             {/* Left: Logo + Title */}
-            <div className="flex flex-col md:w-[50%] sm:w-full items-center justify-center text-sky-900">
+            <div className="flex flex-col md:w-[50%] h-auto sm:w-full items-center justify-center text-sky-900">
               <img src={ChefLogo} alt="Chef Logo" className="w-32 h-32" />
 
               <h1 className="text-3xl lg:text-5xl sm:text-3xl font-lobster text-sky-100 text-center my-4">
