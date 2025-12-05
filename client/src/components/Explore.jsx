@@ -101,19 +101,235 @@ const Explore = () => {
           </h2>
         </div>
         <div className="h-1 w-[90%] mx-auto my-1 mb-3 bg-slate-800 rounded-md"></div>
-        <div
-          className="h-1 w-[90%] mx-auto h-12 my-1 mb-3 bg-slate-800 rounded-md"
-          onClick={() => {
-            setSelectedParams({
-              ...selectedParams,
-              difficultyParamMin: selectedParams.difficultyParamMin + 1,
-            });
-            console.log("clicked");
-            console.log(selectedParams);
-          }}
-        >
-          Click here
+        {/* ----------------- HEALTH FILTERS ---------------- */}
+        <div className="w-full py-4 flex justify-center gap-1">
+          <button
+            id="allCost-filter-button"
+            onClick={() => {
+              setSelectedParams({
+                ...selectedParams,
+                healthParamMin: 1,
+                healthParamMax: 5,
+              });
+            }}
+            className={`p-1 lg:p-2 rounded-md border-2 border-black font-redhat text-md md:text-lg lg:text-xl font-bold ${
+              selectedParams.healthParamMin == 1 &&
+              selectedParams.healthParamMax == 5
+                ? "bg-black text-slate-50"
+                : "bg-slate-50 text-black "
+            }`}
+          >
+            ALL
+          </button>
+          <button
+            id="Expensive-filter-button"
+            onClick={() => {
+              setSelectedParams({
+                ...selectedParams,
+                healthParamMin: 1,
+                healthParamMax: 2,
+              });
+            }}
+            className={`p-1 lg:p-2 rounded-md border-2 border-purple-700 font-redhat text-md md:text-lg lg:text-xl font-bold ${
+              selectedParams.healthParamMin == 1 &&
+              selectedParams.healthParamMax == 2
+                ? "bg-purple-700 text-purple-50"
+                : "bg-pruple-50 text-purple-700"
+            }`}
+          >
+            Least Healthy
+          </button>
+          <button
+            id="moderate-filter-button"
+            onClick={() => {
+              setSelectedParams({
+                ...selectedParams,
+                healthParamMin: 2,
+                healthParamMax: 4,
+              });
+            }}
+            className={`p-1 lg:p-2 rounded-md border-2 font-redhat text-md md:text-lg lg:text-xl font-bold ${
+              selectedParams.healthParamMin == 2 &&
+              selectedParams.healthParamMax == 4
+                ? " bg-fuchsia-400 text-fuchsia-800 "
+                : " bg-fuchsia-50 text-fuchsia-400 border-fuchsia-400"
+            }`}
+          >
+            Moderate
+          </button>
+          <button
+            id="expensive-filter-button"
+            onClick={() => {
+              setSelectedParams({
+                ...selectedParams,
+                healthParamMin: 4,
+                healthParamMax: 5,
+              });
+              setIsSelected(true);
+            }}
+            className={`p-1 lg:p-2 rounded-md border-2 border-rose-500 font-redhat text-md md:text-lg lg:text-xl font-bold ${
+              selectedParams.healthParamMin == 4 &&
+              selectedParams.healthParamMax == 5
+                ? "bg-rose-500 text-rose-50 "
+                : " bg-rose-50 text-rose-500"
+            }`}
+          >
+            Most Healthy
+          </button>
         </div>
+        {/* ----------------- COST FILTERS ---------------- */}
+        <div className="w-full py-4 flex justify-center gap-1">
+          <button
+            id="allCost-filter-button"
+            onClick={() => {
+              setSelectedParams({
+                ...selectedParams,
+                costParamMin: 1,
+                costParamMax: 5,
+              });
+            }}
+            className={`p-1 lg:p-2 rounded-md border-2 border-black font-redhat text-md md:text-lg lg:text-xl font-bold ${
+              selectedParams.costParamMin == 1 &&
+              selectedParams.costParamMax == 5
+                ? "bg-black text-slate-50"
+                : "bg-slate-50 text-black "
+            }`}
+          >
+            ALL
+          </button>
+          <button
+            id="Expensive-filter-button"
+            onClick={() => {
+              setSelectedParams({
+                ...selectedParams,
+                costParamMin: 1,
+                costParamMax: 2,
+              });
+            }}
+            className={`p-1 lg:p-2 rounded-md border-2 border-teal-500 font-redhat text-md md:text-lg lg:text-xl font-bold ${
+              selectedParams.costParamMin == 1 &&
+              selectedParams.costParamMax == 2
+                ? "bg-teal-500 text-teal-700"
+                : "bg-slate-50 text-teal-500"
+            }`}
+          >
+            Cheap
+          </button>
+          <button
+            id="moderate-filter-button"
+            onClick={() => {
+              setSelectedParams({
+                ...selectedParams,
+                costParamMin: 2,
+                costParamMax: 4,
+              });
+            }}
+            className={`p-1 lg:p-2 rounded-md border-2 font-redhat text-md md:text-lg lg:text-xl font-bold ${
+              selectedParams.costParamMin == 2 &&
+              selectedParams.costParamMax == 4
+                ? " bg-blue-100 text-blue-700 border-blue-100 "
+                : " bg-slate-50 text-blue-400 border-blue-400"
+            }`}
+          >
+            Moderate
+          </button>
+          <button
+            id="expensive-filter-button"
+            onClick={() => {
+              setSelectedParams({
+                ...selectedParams,
+                costParamMin: 4,
+                costParamMax: 5,
+              });
+              setIsSelected(true);
+            }}
+            className={`p-1 lg:p-2 rounded-md border-2 border-amber-300 font-redhat text-md md:text-lg lg:text-xl font-bold ${
+              selectedParams.costParamMin == 4 &&
+              selectedParams.costParamMax == 5
+                ? "bg-amber-300 text-amber-700 "
+                : " bg-amber-50 text-amber-400"
+            }`}
+          >
+            Expensive
+          </button>
+        </div>
+        {/* ----------------- DIFFICULTY FILTERS ---------------- */}
+        <div className="w-full py-4 flex justify-center gap-1">
+          <button
+            id="allDifficulty-filter-button"
+            onClick={() => {
+              setSelectedParams({
+                ...selectedParams,
+                difficultyParamMin: 1,
+                difficultyParamMax: 5,
+              });
+            }}
+            className={`p-1 lg:p-2 rounded-md border-2 border-black font-redhat text-md md:text-lg lg:text-xl font-bold ${
+              selectedParams.difficultyParamMin == 1 &&
+              selectedParams.difficultyParamMax == 5
+                ? "bg-black text-slate-50 "
+                : "bg-slate-50 text-black "
+            }`}
+          >
+            ALL
+          </button>
+          <button
+            id="easy-filter-button"
+            onClick={() => {
+              setSelectedParams({
+                ...selectedParams,
+                difficultyParamMin: 1,
+                difficultyParamMax: 2,
+              });
+            }}
+            className={`p-1 lg:p-2 rounded-md border-2 border-emerald-400 font-redhat text-md md:text-lg lg:text-xl font-bold ${
+              selectedParams.difficultyParamMin == 1 &&
+              selectedParams.difficultyParamMax == 2
+                ? "bg-emerald-400 text-emerald-800"
+                : "bg-slate-50 text-emerald-500"
+            }`}
+          >
+            Easy
+          </button>
+          <button
+            id="medium-filter-button"
+            onClick={() => {
+              setSelectedParams({
+                ...selectedParams,
+                difficultyParamMin: 2,
+                difficultyParamMax: 4,
+              });
+            }}
+            className={`p-1 lg:p-2 rounded-md border-2 border-orange-300 font-redhat text-md md:text-lg lg:text-xl font-bold ${
+              selectedParams.difficultyParamMin == 2 &&
+              selectedParams.difficultyParamMax == 4
+                ? "bg-orange-300 text-orange-600"
+                : " bg-slate-50 text-orange-500 "
+            }`}
+          >
+            Medium
+          </button>
+          <button
+            id="hard-filter-button"
+            onClick={() => {
+              setSelectedParams({
+                ...selectedParams,
+                difficultyParamMin: 4,
+                difficultyParamMax: 5,
+              });
+              setIsSelected(true);
+            }}
+            className={`p-1 lg:p-2 rounded-md border-2 border-red-400 font-redhat text-md md:text-lg lg:text-xl font-bold ${
+              selectedParams.difficultyParamMin == 4 &&
+              selectedParams.difficultyParamMax == 5
+                ? " bg-red-400 text-red-800 "
+                : " bg-slate-50 text-red-500  "
+            }`}
+          >
+            Hard
+          </button>
+        </div>
+
         <h2>Showing {searchResults.length} results</h2>
       </div>
 
