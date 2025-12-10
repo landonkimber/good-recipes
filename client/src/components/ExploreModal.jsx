@@ -193,10 +193,22 @@ const ExploreModal = ({ recipe, onClose }) => {
                   <p className="h-fit px-2 py-1 font-redhat rounded text-nowrap bg-sky-300">
                     {recipe.totalTime}
                   </p>
-                  <p className="h-fit px-2 py-1 font-redhat rounded text-nowrap bg-emerald-300">
+                  <p className="h-fit px-2 py-1 font-redhat rounded text-nowrap bg-amber-400 text-sky-800">
                     {recipe.servings} servings
                   </p>
-                  <p className="h-fit  px-2 py-1 font-redhat rounded text-nowrap bg-amber-300">
+                  <p
+                    className={`h-fit px-2 py-1 font-redhat rounded text-nowrap ${
+                      recipe.difficulty === 5
+                        ? "bg-red-800 text-black"
+                        : recipe.difficulty === 4
+                        ? "bg-orange-600 text-red-900"
+                        : recipe.difficulty === 3
+                        ? "bg-yellow-300 text-amber-900"
+                        : recipe.difficulty === 2
+                        ? "bg-lime-300 text-green-800"
+                        : "bg-emerald-500 text-emerald-900"
+                    }`}
+                  >
                     {recipe.difficultyDesc}
                   </p>
                 </div>

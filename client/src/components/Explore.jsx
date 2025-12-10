@@ -1,20 +1,23 @@
 import { useState } from "react";
+
 import recipes from "../data/recipes.json";
+
 import GlobeIcon from "/globe.svg";
+import { FaUserAlt, FaChevronUp, FaChevronDown } from "react-icons/fa";
 
 import ExploreModal from "./ExploreModal";
 
 const Explore = () => {
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [selectedParams, setSelectedParams] = useState({
-    difficultyParamMin: 0,
+    difficultyParamMin: 1,
     difficultyParamMax: 5,
-    costParamMin: 0,
+    costParamMin: 1,
     costParamMax: 5,
-    healthParamMin: 0,
-    healthParamMax: 5,
-    // timeParamMin: 0,
-    // timeParamMax: 1000,
+    servings: 4,
+    // vv Measured in number of Minutes!
+    // timeMin: 0,
+    timeMax: 50,
   });
 
   function getResults(
@@ -22,8 +25,7 @@ const Explore = () => {
     difficultyParamMax = 5,
     costParamMin = 0,
     costParamMax = 5,
-    healthParamMin = 0,
-    healthParamMax = 5
+    servings = 4
     // timeParamMin = 0,
     // timeParamMax
   ) {
@@ -32,10 +34,8 @@ const Explore = () => {
         recipe.difficulty >= selectedParams.difficultyParamMin &&
         recipe.difficulty <= selectedParams.difficultyParamMax &&
         recipe.cost >= selectedParams.costParamMin &&
-        recipe.cost <= selectedParams.costParamMax &&
+        recipe.cost <= selectedParams.costParamMax
         //Needs to eventually be changed to recipe.health
-        recipe.taste >= selectedParams.healthParamMin &&
-        recipe.taste <= selectedParams.healthParamMax
         // Commenting out time until the total time value is a number
         // && recipe.totaltime >= timeParamMin &&
         // recipe.totaltime <= timeParamMax
@@ -48,6 +48,7 @@ const Explore = () => {
     };
   }
   var searchResults = recipes.filter(getResults(selectedParams));
+  const inputIconSize = 32;
 
   const RecipeCard = ({ r, onClick }) => (
     <div
@@ -74,10 +75,22 @@ const Explore = () => {
           <p className="px-2 py-1 font-redhat rounded bg-sky-300 text-nowrap w-fit">
             {r.totalTime}
           </p>
-          <p className="px-2 py-1 font-redhat rounded bg-emerald-300 text-nowrap w-fit">
+          <p className="px-2 py-1 font-redhat rounded bg-amber-400 text-sky-800 text-nowrap w-fit">
             {r.servings} servings
           </p>
-          <p className="px-2 py-1 font-redhat rounded bg-amber-300 text-nowrap w-fit">
+          <p
+            className={`h-fit px-2 py-1 font-redhat rounded text-nowrap ${
+              r.difficulty === 5
+                ? "bg-red-800 text-black"
+                : r.difficulty === 4
+                ? "bg-orange-600 text-red-950"
+                : r.difficulty === 3
+                ? "bg-yellow-300 text-amber-900"
+                : r.difficulty === 2
+                ? "bg-lime-300 text-green-800"
+                : "bg-emerald-500 text-emerald-900"
+            }`}
+          >
             {r.difficultyDesc}
           </p>
         </div>
@@ -101,84 +114,89 @@ const Explore = () => {
           </h2>
         </div>
         <div className="h-1 w-[90%] mx-auto my-1 mb-3 bg-slate-800 rounded-md"></div>
-        {/* ----------------- HEALTH FILTERS ---------------- */}
-        <div className="w-full py-4 flex justify-center gap-1">
+        {/* ----------------- DIFFICULTY FILTERS ---------------- */}
+        <div className="w-full py-4 flex justify-center items-center gap-1">
+          <h2 className="text-md lg:text-xl xl:text-2xl font-bold font-redhat text-right mr-2 lg:mr-4">
+            Difficulty
+          </h2>
           <button
-            id="allCost-filter-button"
+            id="allDifficulty-filter-button"
             onClick={() => {
               setSelectedParams({
                 ...selectedParams,
-                healthParamMin: 1,
-                healthParamMax: 5,
+                difficultyParamMin: 1,
+                difficultyParamMax: 5,
               });
             }}
             className={`p-1 lg:p-2 rounded-md border-2 border-black font-redhat text-md md:text-lg lg:text-xl font-bold ${
-              selectedParams.healthParamMin == 1 &&
-              selectedParams.healthParamMax == 5
-                ? "bg-black text-slate-50"
+              selectedParams.difficultyParamMin == 1 &&
+              selectedParams.difficultyParamMax == 5
+                ? "bg-black text-slate-50  "
                 : "bg-slate-50 text-black "
             }`}
           >
             ALL
           </button>
           <button
-            id="Expensive-filter-button"
+            id="easy-filter-button"
             onClick={() => {
               setSelectedParams({
                 ...selectedParams,
-                healthParamMin: 1,
-                healthParamMax: 2,
+                difficultyParamMin: 1,
+                difficultyParamMax: 2,
               });
             }}
-            className={`p-1 lg:p-2 rounded-md border-2 border-purple-700 font-redhat text-md md:text-lg lg:text-xl font-bold ${
-              selectedParams.healthParamMin == 1 &&
-              selectedParams.healthParamMax == 2
-                ? "bg-purple-700 text-purple-50"
-                : "bg-pruple-50 text-purple-700"
+            className={`p-1 lg:p-2 rounded-md border-2 border-emerald-400 font-redhat text-md md:text-lg lg:text-xl font-bold ${
+              selectedParams.difficultyParamMin == 1 &&
+              selectedParams.difficultyParamMax == 2
+                ? "bg-emerald-400 text-emerald-800 "
+                : "bg-slate-50 text-emerald-500"
             }`}
           >
-            Least Healthy
+            Easy
           </button>
           <button
-            id="moderate-filter-button"
+            id="medium-filter-button"
             onClick={() => {
               setSelectedParams({
                 ...selectedParams,
-                healthParamMin: 2,
-                healthParamMax: 4,
+                difficultyParamMin: 2,
+                difficultyParamMax: 4,
               });
             }}
-            className={`p-1 lg:p-2 rounded-md border-2 font-redhat text-md md:text-lg lg:text-xl font-bold ${
-              selectedParams.healthParamMin == 2 &&
-              selectedParams.healthParamMax == 4
-                ? " bg-fuchsia-400 text-fuchsia-800 "
-                : " bg-fuchsia-50 text-fuchsia-400 border-fuchsia-400"
+            className={`p-1 lg:p-2 rounded-md border-2 border-orange-300 font-redhat text-md md:text-lg lg:text-xl font-bold ${
+              selectedParams.difficultyParamMin == 2 &&
+              selectedParams.difficultyParamMax == 4
+                ? "bg-orange-300 text-orange-600 "
+                : " bg-slate-50 text-orange-500 "
             }`}
           >
-            Moderate
+            Medium
           </button>
           <button
-            id="expensive-filter-button"
+            id="hard-filter-button"
             onClick={() => {
               setSelectedParams({
                 ...selectedParams,
-                healthParamMin: 4,
-                healthParamMax: 5,
+                difficultyParamMin: 4,
+                difficultyParamMax: 5,
               });
-              setIsSelected(true);
             }}
-            className={`p-1 lg:p-2 rounded-md border-2 border-rose-500 font-redhat text-md md:text-lg lg:text-xl font-bold ${
-              selectedParams.healthParamMin == 4 &&
-              selectedParams.healthParamMax == 5
-                ? "bg-rose-500 text-rose-50 "
-                : " bg-rose-50 text-rose-500"
+            className={`p-1 lg:p-2 rounded-md border-2 border-red-400 font-redhat text-md md:text-lg lg:text-xl font-bold ${
+              selectedParams.difficultyParamMin == 4 &&
+              selectedParams.difficultyParamMax == 5
+                ? " bg-red-400 text-red-800 "
+                : " bg-slate-50 text-red-500  "
             }`}
           >
-            Most Healthy
+            Hard
           </button>
         </div>
         {/* ----------------- COST FILTERS ---------------- */}
-        <div className="w-full py-4 flex justify-center gap-1">
+        <div className="w-full py-4 flex justify-center items-center gap-1">
+          <h2 className="text-md lg:text-xl xl:text-2xl font-bold font-redhat text-right mr-2 lg:mr-4">
+            Cost
+          </h2>
           <button
             id="allCost-filter-button"
             onClick={() => {
@@ -191,7 +209,7 @@ const Explore = () => {
             className={`p-1 lg:p-2 rounded-md border-2 border-black font-redhat text-md md:text-lg lg:text-xl font-bold ${
               selectedParams.costParamMin == 1 &&
               selectedParams.costParamMax == 5
-                ? "bg-black text-slate-50"
+                ? "bg-black text-slate-50 "
                 : "bg-slate-50 text-black "
             }`}
           >
@@ -209,7 +227,7 @@ const Explore = () => {
             className={`p-1 lg:p-2 rounded-md border-2 border-teal-500 font-redhat text-md md:text-lg lg:text-xl font-bold ${
               selectedParams.costParamMin == 1 &&
               selectedParams.costParamMax == 2
-                ? "bg-teal-500 text-teal-700"
+                ? "bg-teal-500 text-teal-700 "
                 : "bg-slate-50 text-teal-500"
             }`}
           >
@@ -241,7 +259,6 @@ const Explore = () => {
                 costParamMin: 4,
                 costParamMax: 5,
               });
-              setIsSelected(true);
             }}
             className={`p-1 lg:p-2 rounded-md border-2 border-amber-300 font-redhat text-md md:text-lg lg:text-xl font-bold ${
               selectedParams.costParamMin == 4 &&
@@ -253,81 +270,118 @@ const Explore = () => {
             Expensive
           </button>
         </div>
-        {/* ----------------- DIFFICULTY FILTERS ---------------- */}
-        <div className="w-full py-4 flex justify-center gap-1">
-          <button
-            id="allDifficulty-filter-button"
-            onClick={() => {
-              setSelectedParams({
-                ...selectedParams,
-                difficultyParamMin: 1,
-                difficultyParamMax: 5,
-              });
-            }}
-            className={`p-1 lg:p-2 rounded-md border-2 border-black font-redhat text-md md:text-lg lg:text-xl font-bold ${
-              selectedParams.difficultyParamMin == 1 &&
-              selectedParams.difficultyParamMax == 5
-                ? "bg-black text-slate-50 "
-                : "bg-slate-50 text-black "
-            }`}
-          >
-            ALL
-          </button>
-          <button
-            id="easy-filter-button"
-            onClick={() => {
-              setSelectedParams({
-                ...selectedParams,
-                difficultyParamMin: 1,
-                difficultyParamMax: 2,
-              });
-            }}
-            className={`p-1 lg:p-2 rounded-md border-2 border-emerald-400 font-redhat text-md md:text-lg lg:text-xl font-bold ${
-              selectedParams.difficultyParamMin == 1 &&
-              selectedParams.difficultyParamMax == 2
-                ? "bg-emerald-400 text-emerald-800"
-                : "bg-slate-50 text-emerald-500"
-            }`}
-          >
-            Easy
-          </button>
-          <button
-            id="medium-filter-button"
-            onClick={() => {
-              setSelectedParams({
-                ...selectedParams,
-                difficultyParamMin: 2,
-                difficultyParamMax: 4,
-              });
-            }}
-            className={`p-1 lg:p-2 rounded-md border-2 border-orange-300 font-redhat text-md md:text-lg lg:text-xl font-bold ${
-              selectedParams.difficultyParamMin == 2 &&
-              selectedParams.difficultyParamMax == 4
-                ? "bg-orange-300 text-orange-600"
-                : " bg-slate-50 text-orange-500 "
-            }`}
-          >
-            Medium
-          </button>
-          <button
-            id="hard-filter-button"
-            onClick={() => {
-              setSelectedParams({
-                ...selectedParams,
-                difficultyParamMin: 4,
-                difficultyParamMax: 5,
-              });
-              setIsSelected(true);
-            }}
-            className={`p-1 lg:p-2 rounded-md border-2 border-red-400 font-redhat text-md md:text-lg lg:text-xl font-bold ${
-              selectedParams.difficultyParamMin == 4 &&
-              selectedParams.difficultyParamMax == 5
-                ? " bg-red-400 text-red-800 "
-                : " bg-slate-50 text-red-500  "
-            }`}
-          >
-            Hard
-          </button>
+
+        <div className="w-full mx-auto flex justify-evenly items-center">
+          {/* -------------SERVINGS INPUT ------------------------------ */}
+          <div id="servings-input" className="flex items-center">
+            <h2 className="text-md lg:text-xl xl:text-2xl font-bold font-redhat text-right mr-1 lg:mr-2">
+              Servings
+            </h2>
+            <div className="h-auto w-fit py-1 lg:py-2 pr-1 lg:pr-2 rounded-md flex justify-between items-center bg-slate-200">
+              <div className="h-1/2 w-1 bg-slate-900 mr-1 lg:mr-2 text-slate-900">
+                |
+              </div>
+              <input
+                type="number"
+                name="Servings Input"
+                id="servings-input"
+                value={selectedParams.servings}
+                onChange={(e) => {
+                  const value = Number(e.target.value);
+                  setSelectedParams({
+                    ...selectedParams,
+                    servings: value,
+                  });
+                }}
+                className="w-12 text-right bg-slate-50 p-1 lg:p-2 rounded-sm border border-slate-600 mr-1 lg:mr-2 text-md lg:text-xl xl:text-2xl font-bold font-redhat outline-none appearance-none"
+              />
+              <FaUserAlt size={inputIconSize} className="" />
+              <div className=" flex flex-col align-center mx-1 lg:mx-2">
+                <button
+                  className=" h-full bg-sky-600 text-slate-100 border-2 border-sky-600 hover:border-slate-200 hover:bg-sky-500 p-1 lg:p-2  mx-1 mt-auto rounded-t-md"
+                  onClick={() => {
+                    setSelectedParams({
+                      ...selectedParams,
+                      servings: selectedParams.servings + 1,
+                    });
+                  }}
+                >
+                  <FaChevronUp size={inputIconSize / 2} />
+                </button>
+                <button
+                  className="h-full bg-sky-800 text-slate-100 border-2 border-sky-800 hover:border-slate-200 hover:bg-sky-900 p-1 lg:p-2 mx-1 mb-auto rounded-b-md"
+                  onClick={() => {
+                    setSelectedParams({
+                      ...selectedParams,
+                      servings:
+                        selectedParams.servings <= 1
+                          ? 1
+                          : selectedParams.servings - 1,
+                    });
+                  }}
+                >
+                  <FaChevronDown size={inputIconSize / 2} />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* -------------TIME INPUT ------------------------------ */}
+          <div id="time-input" className="flex items-center">
+            <h2 className="text-md lg:text-xl xl:text-2xl font-bold font-redhat text-right mr-1 lg:mr-2">
+              Time
+            </h2>
+
+            <div className="h-auto w-fit  py-1 lg:py-2 pr-1 lg:pr-2 rounded-md flex justify-between items-center bg-slate-200">
+              <div className="h-1/2 w-1 bg-slate-900 mr-1 lg:mr-2 text-slate-900">
+                |
+              </div>
+              <input
+                type="number"
+                name="Time Input"
+                id="timeMax-input"
+                value={selectedParams.timeMax}
+                onChange={(e) => {
+                  const value = Number(e.target.value);
+                  setSelectedParams({
+                    ...selectedParams,
+                    timeMax: value,
+                  });
+                }}
+                className="w-20 text-right bg-slate-50 p-1 lg:p-2 rounded-sm border border-slate-600 mr-1 lg:mr-2 text-md lg:text-xl xl:text-2xl font-bold font-redhat outline-none appearance-none"
+              />
+              <h3 className="text-md lg:text-xl xl:text-2xl font-bold font-redhat text-right mr-2 lg:mr-4">
+                mins
+              </h3>
+              <div className=" flex flex-col align-center mx-1 lg:mx-2">
+                <button
+                  className=" h-full bg-sky-600 text-slate-100 border-2 border-sky-600 hover:border-slate-200 hover:bg-sky-500 p-1 lg:p-2  mx-1 mt-auto rounded-t-md"
+                  onClick={() => {
+                    setSelectedParams({
+                      ...selectedParams,
+                      timeMax: selectedParams.timeMax + 10,
+                    });
+                  }}
+                >
+                  <FaChevronUp size={inputIconSize / 2} />
+                </button>
+                <button
+                  className="h-full bg-sky-800 text-slate-100 border-2 border-sky-800 hover:border-slate-200 hover:bg-sky-900 p-1 lg:p-2 mx-1 mb-auto rounded-b-md"
+                  onClick={() => {
+                    setSelectedParams({
+                      ...selectedParams,
+                      timeMax:
+                        selectedParams.timeMax <= 10
+                          ? 10
+                          : selectedParams.timeMax - 10,
+                    });
+                  }}
+                >
+                  <FaChevronDown size={inputIconSize / 2} />
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
 
         <h2>Showing {searchResults.length} results</h2>
