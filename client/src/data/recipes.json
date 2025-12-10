@@ -2,7 +2,7 @@
   {
     "title": "Lemon Garlic Salmon",
     "description": "Flaky salmon baked with lemon, garlic, and herbs for a bright weeknight dinner. I NEED A LONGER TEXT TO TEST OUT THE FUNCTION OF THE RECIPE CARDS. LOREM20",
-    "totalTime": "30 minutes",
+    "totalTime": 30,
     "prepTime": "10 min",
     "cookTime": "15 min",
     "cleanupTime": "5 min",
@@ -91,7 +91,7 @@
   {
     "title": "Vegetable Stir-Fry",
     "description": "Colorful veggies tossed in a simple soy-garlic sauce; quick, flexible, and healthy.",
-    "totalTime": "25 minutes",
+    "totalTime": 25,
     "prepTime": "10 min",
     "cookTime": "12 min",
     "cleanupTime": "3 min",
@@ -215,7 +215,7 @@
   {
     "title": "Margherita Pizza",
     "description": "Classic thin-crust pizza with tomato, mozzarella, and fresh basil.",
-    "totalTime": "45 minutes",
+    "totalTime": 45,
     "prepTime": "15 min",
     "cookTime": "12 min",
     "cleanupTime": "18 min",
@@ -299,7 +299,7 @@
   {
     "title": "Chicken Tikka Masala",
     "description": "Tender chicken in a creamy, spiced tomato sauce; a takeout favorite at home.",
-    "totalTime": "60 minutes",
+    "totalTime": 60,
     "prepTime": "20 min",
     "cookTime": "35 min",
     "cleanupTime": "5 min",
@@ -429,7 +429,7 @@
   {
     "title": "Shrimp Scampi",
     "description": "Garlicky shrimp tossed with butter, lemon, and pasta for a quick, elegant meal.",
-    "totalTime": "25 minutes",
+    "totalTime": 25,
     "prepTime": "10 min",
     "cookTime": "12 min",
     "cleanupTime": "3 min",
@@ -519,7 +519,7 @@
   {
     "title": "Beef Stroganoff",
     "description": "Tender beef and mushrooms in a creamy sauce served over egg noodles.",
-    "totalTime": "45 minutes",
+    "totalTime": 45,
     "prepTime": "15 min",
     "cookTime": "25 min",
     "cleanupTime": "5 min",
@@ -628,7 +628,7 @@
   {
     "title": "Butternut Squash Soup",
     "description": "Silky, slightly sweet squash soup with warm spices.",
-    "totalTime": "50 minutes",
+    "totalTime": 50,
     "prepTime": "15 min",
     "cookTime": "30 min",
     "cleanupTime": "5 min",
@@ -727,7 +727,7 @@
   {
     "title": "Thai Green Curry",
     "description": "Fragrant coconut curry with chicken and vegetables.",
-    "totalTime": "40 minutes",
+    "totalTime": 40,
     "prepTime": "15 min",
     "cookTime": "20 min",
     "cleanupTime": "5 min",
@@ -828,7 +828,7 @@
   {
     "title": "BBQ Pulled Pork Sandwiches",
     "description": "Slow-cooked pork shoulder shredded and tossed with tangy BBQ sauce.",
-    "totalTime": "8 hours",
+    "totalTime": 480,
     "prepTime": "10 min",
     "cookTime": "7 hr 45 min",
     "cleanupTime": "5 min",
@@ -916,7 +916,7 @@
   {
     "title": "Greek Chicken Salad",
     "description": "Crisp salad with lemon-herb chicken, cucumbers, tomatoes, olives, and feta.",
-    "totalTime": "35 minutes",
+    "totalTime": 35,
     "prepTime": "15 min",
     "cookTime": "15 min",
     "cleanupTime": "5 min",
@@ -1021,7 +1021,7 @@
   {
     "title": "Fluffy Pancakes",
     "description": "Classic, light pancakes perfect for weekend breakfasts.",
-    "totalTime": "25 minutes",
+    "totalTime": 25,
     "prepTime": "10 min",
     "cookTime": "12 min",
     "cleanupTime": "3 min",
@@ -1087,7 +1087,7 @@
   {
     "title": "Avocado Toast with Egg",
     "description": "Toasted bread topped with creamy avocado and a soft-cooked egg.",
-    "totalTime": "15 minutes",
+    "totalTime": 15,
     "prepTime": "5 min",
     "cookTime": "7 min",
     "cleanupTime": "3 min",
@@ -1165,7 +1165,7 @@
   {
     "title": "Baked Ziti",
     "description": "Cheesy baked pasta with marinara and ricotta—crowd pleaser!",
-    "totalTime": "55 minutes",
+    "totalTime": 55,
     "prepTime": "15 min",
     "cookTime": "35 min",
     "cleanupTime": "5 min",
@@ -1251,7 +1251,7 @@
   {
     "title": "Teriyaki Chicken Bowls",
     "description": "Sweet-savory teriyaki chicken served over rice with steamed veggies.",
-    "totalTime": "35 minutes",
+    "totalTime": 35,
     "prepTime": "10 min",
     "cookTime": "20 min",
     "cleanupTime": "5 min",
@@ -1344,7 +1344,7 @@
   {
     "title": "Turkey Meatballs",
     "description": "Lean turkey meatballs baked and simmered in marinara.",
-    "totalTime": "45 minutes",
+    "totalTime": 45,
     "prepTime": "15 min",
     "cookTime": "25 min",
     "cleanupTime": "5 min",
@@ -1430,7 +1430,7 @@
   {
     "title": "Mushroom Risotto",
     "description": "Creamy arborio rice slowly cooked with broth and sautéed mushrooms.",
-    "totalTime": "45 minutes",
+    "totalTime": 45,
     "prepTime": "10 min",
     "cookTime": "35 min",
     "cleanupTime": "0 min",
@@ -1520,7 +1520,7 @@
   {
     "title": "Fish Tacos",
     "description": "Crispy or grilled white fish tucked in tortillas with slaw and lime crema.",
-    "totalTime": "35 minutes",
+    "totalTime": 35,
     "prepTime": "15 min",
     "cookTime": "15 min",
     "cleanupTime": "5 min",
@@ -1630,7 +1630,7 @@
   {
     "title": "Stuffed Bell Peppers",
     "description": "Bell peppers stuffed with beef, rice, and cheese baked until tender.",
-    "totalTime": "70 minutes",
+    "totalTime": 70,
     "prepTime": "20 min",
     "cookTime": "45 min",
     "cleanupTime": "5 min",
@@ -1723,7 +1723,7 @@
   {
     "title": "Spaghetti Carbonara",
     "description": "Silky pasta with eggs, Pecorino, and crisp pancetta—no cream needed.",
-    "totalTime": "25 minutes",
+    "totalTime": 25,
     "prepTime": "10 min",
     "cookTime": "12 min",
     "cleanupTime": "3 min",
@@ -1798,7 +1798,7 @@
   {
     "title": "Chicken Fajitas",
     "description": "Sizzling strips of chicken with peppers and onions, served with warm tortillas.",
-    "totalTime": "35 minutes",
+    "totalTime": 35,
     "prepTime": "15 min",
     "cookTime": "15 min",
     "cleanupTime": "5 min",
@@ -1880,7 +1880,7 @@
   {
     "title": "Caprese Pasta Salad",
     "description": "Chilled pasta with tomatoes, mozzarella, basil, and balsamic dressing.",
-    "totalTime": "25 minutes",
+    "totalTime": 25,
     "prepTime": "10 min",
     "cookTime": "10 min",
     "cleanupTime": "5 min",

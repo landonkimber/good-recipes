@@ -17,7 +17,7 @@ const Explore = () => {
     servings: 4,
     // vv Measured in number of Minutes!
     // timeMin: 0,
-    timeMax: 50,
+    timeMax: 90,
   });
 
   function getResults(
@@ -25,20 +25,21 @@ const Explore = () => {
     difficultyParamMax = 5,
     costParamMin = 0,
     costParamMax = 5,
-    servings = 4
+    servings = 4,
     // timeParamMin = 0,
-    // timeParamMax
+    timeMax = 90
   ) {
     return function (recipe) {
       if (
         recipe.difficulty >= selectedParams.difficultyParamMin &&
         recipe.difficulty <= selectedParams.difficultyParamMax &&
         recipe.cost >= selectedParams.costParamMin &&
-        recipe.cost <= selectedParams.costParamMax
+        recipe.cost <= selectedParams.costParamMax &&
         //Needs to eventually be changed to recipe.health
         // Commenting out time until the total time value is a number
-        // && recipe.totaltime >= timeParamMin &&
-        // recipe.totaltime <= timeParamMax
+        // && recipe.totaltime >= timeMin
+
+        recipe.totalTime <= selectedParams.timeMax
       ) {
         console.log("passed recipe Params!");
         return recipe;
@@ -131,7 +132,7 @@ const Explore = () => {
             className={`p-1 lg:p-2 rounded-md border-2 border-black font-redhat text-md md:text-lg lg:text-xl font-bold ${
               selectedParams.difficultyParamMin == 1 &&
               selectedParams.difficultyParamMax == 5
-                ? "bg-black text-slate-50  "
+                ? "bg-black text-slate-50 shadow-[0_0_6px_2px_rgb(14,165,233)] "
                 : "bg-slate-50 text-black "
             }`}
           >
@@ -149,7 +150,7 @@ const Explore = () => {
             className={`p-1 lg:p-2 rounded-md border-2 border-emerald-400 font-redhat text-md md:text-lg lg:text-xl font-bold ${
               selectedParams.difficultyParamMin == 1 &&
               selectedParams.difficultyParamMax == 2
-                ? "bg-emerald-400 text-emerald-800 "
+                ? "bg-emerald-400 text-emerald-800 shadow-[0_0_6px_2px_rgb(14,165,233)]"
                 : "bg-slate-50 text-emerald-500"
             }`}
           >
@@ -167,7 +168,7 @@ const Explore = () => {
             className={`p-1 lg:p-2 rounded-md border-2 border-orange-300 font-redhat text-md md:text-lg lg:text-xl font-bold ${
               selectedParams.difficultyParamMin == 2 &&
               selectedParams.difficultyParamMax == 4
-                ? "bg-orange-300 text-orange-600 "
+                ? "bg-orange-300 text-orange-600 shadow-[0_0_6px_2px_rgb(14,165,233)]"
                 : " bg-slate-50 text-orange-500 "
             }`}
           >
@@ -185,7 +186,7 @@ const Explore = () => {
             className={`p-1 lg:p-2 rounded-md border-2 border-red-400 font-redhat text-md md:text-lg lg:text-xl font-bold ${
               selectedParams.difficultyParamMin == 4 &&
               selectedParams.difficultyParamMax == 5
-                ? " bg-red-400 text-red-800 "
+                ? " bg-red-400 text-red-800 shadow-[0_0_6px_2px_rgb(14,165,233)] "
                 : " bg-slate-50 text-red-500  "
             }`}
           >
@@ -209,7 +210,7 @@ const Explore = () => {
             className={`p-1 lg:p-2 rounded-md border-2 border-black font-redhat text-md md:text-lg lg:text-xl font-bold ${
               selectedParams.costParamMin == 1 &&
               selectedParams.costParamMax == 5
-                ? "bg-black text-slate-50 "
+                ? "bg-black text-slate-50 shadow-[0_0_6px_2px_rgb(14,165,233)]"
                 : "bg-slate-50 text-black "
             }`}
           >
@@ -227,7 +228,7 @@ const Explore = () => {
             className={`p-1 lg:p-2 rounded-md border-2 border-teal-500 font-redhat text-md md:text-lg lg:text-xl font-bold ${
               selectedParams.costParamMin == 1 &&
               selectedParams.costParamMax == 2
-                ? "bg-teal-500 text-teal-700 "
+                ? "bg-teal-500 text-teal-700 shadow-[0_0_6px_2px_rgb(14,165,233)]"
                 : "bg-slate-50 text-teal-500"
             }`}
           >
@@ -245,7 +246,7 @@ const Explore = () => {
             className={`p-1 lg:p-2 rounded-md border-2 font-redhat text-md md:text-lg lg:text-xl font-bold ${
               selectedParams.costParamMin == 2 &&
               selectedParams.costParamMax == 4
-                ? " bg-blue-100 text-blue-700 border-blue-100 "
+                ? " bg-blue-100 text-blue-700 border-blue-100 shadow-[0_0_6px_2px_rgb(14,165,233)]"
                 : " bg-slate-50 text-blue-400 border-blue-400"
             }`}
           >
@@ -263,7 +264,7 @@ const Explore = () => {
             className={`p-1 lg:p-2 rounded-md border-2 border-amber-300 font-redhat text-md md:text-lg lg:text-xl font-bold ${
               selectedParams.costParamMin == 4 &&
               selectedParams.costParamMax == 5
-                ? "bg-amber-300 text-amber-700 "
+                ? "bg-amber-300 text-amber-700 shadow-[0_0_6px_2px_rgb(14,165,233)]"
                 : " bg-amber-50 text-amber-400"
             }`}
           >
